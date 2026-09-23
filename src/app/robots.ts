@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-export const SITE_URL = "https://juliao-martins.vercel.app";
+export const SITE_URL = "https://juliaomartins.dev";
 
 /**
  * Replaces the hand-maintained public/robots.txt, so the host can never drift
@@ -13,6 +13,5 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
     },
     sitemap: `${SITE_URL}/sitemap.xml`,
-    host: SITE_URL,
   };
 }
