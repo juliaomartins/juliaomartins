@@ -94,7 +94,7 @@ const MOTION_SCRIPT = `
 
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://juliao-martins.vercel.app"),
+  metadataBase: new URL("https://juliaomartins.dev"),
 
   title: {
     default: "Julião Martins – Junior Developer",
@@ -104,10 +104,14 @@ export const metadata: Metadata = {
   description:
     "Portfolio of Julião Martins, Junior Developer focused on React Native, Next.js and modern web technologies.",
 
+  alternates: {
+    canonical: "https://juliaomartins.dev/",
+  },
+
   authors: [
     {
       name: "Julião Martins",
-      url: "https://juliao-martins.vercel.app",
+      url: "https://juliaomartins.dev",
     },
   ],
   
@@ -123,6 +127,8 @@ export const metadata: Metadata = {
   },
 
   keywords: [
+    "Juliao",
+    "Julião",
     "Julião Martins",
     "Juliao Martins",
     "Julião Martins Timor Leste",
