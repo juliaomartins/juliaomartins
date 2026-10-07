@@ -6,7 +6,7 @@ import { useRef, type CSSProperties } from "react";
 
 import { gsap } from "@/motion/registry";
 import { duration, ease, heroScatter, stagger } from "@/motion/tokens";
-import portrait from "@/public/juliao_martins.jpg";
+import portrait from "@/public/juliao_martins2.png";
 
 /**
  * Fragments of the portrait as [left, top, width, height] in % of a 3:4 frame:
@@ -27,7 +27,9 @@ const PIECES = [
 const SIZES = "(min-width: 1024px) 26rem, 15rem";
 
 /**
- * One photo, shown through seven windows. Every window renders the same
+ * One photo (transparent background), shown through seven windows backed by
+ * the amber signal colour — the page's single accent, here doing the job the
+ * painting's colour does in the reference. Every window renders the same
  * next/image at the size of the whole frame and offsets it, so the browser
  * downloads a single file.
  *
@@ -83,7 +85,7 @@ export default function HeroMosaic({ name }: { name: string }) {
           <div
             key={`${left}-${top}`}
             data-hero-piece=""
-            className="absolute overflow-hidden rounded-md bg-muted"
+            className="absolute overflow-hidden rounded-md bg-signal"
             style={
               {
                 left: `${left}%`,
