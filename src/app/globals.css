@@ -354,7 +354,18 @@ section[tabindex="-1"]:focus {
    a two-line Tetum caption at 360px grows the row instead of colliding with
    the mark. */
 @utility auto-rows-tile {
-  grid-auto-rows: minmax(clamp(9rem, 7rem + 6vw, 11rem), auto);
+  grid-auto-rows: minmax(clamp(7rem, 5.5rem + 6vw, 9rem), auto);
+}
+
+/* Each skill tile's place on the md+ mosaic comes from its data (--col,
+   --row), so the wall's layout lives in data/skills.ts rather than in 26
+   literal class strings. Unlayered, so it overrides the phone-only
+   row-span utility from md up. */
+@media (width >= 48rem) {
+  [data-skill-tile] {
+    grid-column: var(--col);
+    grid-row: var(--row);
+  }
 }
 
 /* Skills mosaic (md+) row unit. Pieces span 3–9 of these, so heights vary the

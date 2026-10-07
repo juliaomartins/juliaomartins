@@ -15,6 +15,15 @@ import CircleStamp from "@/components/ui/CircleStamp";
 const HIDDEN_CLIP = "inset(100% 0% 0% 0%)";
 const SHOWN_CLIP = "inset(0% 0% 0% 0%)";
 
+/**
+ * Below md the wall packs two columns: one tall piece then two short ones
+ * fill exactly two rows, so tall pieces sit at every third index. Only whole
+ * groups of three get a tall piece — a leftover pair then fills the last row
+ * evenly instead of leaving a hole.
+ */
+const tallOnPhone = (index: number) =>
+  index % 3 === 0 && index < Math.floor(skills.length / 3) * 3;
+
 /** Wordmarks are sized by height only; square glyphs by both sides. */
 function iconSize({ wordmark, feature }: Skill): string {
   if (wordmark) return "h-6 w-auto md:h-7";
@@ -71,9 +80,13 @@ export default function Skills() {
     >
       <h2 className="text-center text-h2 font-semibold">{t("title")}</h2>
 
-      <div className="mt-12 grid gap-12 md:grid-cols-2 xl:mt-16 xl:grid-cols-12 xl:items-center xl:gap-10">
+      {/*
+        From xl the wall is much taller than the copy beside it, so the copy
+        and the count stay pinned in view while the wall scrolls past.
+      */}
+      <div className="mt-12 grid gap-12 md:grid-cols-2 xl:mt-16 xl:grid-cols-12 xl:items-start xl:gap-10">
         {/* Left: the copy and the way on. */}
-        <div data-skills-intro="" className="relative xl:col-span-3">
+        <div data-skills-intro="" className="relative xl:sticky xl:top-28 xl:col-span-3">
           {/* Two strokes of light, as in the reference. */}
           <svg
             viewBox="0 0 24 24"
@@ -119,12 +132,13 @@ export default function Skills() {
                   {
                     "--tile-bg": skill.bg,
                     "--tile-fg": skill.fg,
+                    "--col": `${skill.col[0]} / span ${skill.col[1]}`,
+                    "--row": `${skill.row[0]} / span ${skill.row[1]}`,
                   } as CSSProperties
                 }
                 className={cn(
                   "flex flex-col gap-2 rounded-md bg-(--tile-bg) p-3 text-(--tile-fg) ring-1 ring-border",
-                  index % 3 === 0 && index < 12 && "row-span-2",
-                  skill.place
+                  tallOnPhone(index) && "row-span-2"
                 )}
               >
                 {/* The name is the caption; the mark is decoration. */}
@@ -145,7 +159,7 @@ export default function Skills() {
         {/* Right: the count, the stamp and the statement. */}
         <div
           data-skills-aside=""
-          className="flex flex-col items-start gap-8 md:col-start-2 md:row-start-1 md:items-end md:text-right xl:col-span-3 xl:col-start-auto xl:row-start-auto"
+          className="flex flex-col items-start gap-8 md:col-start-2 md:row-start-1 md:items-end md:text-right xl:sticky xl:top-28 xl:col-span-3 xl:col-start-auto xl:row-start-auto"
         >
           <p>
             <span className="block text-count font-semibold tabular-nums text-signal">

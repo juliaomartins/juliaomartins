@@ -26,7 +26,7 @@ export default function PortfolioPage() {
         `scroll-smooth` was also duplicated here; it lives on <html> in
         globals.css, where it is gated behind prefers-reduced-motion.
       */}
-      <main id="main-content" className="overflow-hidden">
+      <main id="main-content" className="overflow-x-clip">
         <Hero />
         <About />
         <Projects />

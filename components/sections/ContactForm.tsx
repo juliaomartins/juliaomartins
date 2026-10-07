@@ -190,13 +190,15 @@ export default function ContactForm() {
       className="mx-auto max-w-6xl px-6 py-24 md:py-32"
     >
       <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-        <div className="lg:col-span-5">
+        {/* min-w-0: a grid item will not shrink below its content, so the long
+            email would push the row past a 360px screen instead of truncating. */}
+        <div className="min-w-0 lg:col-span-5">
           <h2 className="text-h2 font-semibold text-foreground">{t("title")}</h2>
           <p className="mt-4 text-lead text-muted-foreground">{t("intro")}</p>
           <ContactChannels className="mt-10" />
         </div>
 
-        <div className="rounded-xl bg-card p-6 ring-1 ring-border md:p-8 lg:col-span-7">
+        <div className="min-w-0 rounded-xl bg-card p-6 ring-1 ring-border md:p-8 lg:col-span-7">
           {status === "sent" ? (
             <div
               data-contact-success=""
