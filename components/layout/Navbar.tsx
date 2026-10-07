@@ -125,7 +125,7 @@ export default function Navbar() {
       )}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <p className="text-xl font-bold tracking-tight text-foreground">
+        <p className="whitespace-nowrap text-xl font-bold tracking-tight text-foreground">
           Julião Martins
         </p>
 
@@ -142,7 +142,7 @@ export default function Navbar() {
           </li>
         </DesktopNav>
 
-        <div className="flex items-center gap-2 sm:hidden">
+        <div className="flex items-center gap-2 lg:hidden">
           <ThemeToggleButton onToggle={toggleTheme} />
           {mounted ? (
             <Sheet open={open} onOpenChange={setOpen}>

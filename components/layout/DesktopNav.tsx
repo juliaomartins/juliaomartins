@@ -104,7 +104,7 @@ export default function DesktopNav({ items, active, label, children }: Props) {
   // The bar is a sibling of the <ul> (a <ul> may only contain <li>), so the
   // wrapper is the positioning context and link.offsetLeft is measured from it.
   return (
-    <div className="relative hidden py-1 sm:block">
+    <div className="relative hidden py-1 lg:block">
       <ul
         ref={listRef}
         aria-label={label}
