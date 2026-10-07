@@ -5,6 +5,7 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { useActiveSection } from "@/hooks/useActiveSection";
 import { useScrollNavbar } from "@/hooks/useScrollNavbar";
 import { cn } from "@/lib/utils";
 import { Menu, MoonStar, Sun } from "lucide-react";
@@ -26,6 +27,17 @@ const useHasHydrated = () =>
 
 import LanguageSwitcher from "../LanguageSwitcher";
 import { Button } from "../ui/button";
+
+import DesktopNav, { type NavItem } from "./DesktopNav";
+
+const SECTION_IDS = [
+  "home",
+  "about",
+  "projects",
+  "skills",
+  "gallery",
+  "contact",
+] as const;
 
 type Theme = "light" | "dark";
 
@@ -87,14 +99,12 @@ export default function Navbar() {
   const mounted = useHasHydrated();
   const t = useTranslations();
 
-  const navItems = [
-    { label: t("nav.home"), href: "#home" },
-    { label: t("nav.about"), href: "#about" },
-    { label: t("nav.projects"), href: "#projects" },
-    { label: t("nav.skills"), href: "#skills" },
-    { label: t("nav.gallery"), href: "#gallery" },
-    { label: t("nav.contact"), href: "#contact" },
-  ];
+  const active = useActiveSection(SECTION_IDS);
+
+  const navItems: readonly NavItem[] = SECTION_IDS.map((id) => ({
+    id,
+    label: t(`nav.${id}`),
+  }));
 
   const toggleTheme = () => {
     const activeTheme = resolveTheme(
@@ -119,35 +129,18 @@ export default function Navbar() {
           Julião Martins
         </p>
 
-        {/*
-          Was a Radix NavigationMenu. That primitive exists for menus with
-          popover submenus; this is a flat list of anchors, so it shipped
-          ~18KB gz of dismissable-layer/collection/presence machinery for
-          nothing — and its root rendered a second <nav> inside this one,
-          giving the page two navigation landmarks.
-
-          The classes below are the exact resolved output of the old
-          NavigationMenuList + NavigationMenuLink after tailwind-merge, so the
-          rendered result is pixel-identical.
-        */}
-        <ul className="hidden list-none items-center justify-center gap-6 sm:flex">
-          {navItems.map((item) => (
-            <li key={item.href}>
-              <a
-                href={item.href}
-                className="flex flex-col gap-1 rounded-sm p-2 text-sm font-medium text-muted-foreground outline-none transition-colors hover:bg-accent hover:text-foreground focus:bg-accent focus:text-accent-foreground focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-1"
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
+        <DesktopNav
+          items={navItems}
+          active={active}
+          label={t("a11y.mainNav")}
+        >
           <li>
             <ThemeToggleButton onToggle={toggleTheme} />
           </li>
           <li>
             <LanguageSwitcher className="ml-1" />
           </li>
-        </ul>
+        </DesktopNav>
 
         <div className="flex items-center gap-2 sm:hidden">
           <ThemeToggleButton onToggle={toggleTheme} />
@@ -172,9 +165,15 @@ export default function Navbar() {
                 <div className="mt-10 flex flex-col items-center gap-6">
                   {navItems.map((item) => (
                     <a
-                      key={item.href}
-                      href={item.href}
-                      className="tap-target text-lg font-medium text-muted-foreground transition-colors hover:text-foreground"
+                      key={item.id}
+                      href={`#${item.id}`}
+                      aria-current={item.id === active ? "true" : undefined}
+                      className={cn(
+                        "tap-target text-lg font-medium transition-colors hover:text-foreground",
+                        item.id === active
+                          ? "text-foreground"
+                          : "text-muted-foreground"
+                      )}
                       onClick={() => setOpen(false)}
                     >
                       {item.label}
