@@ -84,18 +84,11 @@
   "skills": {
     "title": "Abilidade sira",
     "description": "Ha'u servisu ho AI coding agent hanesan Claude Code loroloron — no ha'u uza sira ho responsabilidade. Ha'u revee liña ida-idak ne'ebé sira hakerek, no ha'u rasik mak kaer arkitetura no desizaun. Ba ha'u, sira mak meius atu entrega servisu di'ak liu no lalais liu, la'ós atu troka ha'u-nia koñesimentu profisionál.",
+    "cta": "Haree ha'u-nia servisu",
     "countCaption": "Ferramenta ne'ebé ha'u uza",
-    "labels": {
-      "tailwind": "Estilu",
-      "gsap": "Animasaun",
-      "react": "Biblioteka UI",
-      "next": "Framework web",
-      "reactNative": "Aplikasaun mobile",
-      "supabase": "Backend no baze-dadus",
-      "django": "Framework backend",
-      "vercel": "Deployment",
-      "claudeCode": "Ajente AI ba kódigu"
-    }
+    "badge": "Fatin ne'ebé kódigu hasoru kuriozidade no arte • ",
+    "statementLead": "Ferramenta ida-idak",
+    "statementAccent": "iha nia fatin."
   },
   "gallery": {
     "imageAlt": "Galeria {number}"

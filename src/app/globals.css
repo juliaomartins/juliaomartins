@@ -363,3 +363,9 @@ html[data-motion="reduced"] [data-gallery-item] {
 @utility auto-rows-tile {
   grid-auto-rows: minmax(clamp(9rem, 7rem + 6vw, 11rem), auto);
 }
+
+/* Skills mosaic (md+) row unit. Pieces span 3–9 of these, so heights vary the
+   way fragments of one painting do. A floor, so captions can never collide. */
+@utility auto-rows-mosaic {
+  grid-auto-rows: minmax(clamp(1.75rem, 1.2rem + 1vw, 2.25rem), auto);
+}
