@@ -9,11 +9,8 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
-  /* Hero accent. The single warm value on an otherwise cool slate page:
-     amber is the "in transit" signal colour, which is literally what the
-     hero says. Used only on the connector label and the rule beneath it. */
-  --color-hero-accent: var(--hero-accent);
-  --color-hero-rule: var(--hero-rule);
+  /* The single warm accent on an otherwise cool slate page. */
+  --color-signal: var(--signal);
 
   /* Form control boundary. The shadcn --input value is 1.23:1 on white, which
      fails WCAG 1.4.11 (3:1 for UI component boundaries) — and on a borderless
@@ -27,14 +24,6 @@
   --text-name--line-height: 1.05;
   --text-name--letter-spacing: -0.035em;
 
-  --text-role: clamp(1.5rem, 1.15rem + 1.6vw, 2.5rem);
-  --text-role--line-height: 1.1;
-  --text-role--letter-spacing: -0.03em;
-
-  --text-stack: clamp(0.8125rem, 0.78rem + 0.2vw, 0.9375rem);
-  --text-stack--line-height: 1.75;
-  --text-stack--letter-spacing: 0.01em;
-
   --text-eyebrow: clamp(0.6875rem, 0.66rem + 0.14vw, 0.8125rem);
   --text-eyebrow--line-height: 1.2;
   --text-eyebrow--letter-spacing: 0.18em;
@@ -45,6 +34,13 @@
   --text-h2: clamp(1.5rem, 1.2rem + 1.4vw, 2.25rem);
   --text-h2--line-height: 1.15;
   --text-h2--letter-spacing: -0.02em;
+
+  --text-lead: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
+  --text-lead--line-height: 1.6;
+
+  --text-count: clamp(4.5rem, 3rem + 6vw, 8rem);
+  --text-count--line-height: 0.85;
+  --text-count--letter-spacing: -0.05em;
 
   /* Form text must never fall below 16px: iOS Safari zooms the viewport on
      focus for anything smaller, which reads as a layout bug on every iPhone.
@@ -143,8 +139,7 @@ html {
   --sidebar-ring: oklch(0.704 0.04 256.788);
 
   /* Measured 5.71:1 on --background. Small text, so 4.5:1 is the bar. */
-  --hero-accent: oklch(0.52 0.12 62);
-  --hero-rule: oklch(0.52 0.12 62 / 0.3);
+  --signal: oklch(0.52 0.12 62);
   /* Measured 3.64:1 on white. */
   --field-border: oklch(0.62 0.02 255.5);
 }
@@ -184,8 +179,7 @@ html {
   --sidebar-ring: oklch(0.551 0.027 264.364);
 
   /* Measured 10.63:1 on the dark --background. */
-  --hero-accent: oklch(0.8 0.14 78);
-  --hero-rule: oklch(0.8 0.14 78 / 0.32);
+  --signal: oklch(0.8 0.14 78);
   /* Measured 3.09:1 on the dark --background. */
   --field-border: oklch(0.48 0.02 255.5);
 }
@@ -215,63 +209,6 @@ html[data-theme="dark"] {
   [data-slot="sheet-content"] {
     transition: background-color 250ms ease, color 250ms ease, border-color 250ms ease;
   }
-}
-
-/* ---------------------------------------------------------------------------
-   Hero morph stage - three states, one DOM.
-
-   No JS            no [data-motion] attribute, so only the base rules below
-                    apply: state A, the connector and state B all sit in
-                    normal flow. Nothing is hidden, so the hero can never
-                    render blank.
-   Reduced motion   [data-motion="reduced"] resolves to the same layout. That
-                    is the designed static state, not a disabled animation.
-   Full motion      [data-motion="full"] overlays the two states in a single
-                    grid row and lifts the connector into a kicker row above
-                    them, so the morph happens in place.
-
-   The mode is stamped onto <html> by an inline probe in the document head, so
-   the layout is settled before first paint and switching modes costs no CLS.
-   --------------------------------------------------------------------------- */
-
-[data-hero-stage] {
-  /* Positioning context for the sprite overlay. */
-  position: relative;
-  display: grid;
-  justify-items: center;
-  row-gap: 1.5rem;
-}
-
-[data-hero-state] {
-  display: grid;
-  justify-items: center;
-  row-gap: 0.5rem;
-}
-
-html[data-motion="full"] [data-hero-stage] {
-  grid-template-areas:
-    "kicker"
-    "states";
-  row-gap: 0.75rem;
-}
-
-html[data-motion="full"] [data-hero-connector] {
-  grid-area: kicker;
-  opacity: 0;
-}
-
-/* Both states share one grid area, so the row reserves max(A, B) height and
-   swapping them moves nothing. This is what makes the morph cost zero CLS. */
-html[data-motion="full"] [data-hero-state] {
-  grid-area: states;
-}
-
-html[data-motion="full"] [data-hero-state="b"] {
-  opacity: 0;
-  /* Not just opacity: the two states share one grid cell, and B sits later in
-     the DOM, so at opacity 0 it would still swallow every hover aimed at the
-     visible A. GSAP's autoAlpha keeps managing this once the morph runs. */
-  visibility: hidden;
 }
 
 /* ---------------------------------------------------------------------------
@@ -415,4 +352,9 @@ html[data-motion="reduced"] [data-gallery-item] {
   height: 100%;
   min-width: 44px;
   min-height: 44px;
+}
+
+/* Skills gallery row unit. Tall tiles span two. */
+@utility auto-rows-tile {
+  grid-auto-rows: clamp(7.5rem, 6rem + 6vw, 11rem);
 }

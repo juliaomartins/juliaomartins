@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { useRef } from "react";
 
 import { gsap } from "@/motion/registry";
-import { duration, ease, staggerAmount } from "@/motion/tokens";
+import { duration, ease, stagger } from "@/motion/tokens";
 
 import {
   Card,
@@ -79,7 +79,7 @@ export default function About() {
             opacity: 0,
             y: 50,
             duration: duration.xl,
-            stagger: { amount: staggerAmount.loose },
+            stagger: stagger.each,
             clearProps: "opacity,transform",
           });
 
@@ -90,7 +90,7 @@ export default function About() {
                 scaleY: 0,
                 transformOrigin: "top center",
                 duration: duration.lg,
-                stagger: { amount: staggerAmount.loose },
+                stagger: stagger.each,
                 clearProps: "transform",
               },
               "-=0.55"
@@ -104,7 +104,7 @@ export default function About() {
                 opacity: 0,
                 scale: 0.4,
                 duration: duration.md,
-                stagger: { amount: staggerAmount.loose },
+                stagger: stagger.each,
                 ease: "back.out(1.8)",
                 clearProps: "opacity,transform",
               },

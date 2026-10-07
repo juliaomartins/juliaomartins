@@ -97,12 +97,12 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://juliaomartins.dev"),
 
   title: {
-    default: "Julião Martins – Junior Developer",
+    default: "Julião Martins – Developer",
     template: "%s | Julião Martins",
   },
 
   description:
-    "Portfolio of Julião Martins, Junior Developer focused on React Native, Next.js and modern web technologies.",
+    "Portfolio of Julião Martins, a developer building web and mobile products with React, Next.js and React Native — now studying AI engineering.",
 
   alternates: {
     canonical: "https://juliaomartins.dev/",
@@ -139,7 +139,8 @@ export const metadata: Metadata = {
     "React Native developer Timor Leste",
     "React Native developer Dili",
     "Next.js developer Timor Leste",
-    "Junior developer Timor Leste",
+    "Developer Timor Leste",
+    "AI Engineer Timor Leste",
     "desenvolvedor mobile Timor-Leste",
     "desenvolvedor React Native Timor-Leste",
     "IT Timor Leste",
@@ -147,9 +148,9 @@ export const metadata: Metadata = {
   ],
 
   openGraph: {
-    title: "Julião Martins – Junior Developer",
+    title: "Julião Martins – Developer",
     description:
-      "Portfolio of Julião Martins, Junior Developer focused on React Native and Next.js.",
+      "Portfolio of Julião Martins, a developer building web and mobile products with React, Next.js and React Native — now studying AI engineering.",
     url: "/",
     siteName: "Julião Martins",
     locale: "en_US",
@@ -162,8 +163,8 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Julião Martins – Junior Developer",
-    description: "Portfolio and projects built with React Native & Next.js",
+    title: "Julião Martins – Developer",
+    description: "Portfolio and projects built with React, Next.js and React Native.",
     // Inherits the generated opengraph-image; see above.
   },
 

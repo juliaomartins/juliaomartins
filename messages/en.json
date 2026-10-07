@@ -8,8 +8,12 @@
     "contact": "Contact"
   },
   "home": {
-    "title": "Hi, I'm Julião",
-    "subtitle": "Junior Developer | Next.js | React Native"
+    "eyebrow": "Developer · Studying AI Engineering",
+    "intro": "I'm a developer who builds web and mobile products with React, Next.js and React Native. Now I'm studying AI engineering — learning to build with language models and bring them into real products.",
+    "currentLabel": "Currently",
+    "currentRole": "IT Collaborator at Viettel Timor (Telemor)",
+    "primaryCta": "See my work",
+    "secondaryCta": "Get in touch"
   },
   "about": {
     "title": "About Me",

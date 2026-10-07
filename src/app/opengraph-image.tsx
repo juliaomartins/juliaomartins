@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-import { heroCopy } from "@/content/hero";
+import en from "../../messages/en.json";
 
 /**
  * Generated OG card, 1200x630.
@@ -9,14 +9,16 @@ import { heroCopy } from "@/content/hero";
  * 1200x630 — the file is actually 354x472 portrait, so every social preview
  * was cropping or letterboxing it badly.
  *
- * All copy here comes from content/hero.ts. Nothing is invented.
+ * All copy here comes from messages/en.json. Nothing is invented.
  */
-export const alt = `${heroCopy.en.name} — ${heroCopy.en.roleA}, ${heroCopy.en.connector.toLowerCase()} ${heroCopy.en.roleB}`;
+const NAME = "Julião Martins";
+
+export const alt = `${NAME} — ${en.home.eyebrow}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function OpengraphImage() {
-  const { name, connector, roleB, current } = heroCopy.en;
+  const { eyebrow, currentLabel, currentRole } = en.home;
 
   return new ImageResponse(
     (
@@ -41,11 +43,11 @@ export default async function OpengraphImage() {
             marginBottom: 28,
           }}
         >
-          {connector}
+          {eyebrow}
         </div>
 
         <div style={{ fontSize: 104, fontWeight: 700, lineHeight: 1.05 }}>
-          {roleB}
+          {NAME}
         </div>
 
         <div
@@ -57,12 +59,8 @@ export default async function OpengraphImage() {
           }}
         />
 
-        <div style={{ fontSize: 44, fontWeight: 600, marginTop: 40 }}>
-          {name}
-        </div>
-
-        <div style={{ fontSize: 28, color: "#94a3b8", marginTop: 14 }}>
-          {`${current.prefix} ${current.role} ${current.suffix}`}
+        <div style={{ fontSize: 28, color: "#94a3b8", marginTop: 40 }}>
+          {`${currentLabel} — ${currentRole}`}
         </div>
       </div>
     ),

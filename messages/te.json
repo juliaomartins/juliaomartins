@@ -8,8 +8,12 @@
     "contact": "Kontaktu"
   },
   "home": {
-    "title": "Olá, ha'u Julião",
-    "subtitle": "Junior Developer | Next.js | React Native"
+    "eyebrow": "Developer · Estuda AI Engineering",
+    "intro": "Ha'u developer ida ne'ebé harii produtu web no mobile ho React, Next.js no React Native. Agora ha'u estuda hela AI engineering — aprende oinsá harii ho modelu lian (language models) no hatama sira ba produtu reál.",
+    "currentLabel": "Agora dadaun",
+    "currentRole": "IT Kolaborador iha Viettel Timor (Telemor)",
+    "primaryCta": "Haree ha'u-nia servisu",
+    "secondaryCta": "Kontaktu ha'u"
   },
   "about": {
     "title": "Konaba Hau",

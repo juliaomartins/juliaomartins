@@ -33,7 +33,7 @@ type Props = {
 /**
  * Pooled, physics-driven logo burst.
  *
- * Shared by the hero roles and the gallery slides so the pool, the projectile
+ * Used by the gallery slides; kept as its own module so the pool, the projectile
  * maths and the reduced-motion gate exist once. A host marks its coordinate
  * space with `data-sprite-scope` and renders this with a trigger selector.
  *

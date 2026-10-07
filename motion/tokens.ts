@@ -5,9 +5,12 @@
 
 export const duration = {
   micro: 0.18,
+  /** Navbar underline travel. Micro-interaction range (0.15–0.25s). */
+  ui: 0.24,
   sm: 0.28,
   md: 0.36,
   lg: 0.42,
+  /** Entrances (0.6–0.9s). */
   xl: 0.8,
 } as const;
 
@@ -19,55 +22,21 @@ export const ease = {
   inOut: "power2.inOut",
 } as const;
 
-/**
- * Total stagger spread, not per-item delay.
- *
- * `amount` keeps a sequence's wall-clock length fixed regardless of how many
- * chars or lines a split produces. That is what holds the hero morph under
- * its 2.5s ceiling when the stack lines rewrap at different viewport widths —
- * with `each`, the tail would drift past budget on narrow screens.
- */
-export const staggerAmount = {
-  tight: 0.14,
-  base: 0.16,
-  loose: 0.3,
+/** Per-item stagger, inside the 0.06–0.12s house range. */
+export const stagger = {
+  each: 0.08,
 } as const;
 
-/**
- * Hero role/stack morph. Plays once on load, never loops.
- *
- * Budget (see the offsets resolved end to end):
- *   0.00  rest on state A
- *   1.60  connector fades in            (holdA)
- *   1.66  state A masks out upward      (connector start + outOverlap)
- *   1.90  state B masks in from below   (A-out start + stateOut + inOverlap)
- *   2.48  rest on state B
- */
-export const hero = {
-  holdA: 1.6,
-  /** Dwell on state B before yoyo reverses, mirroring holdA. */
-  holdB: 1.6,
-  connectorIn: duration.sm,
-  stateOut: duration.md,
-  stateIn: duration.lg,
-  /** state A begins leaving while the connector is still arriving */
-  outOverlap: -0.22,
-  /** state B begins arriving while state A is ~75% gone — sells the morph */
-  inOverlap: -0.26,
-  /** yPercent travel for the masked exit / entrance */
-  outShift: -100,
-  inShift: 100,
-  connectorRise: 8,
+/** Entrance travel in px. Small on purpose: content settles, it doesn't fly. */
+export const offset = {
+  rise: 16,
+  tile: 24,
+} as const;
 
-  /**
-   * Split-flap. Each character rotates on its X axis inside its own SplitText
-   * mask, so the old role flips away and the new one flips in — a departure
-   * board, which is what a career transition actually looks like.
-   */
-  flipOut: -90,
-  flipIn: 90,
-  /** Without perspective on the slot, rotationX reads as a vertical squash. */
-  perspective: 420,
+/** Timeline position parameters. */
+export const position = {
+  /** Start shortly after the previous tween starts. */
+  follow: "<0.2",
 } as const;
 
 /**
