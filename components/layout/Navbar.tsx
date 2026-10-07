@@ -142,7 +142,7 @@ export default function Navbar() {
           </li>
         </DesktopNav>
 
-        <div className="flex items-center gap-2 lg:hidden">
+        <div className="flex items-center gap-2 lg:hidden noscript:sm:hidden">
           <ThemeToggleButton onToggle={toggleTheme} />
           {mounted ? (
             <Sheet open={open} onOpenChange={setOpen}>

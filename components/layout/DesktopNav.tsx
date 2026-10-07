@@ -103,13 +103,14 @@ export default function DesktopNav({ items, active, label, children }: Props) {
 
   // The bar is a sibling of the <ul> (a <ul> may only contain <li>), so the
   // wrapper is the positioning context and link.offsetLeft is measured from it.
+  // Without JS the menu sheet can't open, so the links show from sm and wrap.
   return (
-    <div className="relative hidden py-1 lg:block">
+    <div className="relative hidden py-1 lg:block noscript:min-w-0 noscript:sm:block">
       <ul
         ref={listRef}
         aria-label={label}
         onMouseLeave={() => setPreview(null)}
-        className="flex list-none items-center gap-7"
+        className="flex list-none items-center gap-7 noscript:flex-wrap noscript:justify-end noscript:gap-x-5"
       >
         {items.map((item) => {
           const isActive = item.id === active;

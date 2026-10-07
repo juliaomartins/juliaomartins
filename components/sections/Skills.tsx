@@ -95,7 +95,7 @@ export default function Skills() {
                   : undefined
               }
               className={cn(
-                "group flex flex-col rounded-lg bg-muted p-5 md:p-6",
+                "group flex flex-col gap-3 rounded-lg bg-muted p-5 md:p-6",
                 tall && "row-span-2"
               )}
             >

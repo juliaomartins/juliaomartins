@@ -2,6 +2,9 @@
 @import "tw-animate-css";
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+/* JavaScript disabled. Used to keep in-page navigation reachable where the
+   JS-driven menu sheet would otherwise be the only way to navigate. */
+@custom-variant noscript (@media (scripting: none));
 
 @theme inline {
   --color-background: var(--background);
@@ -354,7 +357,9 @@ html[data-motion="reduced"] [data-gallery-item] {
   min-height: 44px;
 }
 
-/* Skills gallery row unit. Tall tiles span two. */
+/* Skills gallery row unit. Tall tiles span two. A floor, not a fixed height:
+   a two-line Tetum caption at 360px grows the row instead of colliding with
+   the mark. */
 @utility auto-rows-tile {
-  grid-auto-rows: clamp(7.5rem, 6rem + 6vw, 11rem);
+  grid-auto-rows: minmax(clamp(9rem, 7rem + 6vw, 11rem), auto);
 }
