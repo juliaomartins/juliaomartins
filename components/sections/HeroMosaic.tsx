@@ -7,7 +7,13 @@ import { useRef, type CSSProperties } from "react";
 
 import CircleStamp from "@/components/ui/CircleStamp";
 import { gsap } from "@/motion/registry";
-import { duration, ease, heroScatter, stagger } from "@/motion/tokens";
+import {
+  duration,
+  ease,
+  heroIdleTimeout,
+  heroScatter,
+  stagger,
+} from "@/motion/tokens";
 import portrait from "@/public/juliao_martins2.png";
 
 /**
@@ -45,7 +51,9 @@ function Photo({ preload = false }: { preload?: boolean }) {
       alt=""
       fill
       sizes={SIZES}
-      placeholder="blur"
+      // No blur placeholder: on a transparent cut-out Next draws it as an
+      // opaque blurred box over the panels until the photo arrives.
+      placeholder="empty"
       preload={preload}
       loading="eager"
       className="object-cover object-top"
@@ -88,16 +96,28 @@ export default function HeroMosaic({ name }: { name: string }) {
           );
           if (!full) {
             // The OS setting can change after the head probe ran.
-            gsap.set(panels, { "--piece-x": "0px", "--piece-y": "0px" });
+            gsap.set(panels, { "--piece-x": "0cqw", "--piece-y": "0cqw" });
             return;
           }
-          gsap.to(panels, {
-            "--piece-x": "0px",
-            "--piece-y": "0px",
+          const settle = gsap.to(panels, {
+            "--piece-x": "0cqw",
+            "--piece-y": "0cqw",
             duration: duration.xl,
             ease: ease.out,
             stagger: stagger.each,
+            paused: true,
           });
+          // Play once start-up work is done, so every frame of the settle is
+          // free to render. Until then the windows simply rest apart — the
+          // photo is already whole.
+          const play = () => settle.play();
+          // Safari has no requestIdleCallback; it gets the next task instead.
+          if (typeof window.requestIdleCallback === "function") {
+            const id = window.requestIdleCallback(play, { timeout: heroIdleTimeout });
+            return () => window.cancelIdleCallback(id);
+          }
+          const id = window.setTimeout(play, 0);
+          return () => window.clearTimeout(id);
         }
       );
       return () => mm.revert();
@@ -111,7 +131,7 @@ export default function HeroMosaic({ name }: { name: string }) {
       data-hero-mosaic=""
       role="img"
       aria-label={name}
-      className="relative aspect-3/4 w-full max-w-60 lg:max-w-104"
+      className="@container relative aspect-3/4 w-full max-w-60 lg:max-w-104"
     >
       {PANELS.map(({ box: [left, top, width, height], tone }, index) => {
         const [x, y] = heroScatter[index];
@@ -126,13 +146,15 @@ export default function HeroMosaic({ name }: { name: string }) {
                 top: `${top}%`,
                 width: `${width}%`,
                 height: `${height}%`,
-                "--piece-x": `${x}px`,
-                "--piece-y": `${y}px`,
+                "--piece-x": `${x}cqw`,
+                "--piece-y": `${y}cqw`,
               } as CSSProperties
             }
           >
-            {/* The whole frame, shifted so this window shows its own slice. */}
+            {/* The whole frame, shifted so this window shows its own slice —
+                and counter-moved while the window settles (see globals.css). */}
             <div
+              data-hero-slice=""
               className="absolute"
               style={{
                 left: `${(-left / width) * 100}%`,

@@ -371,10 +371,17 @@ html[data-motion="reduced"] [data-gallery-item] {
   grid-auto-rows: minmax(clamp(1.75rem, 1.2rem + 1vw, 2.25rem), auto);
 }
 
-/* Hero portrait fragments. With full motion (stamped on <html> by the head
-   probe before first paint) each piece rests a few px apart and GSAP closes
-   the gap, so nothing jumps at hydration. Reduced motion and no-JS never match
-   this rule and render the portrait assembled. `translate` is a transform. */
+/* Hero portrait windows. With full motion (stamped on <html> by the head
+   probe before first paint) each window rests slightly apart and GSAP closes
+   the gap, so nothing jumps at hydration. The photo slice inside is moved back
+   by exactly the same amount — one inherited variable drives both — so the
+   picture never moves; only the windows glide over it. Reduced motion and
+   no-JS never match these rules and render the frame settled. `translate` is
+   a transform; container units keep the gesture proportional to the frame. */
 html[data-motion="full"] [data-hero-piece] {
-  translate: var(--piece-x, 0px) var(--piece-y, 0px);
+  translate: var(--piece-x, 0cqw) var(--piece-y, 0cqw);
+}
+
+html[data-motion="full"] [data-hero-slice] {
+  translate: calc(var(--piece-x, 0cqw) * -1) calc(var(--piece-y, 0cqw) * -1);
 }

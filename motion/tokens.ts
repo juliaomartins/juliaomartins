@@ -40,19 +40,26 @@ export const position = {
 } as const;
 
 /**
- * Hero portrait fragments: where each piece rests (px) before it drifts into
- * place, in fragment order. Small on purpose — the photo is readable from the
- * first frame; the settle only closes the gaps.
+ * Hero colour panels: where each window rests before it slides into place, in
+ * % of the frame's width (container units), so the gesture is the same at
+ * 240px on a phone and 416px on desktop. Order matches the panels.
  */
 export const heroScatter = [
-  [-14, -10],
-  [-22, 4],
-  [-10, 14],
-  [0, -18],
-  [4, 16],
-  [16, -12],
-  [20, 10],
+  [-3.4, -2.4],
+  [-5.3, 1],
+  [-2.4, 3.4],
+  [0, -4.3],
+  [1, 3.8],
+  [3.8, -2.9],
+  [4.8, 2.4],
 ] as const;
+
+/**
+ * The hero settle waits for the main thread to go idle after hydration, so it
+ * never shares frames with start-up work (measured: started at hydration it
+ * got 15–25 frames in 1.3s at 4x CPU). Upper bound on that wait, in ms.
+ */
+export const heroIdleTimeout = 1200;
 
 /**
  * Gallery slide focus. Both effects hang off the existing horizontal tween via
