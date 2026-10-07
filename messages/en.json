@@ -82,7 +82,20 @@
     ]
   },
   "skills": {
-    "title": "Skills"
+    "title": "Skills",
+    "description": "I work with AI coding agents like Claude Code every day — and I use them responsibly. I review every line they produce and keep architecture and judgement in my own hands. For me they are a way to ship better work faster, not a substitute for knowing my craft.",
+    "countCaption": "Tools I build with",
+    "labels": {
+      "tailwind": "Styling",
+      "gsap": "Animation",
+      "react": "UI library",
+      "next": "Web framework",
+      "reactNative": "Mobile apps",
+      "supabase": "Backend and database",
+      "django": "Backend framework",
+      "vercel": "Deployment",
+      "claudeCode": "AI coding agent"
+    }
   },
   "gallery": {
     "imageAlt": "Gallery {number}"

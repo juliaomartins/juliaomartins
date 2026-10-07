@@ -4,7 +4,7 @@ import SkipLink from "@/components/layout/SkipLink";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Projects from "@/components/sections/Projects";
-import SKills from "@/components/sections/Skills";
+import Skills from "@/components/sections/Skills";
 import HorizontalGallery from "@/components/sections/HorizontalGallery";
 import ContactForm from "@/components/sections/ContactForm";
 import Footer from "@/components/layout/Footer";
@@ -30,7 +30,7 @@ export default function PortfolioPage() {
         <Hero />
         <About />
         <Projects />
-        <SKills />
+        <Skills />
         <HorizontalGallery />
         <ContactForm />
       </main>
