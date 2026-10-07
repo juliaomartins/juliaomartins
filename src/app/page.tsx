@@ -1,7 +1,6 @@
 import ScrollToTop from "@/components/ui/ScrollToTop";
 import Navbar from "@/components/layout/Navbar";
 import SkipLink from "@/components/layout/SkipLink";
-import ComputerVisual from "@/components/sections/ComputerVisual";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Projects from "@/components/sections/Projects";
@@ -20,7 +19,6 @@ export default function PortfolioPage() {
       <SkipLink />
 
       <Navbar />
-      <ComputerVisual />
 
       {/*
         Previously everything lived inside a single <main> — including the

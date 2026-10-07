@@ -84,11 +84,6 @@ export const gallery = {
 } as const;
 
 /**
- * The 3D scene. Gating the mount on scroll is a performance win, not just a
- * visual one: three.js is ~244KB gz and starts a continuous render loop, and
- * previously all of that happened while the visitor was still on the hero.
- */
-/**
  * Logo sprite emitter on the gallery slides.
  *
  * `max` is the important one: the brief is "more clicks, more logos", which is
@@ -119,9 +114,4 @@ export const sprites = {
   popIn: duration.sm,
   drift: duration.xl,
   fade: duration.md,
-} as const;
-
-export const computer = {
-  /** scrollY in px past which the scene mounts and fades in. */
-  revealAt: 100,
 } as const;

@@ -57,8 +57,6 @@
   /* Micro-interaction timing. Mirrors `duration.micro` in motion/tokens.ts —
      GSAP reads that, CSS transitions read this, and they must agree. */
   --duration-micro: 150ms;
-  /* Slower than a press: this fades a whole 3D object in and out. */
-  --duration-reveal: 360ms;
   --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -417,25 +415,4 @@ html[data-motion="reduced"] [data-gallery-item] {
   height: 100%;
   min-width: 44px;
   min-height: 44px;
-}
-
-/* ---------------------------------------------------------------------------
-   Reveal fade. Used by the 3D scene, which is mounted once and then fades with
-   scroll position rather than mounting and unmounting.
-   --------------------------------------------------------------------------- */
-
-@utility reveal-fade {
-  transition-property: opacity;
-  transition-duration: var(--duration-reveal);
-  transition-timing-function: var(--ease-standard);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal-fade {
-    transition-duration: 0ms;
-  }
-}
-
-html[data-motion="reduced"] .reveal-fade {
-  transition-duration: 0ms;
 }
