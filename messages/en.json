@@ -46,8 +46,40 @@
   },
   "projects": {
     "title": "Projects",
-    "itemTitle": "Project {number}",
-    "itemDescription": "A concept project created to demonstrate my web and mobile development skills."
+    "openInNewTab": "(opens in a new tab)",
+    "items": [
+      {
+        "name": "Life Mor",
+        "description": "iOS app for Telemor staff to manage their daily work activities, published on the App Store.",
+        "tags": [
+          "React Native",
+          "iOS"
+        ],
+        "linkLabel": "App Store",
+        "href": "https://apps.apple.com/us/app/life-mor/id6754350114"
+      },
+      {
+        "name": "DRCCMD 2026",
+        "description": "Official website of the Díli Regional Cooperative Conference and Ministerial Dialogue 2026, held alongside the ASEAN Cooperative Expo 2026.",
+        "tags": [
+          "Next.js",
+          "Website"
+        ],
+        "linkLabel": "Visit site",
+        "href": "https://cooptl.com/"
+      },
+      {
+        "name": "Visitor and Queue System",
+        "description": "Event badge and queue system for DRCCMD 2026 at Palm Spring: register visitors, print QR badges, scan arrivals by phone and welcome them on the lobby screen.",
+        "tags": [
+          "Django",
+          "Next.js",
+          "React Native"
+        ],
+        "linkLabel": "GitHub",
+        "href": "https://github.com/juliaomartins/visitor-management-system"
+      }
+    ]
   },
   "skills": {
     "title": "Skills"
