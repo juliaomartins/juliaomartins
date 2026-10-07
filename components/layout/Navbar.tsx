@@ -6,11 +6,12 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { useActiveSection } from "@/hooks/useActiveSection";
+import { useSectionNavigation } from "@/hooks/useSectionNavigation";
 import { useScrollNavbar } from "@/hooks/useScrollNavbar";
 import { cn } from "@/lib/utils";
 import { Menu, MoonStar, Sun } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useState, useSyncExternalStore } from "react";
+import { useCallback, useRef, useState, useSyncExternalStore } from "react";
 
 // React 18+ idiom for detecting hydration without setState-in-effect.
 // Server snapshot is `false`, client snapshot is `true`, so the value
@@ -99,7 +100,16 @@ export default function Navbar() {
   const mounted = useHasHydrated();
   const t = useTranslations();
 
-  const active = useActiveSection(SECTION_IDS);
+  const navRef = useRef<HTMLElement>(null);
+  const { active, hold, release } = useActiveSection(SECTION_IDS);
+  const closeMenu = useCallback(() => setOpen(false), []);
+  const { onMenuCloseAutoFocus } = useSectionNavigation({
+    ids: SECTION_IDS,
+    hold,
+    release,
+    closeMenu,
+    scope: navRef,
+  });
 
   const navItems: readonly NavItem[] = SECTION_IDS.map((id) => ({
     id,
@@ -117,6 +127,7 @@ export default function Navbar() {
 
   return (
     <nav
+      ref={navRef}
       className={cn(
         "fixed top-0 z-50 w-full transition-all duration-300",
         scrolled
@@ -160,6 +171,7 @@ export default function Navbar() {
               <SheetContent
                 side="right"
                 closeLabel={t("a11y.closeMenu")}
+                onCloseAutoFocus={onMenuCloseAutoFocus}
                 className="w-72 border-l border-border/50 bg-background/95 backdrop-blur-xl"
               >
                 <div className="mt-10 flex flex-col items-center gap-6">
@@ -174,7 +186,6 @@ export default function Navbar() {
                           "tap-target text-lg font-medium transition-colors hover:text-foreground",
                           isActive ? "text-foreground" : "text-muted-foreground"
                         )}
-                        onClick={() => setOpen(false)}
                       >
                         {item.label}
                       </a>

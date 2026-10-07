@@ -96,8 +96,14 @@
   --radius-4xl: calc(var(--radius) + 16px);
 }
 
-html {
-  scroll-behavior: smooth;
+/* Smooth anchor jumps only when JavaScript is off. With JS, in-page links are
+   scrolled by GSAP (useSectionNavigation); a CSS smooth scroll underneath it
+   makes every position GSAP sets lag behind, so ScrollToPlugin's autoKill
+   reads that as the visitor taking over and stops the scroll on frame one. */
+@media (scripting: none) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 /* Smooth scrolling is motion. Anchor jumps must be instant for anyone who
@@ -320,6 +326,13 @@ html[data-motion="reduced"] [data-gallery-item] {
   transition-property: transform;
   transition-duration: var(--duration-micro);
   transition-timing-function: var(--ease-standard);
+}
+
+/* In-page navigation moves focus to the section it lands on (as a native
+   anchor jump would) so the next Tab continues from there. The section is a
+   focus target, not a control, so it draws no ring. */
+section[tabindex="-1"]:focus {
+  outline: none;
 }
 
 .skip-link:focus-visible {

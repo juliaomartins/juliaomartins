@@ -12,6 +12,8 @@ export const duration = {
   lg: 0.42,
   /** Entrances (0.6–0.9s). */
   xl: 0.8,
+  /** In-page navigation scroll. Within the 1.0s page-transition ceiling. */
+  scroll: 0.9,
 } as const;
 
 export const ease = {
