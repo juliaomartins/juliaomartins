@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/sheet";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { useSectionNavigation } from "@/hooks/useSectionNavigation";
+import { useThemeBlend } from "@/hooks/useThemeBlend";
 import { useScrollNavbar } from "@/hooks/useScrollNavbar";
 import { cn } from "@/lib/utils";
 import { Menu, MoonStar, Sun } from "lucide-react";
@@ -39,25 +40,6 @@ const SECTION_IDS = [
   "gallery",
   "contact",
 ] as const;
-
-type Theme = "light" | "dark";
-
-const THEME_STORAGE_KEY = "theme";
-
-const getSystemTheme = (): Theme =>
-  window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
-
-const resolveTheme = (value: string | null): Theme =>
-  value === "light" || value === "dark" ? value : getSystemTheme();
-
-const applyTheme = (theme: Theme) => {
-  const root = document.documentElement;
-  root.setAttribute("data-theme", theme);
-  root.classList.toggle("dark", theme === "dark");
-  root.style.colorScheme = theme;
-};
 
 function ThemeToggleButton({
   onToggle,
@@ -116,14 +98,7 @@ export default function Navbar() {
     label: t(`nav.${id}`),
   }));
 
-  const toggleTheme = () => {
-    const activeTheme = resolveTheme(
-      document.documentElement.getAttribute("data-theme")
-    );
-    const nextTheme: Theme = activeTheme === "dark" ? "light" : "dark";
-    localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
-    applyTheme(nextTheme);
-  };
+  const toggleTheme = useThemeBlend(navRef);
 
   return (
     <nav

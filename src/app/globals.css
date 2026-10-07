@@ -58,19 +58,6 @@
      GSAP reads that, CSS transitions read this, and they must agree. */
   --duration-micro: 150ms;
   --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
@@ -114,84 +101,92 @@
   }
 }
 
+/* ---------------------------------------------------------------------------
+   Colour.
+
+   Every token has a light and a dark value — the brand palette, converted to
+   OKLCH — and the live token mixes the two by --theme-mix (0 = light,
+   1 = dark). The theme attribute sets --theme-mix, so first paint is exact
+   with no JS and no flash. The theme switch tweens --theme-mix with GSAP
+   (useThemeBlend), so every colour on the page blends at once, evenly.
+
+   The mix is in OKLab, not OKLCH: for near-greys (the borders, chroma
+   ~0.005) Chrome treats the OKLCH hue as powerless and drops it, rendering
+   the light border faintly pink. OKLab has no hue to lose, keeps both ends
+   exact and is just as perceptually even.
+
+   Roles: --primary is what you act on (buttons, focus, the nav underline);
+   --signal is the brand accent that highlights. shadcn's --accent is its
+   hover surface, not the brand accent.
+   --------------------------------------------------------------------------- */
+
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --theme-mix: 0;
 
-  /* Measured 5.71:1 on --background. Small text, so 4.5:1 is the bar. */
-  --signal: oklch(0.52 0.12 62);
-  /* Measured 3.64:1 on white. */
-  --field-border: oklch(0.62 0.02 255.5);
+  /* Light — Background #FAFAFA, Text #111111, Secondary #6B7280,
+     Border #E5E7EB, Primary #0071E3, Accent #7C3AED. */
+  --light-background: oklch(0.985 0 none);
+  --light-foreground: oklch(0.178 0 none);
+  --light-card: oklch(1 0 none);
+  /* A raised surface and hover fill, a step off the background. */
+  --light-muted: oklch(0.962 0.004 286.3);
+  /* 4.63:1 on the background, 4.83:1 on cards. */
+  --light-muted-foreground: oklch(0.551 0.023 264.4);
+  --light-border: oklch(0.928 0.006 264.5);
+  /* 4.50:1 on the background: fills, rings and rules, never small text.
+     White on it is 4.70:1. */
+  --light-primary: oklch(0.563 0.193 256.2);
+  --light-primary-foreground: oklch(1 0 none);
+  /* Accent. 5.46:1 on the background. */
+  --light-signal: oklch(0.541 0.247 293);
+  /* Form control boundary, 3.12:1 (WCAG 1.4.11). */
+  --light-field-border: oklch(0.648 0.007 286.2);
+  --light-destructive: oklch(0.577 0.245 27.325);
+
+  /* Dark — Background #000000, Text #F5F5F7, Secondary #86868B,
+     Border #2C2C2E, Primary #2997FF, Accent #A78BFA. */
+  --dark-background: oklch(0 0 none);
+  --dark-foreground: oklch(0.971 0 none);
+  --dark-card: oklch(0.227 0.004 286.1);
+  --dark-muted: oklch(0.227 0.004 286.1);
+  /* 5.80:1 on the background, 4.70:1 on cards. */
+  --dark-muted-foreground: oklch(0.622 0.007 286.2);
+  --dark-border: oklch(0.294 0.004 286.2);
+  /* 6.96:1. Text on it is black: white would be 3.02:1. */
+  --dark-primary: oklch(0.669 0.181 251.8);
+  --dark-primary-foreground: oklch(0 0 none);
+  /* Accent. 7.72:1 on the background. */
+  --dark-signal: oklch(0.709 0.159 293.5);
+  /* 3.51:1 on the background. */
+  --dark-field-border: oklch(0.501 0.005 286.2);
+  --dark-destructive: oklch(0.704 0.191 22.216);
+
+  --background: color-mix(in oklab, var(--light-background), var(--dark-background) calc(var(--theme-mix) * 100%));
+  --foreground: color-mix(in oklab, var(--light-foreground), var(--dark-foreground) calc(var(--theme-mix) * 100%));
+  --card: color-mix(in oklab, var(--light-card), var(--dark-card) calc(var(--theme-mix) * 100%));
+  --card-foreground: color-mix(in oklab, var(--light-foreground), var(--dark-foreground) calc(var(--theme-mix) * 100%));
+  --popover: color-mix(in oklab, var(--light-card), var(--dark-card) calc(var(--theme-mix) * 100%));
+  --popover-foreground: color-mix(in oklab, var(--light-foreground), var(--dark-foreground) calc(var(--theme-mix) * 100%));
+  --primary: color-mix(in oklab, var(--light-primary), var(--dark-primary) calc(var(--theme-mix) * 100%));
+  --primary-foreground: color-mix(in oklab, var(--light-primary-foreground), var(--dark-primary-foreground) calc(var(--theme-mix) * 100%));
+  --secondary: color-mix(in oklab, var(--light-muted), var(--dark-muted) calc(var(--theme-mix) * 100%));
+  --secondary-foreground: color-mix(in oklab, var(--light-foreground), var(--dark-foreground) calc(var(--theme-mix) * 100%));
+  --muted: color-mix(in oklab, var(--light-muted), var(--dark-muted) calc(var(--theme-mix) * 100%));
+  --muted-foreground: color-mix(in oklab, var(--light-muted-foreground), var(--dark-muted-foreground) calc(var(--theme-mix) * 100%));
+  --accent: color-mix(in oklab, var(--light-muted), var(--dark-muted) calc(var(--theme-mix) * 100%));
+  --accent-foreground: color-mix(in oklab, var(--light-foreground), var(--dark-foreground) calc(var(--theme-mix) * 100%));
+  --destructive: color-mix(in oklab, var(--light-destructive), var(--dark-destructive) calc(var(--theme-mix) * 100%));
+  --border: color-mix(in oklab, var(--light-border), var(--dark-border) calc(var(--theme-mix) * 100%));
+  --input: color-mix(in oklab, var(--light-border), var(--dark-border) calc(var(--theme-mix) * 100%));
+  --ring: color-mix(in oklab, var(--light-primary), var(--dark-primary) calc(var(--theme-mix) * 100%));
+  --signal: color-mix(in oklab, var(--light-signal), var(--dark-signal) calc(var(--theme-mix) * 100%));
+  --field-border: color-mix(in oklab, var(--light-field-border), var(--dark-field-border) calc(var(--theme-mix) * 100%));
 }
 
 :root.dark,
 :root[data-theme="dark"] {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
-
-  /* Measured 10.63:1 on the dark --background. */
-  --signal: oklch(0.8 0.14 78);
-  /* Measured 3.09:1 on the dark --background. */
-  --field-border: oklch(0.48 0.02 255.5);
+  --theme-mix: 1;
 }
 
 html[data-theme="light"] {
@@ -209,16 +204,16 @@ html[data-theme="dark"] {
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-sans);
-    transition: background-color 250ms ease, color 250ms ease;
   }
+}
 
-  nav,
-  section,
-  footer,
-  [data-slot="card"],
-  [data-slot="sheet-content"] {
-    transition: background-color 250ms ease, color 250ms ease, border-color 250ms ease;
-  }
+/* While GSAP blends the theme, any CSS transition on a colour would restart
+   every frame and trail behind the blend, so they are suspended until it
+   ends. Set and cleared by useThemeBlend. */
+html[data-theme-animating] *,
+html[data-theme-animating] *::before,
+html[data-theme-animating] *::after {
+  transition: none !important;
 }
 
 /* ---------------------------------------------------------------------------

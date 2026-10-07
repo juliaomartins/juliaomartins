@@ -40,7 +40,7 @@ export default function HeroIntro({
       <div className="mt-10 flex flex-wrap gap-3">
         <a
           href="#projects"
-          className="press inline-flex min-h-11 items-center rounded-full bg-foreground px-6 text-sm font-medium text-background hover:opacity-85 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring active:scale-97"
+          className="press inline-flex min-h-11 items-center rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring active:scale-97"
         >
           {t("primaryCta")}
         </a>

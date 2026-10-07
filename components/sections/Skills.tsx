@@ -100,7 +100,7 @@ export default function Skills() {
             {t("cta")}
             <span
               aria-hidden
-              className="grid size-12 place-items-center rounded-full bg-signal/15 transition-transform duration-(--duration-micro) motion-safe:group-hover:translate-x-1"
+              className="grid size-12 place-items-center rounded-full bg-primary/10 text-primary transition-transform duration-(--duration-micro) motion-safe:group-hover:translate-x-1"
             >
               <ArrowRight className="size-5" />
             </span>
@@ -122,7 +122,7 @@ export default function Skills() {
                   } as CSSProperties
                 }
                 className={cn(
-                  "flex flex-col gap-2 rounded-md bg-(--tile-bg) p-3 text-(--tile-fg) ring-1 ring-foreground/5",
+                  "flex flex-col gap-2 rounded-md bg-(--tile-bg) p-3 text-(--tile-fg) ring-1 ring-border",
                   index % 3 === 0 && index < 12 && "row-span-2",
                   skill.place
                 )}

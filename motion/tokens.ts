@@ -14,6 +14,8 @@ export const duration = {
   xl: 0.8,
   /** In-page navigation scroll. Within the 1.0s page-transition ceiling. */
   scroll: 0.9,
+  /** Light/dark blend: long enough to read as a change of light, not a flash. */
+  theme: 0.6,
 } as const;
 
 export const ease = {

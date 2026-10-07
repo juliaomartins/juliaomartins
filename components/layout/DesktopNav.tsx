@@ -143,7 +143,7 @@ export default function DesktopNav({ items, active, label, children }: Props) {
         ref={barRef}
         data-nav-indicator=""
         aria-hidden
-        className="pointer-events-none invisible absolute bottom-0 left-0 h-0.5 w-10 origin-left rounded-full bg-foreground"
+        className="pointer-events-none invisible absolute bottom-0 left-0 h-0.5 w-10 origin-left rounded-full bg-primary"
       />
     </div>
   );

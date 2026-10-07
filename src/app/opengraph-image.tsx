@@ -12,7 +12,12 @@ import en from "../../messages/en.json";
  * All copy here comes from messages/en.json. Nothing is invented.
  */
 const NAME = "Julião Martins";
-const ACCENT = "#efb146";
+/* Dark palette: Background #000000, Text #F5F5F7, Secondary #86868B,
+   Accent #A78BFA. Satori takes plain colours, not the CSS tokens. */
+const BACKGROUND = "#000000";
+const TEXT = "#F5F5F7";
+const SECONDARY = "#86868B";
+const ACCENT = "#A78BFA";
 
 export const alt = `${NAME} — ${en.home.eyebrow}`;
 export const size = { width: 1200, height: 630 };
@@ -31,8 +36,8 @@ export default async function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "center",
           padding: "80px",
-          backgroundColor: "#020617",
-          color: "#f8fafc",
+          backgroundColor: BACKGROUND,
+          color: TEXT,
         }}
       >
         <div
@@ -58,7 +63,7 @@ export default async function OpengraphImage() {
           }}
         />
 
-        <div style={{ fontSize: 28, color: "#94a3b8", marginTop: 40 }}>
+        <div style={{ fontSize: 28, color: SECONDARY, marginTop: 40 }}>
           {`${currentLabel} ${currentRole}`}
         </div>
       </div>
