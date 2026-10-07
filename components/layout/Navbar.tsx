@@ -163,22 +163,23 @@ export default function Navbar() {
                 className="w-72 border-l border-border/50 bg-background/95 backdrop-blur-xl"
               >
                 <div className="mt-10 flex flex-col items-center gap-6">
-                  {navItems.map((item) => (
-                    <a
-                      key={item.id}
-                      href={`#${item.id}`}
-                      aria-current={item.id === active ? "true" : undefined}
-                      className={cn(
-                        "tap-target text-lg font-medium transition-colors hover:text-foreground",
-                        item.id === active
-                          ? "text-foreground"
-                          : "text-muted-foreground"
-                      )}
-                      onClick={() => setOpen(false)}
-                    >
-                      {item.label}
-                    </a>
-                  ))}
+                  {navItems.map((item) => {
+                    const isActive = item.id === active;
+                    return (
+                      <a
+                        key={item.id}
+                        href={`#${item.id}`}
+                        aria-current={isActive ? "true" : undefined}
+                        className={cn(
+                          "tap-target text-lg font-medium transition-colors hover:text-foreground",
+                          isActive ? "text-foreground" : "text-muted-foreground"
+                        )}
+                        onClick={() => setOpen(false)}
+                      >
+                        {item.label}
+                      </a>
+                    );
+                  })}
                   <div className="mt-2 flex items-center gap-3">
                     <ThemeToggleButton onToggle={toggleTheme} />
                     <LanguageSwitcher />

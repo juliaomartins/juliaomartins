@@ -12,6 +12,12 @@ import { duration, ease, offset, stagger } from "@/motion/tokens";
 const HIDDEN_CLIP = "inset(100% 0% 0% 0%)";
 const SHOWN_CLIP = "inset(0% 0% 0% 0%)";
 
+/** Wordmarks are sized by height only; square glyphs by both sides. */
+function iconSize(wordmark: boolean, tall: boolean): string {
+  if (wordmark) return tall ? "h-10 w-auto md:h-14" : "h-6 w-auto md:h-9";
+  return tall ? "size-14 md:size-20" : "size-8 md:size-11";
+}
+
 /**
  * A gallery wall rather than a card grid: borderless panels hung in a mosaic.
  * Tiles 0, 3 and 6 span two rows, which packs into exactly 4 rows at three
@@ -98,17 +104,7 @@ export default function Skills() {
                 aria-hidden
                 className="grid flex-1 place-items-center text-foreground transition-colors duration-(--duration-micro) group-hover:text-(--brand)"
               >
-                <Icon
-                  className={cn(
-                    skill.wordmark
-                      ? tall
-                        ? "h-10 w-auto md:h-14"
-                        : "h-6 w-auto md:h-9"
-                      : tall
-                        ? "size-14 md:size-20"
-                        : "size-8 md:size-11"
-                  )}
-                />
+                <Icon className={iconSize(skill.wordmark ?? false, tall)} />
               </span>
               <div>
                 <p className="font-medium text-foreground">{skill.name}</p>

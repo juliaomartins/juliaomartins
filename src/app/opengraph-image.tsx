@@ -12,6 +12,7 @@ import en from "../../messages/en.json";
  * All copy here comes from messages/en.json. Nothing is invented.
  */
 const NAME = "Julião Martins";
+const ACCENT = "#efb146";
 
 export const alt = `${NAME} — ${en.home.eyebrow}`;
 export const size = { width: 1200, height: 630 };
@@ -37,7 +38,7 @@ export default async function OpengraphImage() {
         <div
           style={{
             fontSize: 32,
-            color: "#efb146",
+            color: ACCENT,
             marginBottom: 28,
           }}
         >
@@ -53,7 +54,7 @@ export default async function OpengraphImage() {
             marginTop: 40,
             height: 2,
             width: 220,
-            backgroundColor: "#efb146",
+            backgroundColor: ACCENT,
           }}
         />
 
