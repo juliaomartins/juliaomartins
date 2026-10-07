@@ -36,9 +36,7 @@ export default async function OpengraphImage() {
       >
         <div
           style={{
-            fontSize: 26,
-            letterSpacing: "0.22em",
-            textTransform: "uppercase",
+            fontSize: 32,
             color: "#efb146",
             marginBottom: 28,
           }}
@@ -60,7 +58,7 @@ export default async function OpengraphImage() {
         />
 
         <div style={{ fontSize: 28, color: "#94a3b8", marginTop: 40 }}>
-          {`${currentLabel} — ${currentRole}`}
+          {`${currentLabel} ${currentRole}`}
         </div>
       </div>
     ),

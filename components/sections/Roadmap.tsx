@@ -66,7 +66,7 @@ export default function Roadmap() {
 
   return (
     <div ref={rootRef} className="mt-20">
-      <h3 className="text-eyebrow font-mono uppercase text-muted-foreground">
+      <h3 className="text-sm font-medium text-foreground">
         {t("roadmapTitle")}
       </h3>
 

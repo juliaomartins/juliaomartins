@@ -28,7 +28,7 @@ export default function Projects() {
           >
             <span
               aria-hidden
-              className="font-mono text-sm tabular-nums text-muted-foreground md:col-span-1"
+              className="text-sm tabular-nums text-muted-foreground md:col-span-1"
             >
               {String(index + 1).padStart(2, "0")}
             </span>
@@ -40,7 +40,7 @@ export default function Projects() {
               <p className="mt-2 max-w-prose leading-relaxed text-muted-foreground">
                 {project.description}
               </p>
-              <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs text-muted-foreground">
+              <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground">
                 {project.tags.map((tag) => (
                   <li key={tag}>{tag}</li>
                 ))}

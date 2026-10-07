@@ -38,17 +38,16 @@ export default function HeroIntro() {
 
   return (
     <div ref={rootRef} className="mt-4 flex flex-col items-center">
-      <p data-reveal className="text-eyebrow font-mono uppercase text-signal">
+      <p data-reveal className="text-lead font-medium text-signal">
         {t("eyebrow")}
       </p>
 
-      <p data-reveal className="mt-8 max-w-xl text-lead text-muted-foreground">
+      <p data-reveal className="mt-6 max-w-xl text-lead text-muted-foreground">
         {t("intro")}
       </p>
 
       <p data-reveal className="mt-6 text-note text-muted-foreground">
-        <span className="font-medium text-foreground">{t("currentLabel")}</span>
-        {" — "}
+        <span className="font-medium text-foreground">{t("currentLabel")}</span>{" "}
         {t("currentRole")}
       </p>
 
