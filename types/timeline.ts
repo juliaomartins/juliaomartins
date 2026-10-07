@@ -3,4 +3,5 @@ export type TimelineItem = {
   title: string;
   company: string;
   description: string;
+  status: "past" | "current" | "next";
 };

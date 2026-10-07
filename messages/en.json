@@ -17,20 +17,30 @@
   },
   "about": {
     "title": "About Me",
-    "paragraph1": "I am an IT Professional and Junior Developer with over two years of professional experience in IT support and systems maintenance. I previously worked at Leader Group, where I handled hardware, networking, and database management for retail systems for both cashier (Frontline) and back-office (Backline) operations. I also supported large-scale retail systems across multiple companies, including Leader Hypermarket Lda, Leader Mart Lda, Cement Timor SA, Auto Timor Leste Lda, and Lisun Timor Lda.",
-    "paragraph2": "Currently, I am working as an IT Collaborator at Viettel Timor Unipessoal, LDA (TELEMOR), one of the leading telecommunications companies in Timor-Leste. I am part of the IT Unit, specifically in the Software Development department, where I have been working for the past four months. I am grateful for this opportunity and motivated to continue growing as Developer.",
+    "paragraph1": "I'm a developer with over three years of professional experience in IT and systems maintenance. At Leader Group I looked after hardware, networking and databases for retail systems — both the cashier front line and the back office — across Leader Hypermarket, Leader Mart, Cement Timor, Auto Timor Leste and Lisun Timor.",
+    "paragraph2": "Since 2025 I've been an IT Collaborator in the Software Development department at Viettel Timor (Telemor), one of Timor-Leste's leading telecommunications companies, building real applications used by staff and customers.",
+    "roadmapTitle": "Roadmap",
     "timeline": [
       {
         "year": "2023 – 2025",
-        "title": "IT",
+        "title": "IT Support",
         "company": "Leader Group",
-        "description": "2 years working as IT, supporting systems and internal tools."
+        "description": "Kept retail systems, networks and databases running.",
+        "status": "past"
       },
       {
-        "year": "2025 – Present",
+        "year": "2025 – Now",
         "title": "IT Collaborator",
-        "company": "Viettel Timor Unipessoal Lda (Telemor)",
-        "description": "Working in the Software Development Department as Junior developer, collaborating on real-world applications."
+        "company": "Viettel Timor (Telemor)",
+        "description": "Building software in the Software Development department.",
+        "status": "current"
+      },
+      {
+        "year": "Next",
+        "title": "AI Engineer",
+        "company": "Studying",
+        "description": "Learning to build products with language models.",
+        "status": "next"
       }
     ]
   },

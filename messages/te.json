@@ -1,7 +1,7 @@
 {
   "nav": {
     "home": "Veranda",
-    "about": "Konaba Hau",
+    "about": "Konaba Ha'u",
     "projects": "Projetu",
     "skills": "Abilidade",
     "gallery": "Galeria",
@@ -16,21 +16,31 @@
     "secondaryCta": "Kontaktu ha'u"
   },
   "about": {
-    "title": "Konaba Hau",
-    "paragraph1": "Hau mak IT Profisional no Junior Developer ho esperiensia profisional ho tinan rua iha suporta IT no manutensaun sistema. Hau servisu dahuluk iha Leader Group, iha ne'ebá hau jere hardware, networking, no jestaun baze-dadus ba sistema retail, inklui operasaun kaxeira (Frontline) no back-office (Backline). Hau mós suporta sistema retail iha eskala ne'ebe boot ba kompañia barak, inklui Leader Hypermarket Lda, Leader Mart Lda, Cement Timor SA, Auto Timor Leste Lda, no Lisun Timor Lda.",
-    "paragraph2": "Agora dadaun, hau servisu hanesan IT Collaborator iha Viettel Timor Unipessoal, LDA (TELEMOR), empréza telecomunicação boot iha Timor-Leste. Hau integra iha IT Unit, liu-liu iha departamentu Software Development, ne’ebé hau servisu ona durante fulan haat. Hau agradese oportunidade ida ne’e no iha motivasaun boot atu kontinua dezenvolve hau nia abilidade hanesan Developer.",
+    "title": "Konaba Ha'u",
+    "paragraph1": "Ha'u developer ida ho esperiénsia profisionál liu tinan tolu iha área IT no manutensaun sistema. Iha Leader Group, ha'u tau matan ba hardware, rede (networking) no baze-dadus ba sistema retail — kaixa (frontline) no back-office — iha Leader Hypermarket, Leader Mart, Cement Timor, Auto Timor Leste no Lisun Timor.",
+    "paragraph2": "Desde 2025, ha'u servisu hanesan IT Kolaborador iha departamentu Software Development iha Viettel Timor (Telemor), kompañia telekomunikasaun boot ida iha Timor-Leste, hodi harii aplikasaun reál ne'ebé funsionáriu no kliente sira uza.",
+    "roadmapTitle": "Dalan Karreira",
     "timeline": [
       {
         "year": "2023 – 2025",
-        "title": "IT",
+        "title": "Apoiu IT",
         "company": "Leader Group",
-        "description": "Servisu durante tinan rua iha área IT, apoiu sistema no ferramenta interna."
+        "description": "Mantein sistema retail, rede no baze-dadus la'o di'ak.",
+        "status": "past"
       },
       {
         "year": "2025 – Agora",
         "title": "IT Kolaborador",
-        "company": "Viettel Timor Unipessoal Lda (Telemor)",
-        "description": "Servisu iha Departamentu Software Development hanesan Junior developer, kolabora iha aplikasaun mundo real."
+        "company": "Viettel Timor (Telemor)",
+        "description": "Harii software iha departamentu Software Development.",
+        "status": "current"
+      },
+      {
+        "year": "Tuir mai",
+        "title": "AI Engineer",
+        "company": "Estuda hela",
+        "description": "Aprende harii produtu ho modelu lian (language models).",
+        "status": "next"
       }
     ]
   },
