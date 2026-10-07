@@ -35,6 +35,10 @@ function focusSection(section: HTMLElement) {
  * - The target is made active at once and the scroll-spy is held until the
  *   scroll ends, so the nav underline moves once instead of visiting every
  *   section on the way.
+ * - Only the visitor can stop the trip (wheel, touch, scroll keys). Layout
+ *   shifts mid-flight (late fonts, media, a ScrollTrigger refresh) move the
+ *   scroll position too, and GSAP's autoKill read those as the visitor —
+ *   stopping 180px short. On arrival any such shift is corrected.
  * - Reduced motion: the jump is instant.
  * - Keyboard activation moves focus to the section, like a native jump.
  * - Links inside the mobile menu close it first: the open dialog locks page
@@ -62,23 +66,52 @@ export function useSectionNavigation({ ids, hold, release, closeMenu, scope }: O
 
       const isSection = (id: string) => ids.includes(id);
 
+      let flight: ReturnType<typeof gsap.to> | null = null;
+
+      /** The visitor took over: stop where they are and let the spy follow. */
+      const yieldToVisitor = () => {
+        if (!flight) return;
+        flight.kill();
+        flight = null;
+        release();
+      };
+      const SCROLL_KEYS = new Set([
+        "ArrowUp",
+        "ArrowDown",
+        "PageUp",
+        "PageDown",
+        "Home",
+        "End",
+        " ",
+      ]);
+      const onKey = (event: KeyboardEvent) => {
+        if (SCROLL_KEYS.has(event.key)) yieldToVisitor();
+      };
+
       const go = contextSafe((id: string, focus: boolean, instant = false) => {
         const section = document.getElementById(id);
         if (!section) return;
         hold(id);
-        gsap.to(window, {
-          // The hero is the top of the page; any other section aligns its top
-          // edge with the viewport, exactly where an anchor jump would.
-          scrollTo: { y: id === ids[0] ? 0 : section, autoKill: true },
+        // The hero is the top of the page; any other section aligns its top
+        // edge with the viewport, exactly where an anchor jump would.
+        const isTop = id === ids[0];
+        flight?.kill();
+        flight = gsap.to(window, {
+          scrollTo: { y: isTop ? 0 : section, autoKill: false },
           duration: reduced || instant ? 0 : duration.scroll,
           ease: ease.inOut,
           overwrite: true,
           onComplete: () => {
+            flight = null;
+            // The destination was measured at take-off; if the layout above
+            // it moved during the trip, finish the last few px.
+            const off = isTop ? -window.scrollY : section.getBoundingClientRect().top;
+            if (Math.abs(off) > 1) {
+              window.scrollTo({ top: window.scrollY + off, behavior: "instant" });
+            }
             release();
             if (focus) focusSection(section);
           },
-          // The visitor scrolled during the trip: hand control back.
-          onInterrupt: release,
         });
       });
       goRef.current = go;
@@ -110,6 +143,9 @@ export function useSectionNavigation({ ids, hold, release, closeMenu, scope }: O
         go(id, focus);
       };
       document.addEventListener("click", onClick);
+      window.addEventListener("wheel", yieldToVisitor, { passive: true });
+      window.addEventListener("touchstart", yieldToVisitor, { passive: true });
+      window.addEventListener("keydown", onKey);
 
       // Old deep links: wait one frame so sections below (the pinned gallery)
       // have laid out, land instantly, and drop the fragment.
@@ -126,6 +162,10 @@ export function useSectionNavigation({ ids, hold, release, closeMenu, scope }: O
 
       return () => {
         document.removeEventListener("click", onClick);
+        window.removeEventListener("wheel", yieldToVisitor);
+        window.removeEventListener("touchstart", yieldToVisitor);
+        window.removeEventListener("keydown", onKey);
+        flight?.kill();
         window.cancelAnimationFrame(frame);
         goRef.current = null;
         mm.revert();
