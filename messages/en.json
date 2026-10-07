@@ -92,7 +92,23 @@
     "statementAccent": "earns its place."
   },
   "gallery": {
-    "imageAlt": "Gallery {number}"
+    "title": "Gallery",
+    "intro": "From running cable through ceilings to writing the software — the work behind the work.",
+    "label": "Photos from my work",
+    "pause": "Pause",
+    "play": "Play",
+    "captions": {
+      "ceiling": "Running network cable through the ceiling",
+      "workstation": "Servicing office hardware",
+      "site": "Laying out cable runs on a new site",
+      "drop": "Pulling cable down to a new wall drop",
+      "team": "With the team in the office",
+      "repair": "Repairing a machine on the bench",
+      "wall": "Finishing cable ends at the wall",
+      "control": "At the control desk",
+      "accessPoint": "Mounting a network access point",
+      "code": "Writing the code behind a login screen"
+    }
   },
   "contact": {
     "title": "Contact Me",

@@ -264,45 +264,29 @@ html[data-motion="reduced"] .press {
 }
 
 /* ---------------------------------------------------------------------------
-   Gallery — reduced-motion alternative.
+   Gallery strip.
 
-   The default gallery pins the viewport and converts vertical scroll into
-   horizontal movement. That hijacks scroll direction, which is a vestibular
-   trigger, so useHorizontalScroll builds no ScrollTrigger at all when the
-   visitor prefers reduced motion.
+   Full motion: an endless GSAP loop (Gallery.tsx) inside a window whose edges
+   fade, so photos drift in and out rather than being cut by the frame. The
+   fade is two small gradient strips, not a mask-image: a mask over the
+   ~6,600px promoted track made every repaint expensive (measured: the theme
+   blend fell from ~23 to 4–10 frames).
 
-   This is the designed replacement rather than "the animation removed": the
-   same track becomes a natively scrollable, snap-aligned strip, so every image
-   stays reachable by touch, trackpad, and keyboard.
+   Reduced motion and no JS (no [data-motion="full"]): there is no loop, so the
+   hidden copy and the Pause button go, and the window becomes a real
+   horizontal scroller with snap points — swipe, trackpad or keyboard.
    --------------------------------------------------------------------------- */
 
-html[data-motion="reduced"] [data-gallery-viewport] {
-  height: auto;
+html:not([data-motion="full"]) [data-gallery-viewport] {
   overflow-x: auto;
-  overflow-y: hidden;
   scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
+  scroll-padding-inline: 1.5rem;
 }
 
-html[data-motion="reduced"] [data-gallery-track] {
-  height: auto;
-}
-
-html[data-motion="reduced"] [data-gallery-item] {
-  scroll-snap-align: center;
-}
-
-/* Same treatment when JavaScript never runs: the pin can't exist, so without
-   this the track is clipped and only the first slide is reachable. */
-@media (scripting: none) {
-  [data-gallery-viewport] {
-    height: auto;
-    overflow-x: auto;
-    overflow-y: hidden;
-  }
-  [data-gallery-track] {
-    height: auto;
-  }
+html:not([data-motion="full"]) [data-loop-clone],
+html:not([data-motion="full"]) [data-gallery-toggle],
+html:not([data-motion="full"]) [data-gallery-fade] {
+  display: none;
 }
 
 /* ---------------------------------------------------------------------------

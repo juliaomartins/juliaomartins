@@ -5,7 +5,7 @@ import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Projects from "@/components/sections/Projects";
 import Skills from "@/components/sections/Skills";
-import HorizontalGallery from "@/components/sections/HorizontalGallery";
+import Gallery from "@/components/sections/Gallery";
 import ContactForm from "@/components/sections/ContactForm";
 import Footer from "@/components/layout/Footer";
 
@@ -31,7 +31,7 @@ export default function PortfolioPage() {
         <About />
         <Projects />
         <Skills />
-        <HorizontalGallery />
+        <Gallery />
         <ContactForm />
       </main>
 

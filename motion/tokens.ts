@@ -66,47 +66,11 @@ export const heroScatter = [
 export const heroIdleTimeout = 1200;
 
 /**
- * Gallery slide focus. Both effects hang off the existing horizontal tween via
- * ScrollTrigger's `containerAnimation`, so they stay in lockstep with the pin
- * instead of running their own scroll maths.
+ * Gallery loop. Speed in px per second, so the pace reads the same whatever
+ * the strip's width; `settle` is how long hover / Pause take to glide the
+ * strip to a stop (and back), rather than freezing it mid-frame.
  */
-export const gallery = {
-  scaleFrom: 0.88,
-  scaleTo: 1,
-  alphaFrom: 0.55,
-  /** xPercent drift of the media inside its slide, against the track. */
-  parallax: 12,
-} as const;
-
-/**
- * Logo sprite emitter on the gallery slides.
- *
- * `max` is the important one: the brief is "more clicks, more logos", which is
- * unbounded by definition. Bursts stay unlimited, but live sprites are capped
- * and the oldest recycle — otherwise a determined visitor accumulates hundreds
- * of animating nodes on the one section that already runs 20 ScrollTriggers.
- */
-export const sprites = {
-  /** One of each logo per burst: HTML, CSS, JS, TS, React, Next, GSAP. */
-  perBurst: 7,
-  max: 84,
-  /*
-   * Real projectile motion via Physics2DPlugin rather than a radial fan.
-   * Angles are degrees with 0 = right and y pointing down, so a negative
-   * angle launches upward; gravity then arcs each sprite over and drops it.
-   */
-  velocityMin: 320,
-  velocityMax: 620,
-  /** Upward spray, biased slightly outward on both sides. */
-  angleMin: -150,
-  angleMax: -30,
-  gravity: 1100,
-  /** Seconds a sprite stays airborne before it has fallen away. */
-  life: 1.9,
-  /** px; matches the eyebrow type size so the logos read as a caption, not clip-art. */
-  size: 26,
-  spin: 220,
-  popIn: duration.sm,
-  drift: duration.xl,
-  fade: duration.md,
+export const galleryLoop = {
+  pxPerSecond: 36,
+  settle: duration.lg,
 } as const;

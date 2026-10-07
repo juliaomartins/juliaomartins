@@ -70,7 +70,7 @@ export default function GalleryVideo({
       preload="metadata"
       controls={reduced}
       aria-label={label}
-      className="absolute inset-0 h-full w-full rounded-xl object-cover shadow-lg"
+      className="absolute inset-0 h-full w-full object-cover"
     />
   );
 }

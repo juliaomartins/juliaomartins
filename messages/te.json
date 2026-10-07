@@ -92,7 +92,23 @@
     "statementAccent": "iha nia fatin."
   },
   "gallery": {
-    "imageAlt": "Galeria {number}"
+    "title": "Galeria",
+    "intro": "Husi liga kabu liuhosi teto to'o hakerek software — servisu iha servisu nia kotuk.",
+    "label": "Foto sira husi ha'u-nia servisu",
+    "pause": "Para",
+    "play": "Kontinua",
+    "captions": {
+      "ceiling": "Liga kabu rede liuhosi teto",
+      "workstation": "Manutensaun ba ekipamentu eskritóriu",
+      "site": "Prepara dalan kabu iha fatin foun",
+      "drop": "Hatun kabu ba ponto foun iha parede",
+      "team": "Ho ekipa iha eskritóriu",
+      "repair": "Hadi'a máquina ida iha meza servisu",
+      "wall": "Remata ponta kabu sira iha parede",
+      "control": "Iha meza kontrolu",
+      "accessPoint": "Instala access point rede iha parede",
+      "code": "Hakerek kódigu ba ekran login"
+    }
   },
   "contact": {
     "title": "Kontaktu Hau",
