@@ -11,8 +11,9 @@ import { duration, ease, offset, stagger } from "@/motion/tokens";
  * Everything in the hero that changes with the locale. The portrait and the
  * <h1> stay in the server component — they never depend on JavaScript.
  *
- * Motion: one quiet settle on load. Reduced motion keeps the server-rendered
- * final state, which is the designed static layout, not a disabled animation.
+ * Motion: one quiet settle on load for the small lines and the buttons — the
+ * intro paragraph is the LCP element and is never hidden. Reduced motion keeps
+ * the server-rendered final state, which is the designed static layout.
  */
 export default function HeroIntro() {
   const t = useTranslations("home");
@@ -42,7 +43,11 @@ export default function HeroIntro() {
         {t("eyebrow")}
       </p>
 
-      <p data-reveal className="mt-6 max-w-xl text-lead text-muted-foreground">
+      {/*
+        The LCP element. Never animated: hiding it until hydration pushed LCP
+        to 4.5s on Lighthouse mobile.
+      */}
+      <p className="mt-6 max-w-xl text-lead text-muted-foreground">
         {t("intro")}
       </p>
 
