@@ -1,5 +1,6 @@
 "use client";
 
+import { Send } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
@@ -140,7 +141,7 @@ export default function ContactForm() {
             disabled={loading}
             aria-describedby="contact-status"
             className={[
-              "press inline-flex min-h-12 w-full items-center justify-center gap-3",
+              "group press inline-flex min-h-12 w-full items-center justify-center gap-3",
               "rounded-lg bg-primary px-6 text-control font-medium text-primary-foreground",
               "outline-none cursor-pointer",
               "hover:opacity-90",
@@ -158,7 +159,13 @@ export default function ContactForm() {
                 />
               </>
             ) : (
-              t("contact.form.send")
+              <>
+                {t("contact.form.send")}
+                <Send
+                  aria-hidden="true"
+                  className="size-4 shrink-0 transition-transform duration-(--duration-micro) motion-safe:group-hover:-translate-y-0.5 motion-safe:group-hover:translate-x-0.5"
+                />
+              </>
             )}
           </button>
 

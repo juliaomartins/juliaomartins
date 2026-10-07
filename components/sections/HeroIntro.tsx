@@ -1,5 +1,6 @@
 "use client";
 
+import { ArrowDown, Mail } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 /**
@@ -38,16 +39,30 @@ export default function HeroIntro({
       </p>
 
       <div className="mt-10 flex flex-wrap gap-3">
+        {/* Primary: scrolls down to the work, so the arrow points down. */}
         <a
           href="#projects"
-          className="press inline-flex min-h-11 items-center rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring active:scale-97"
+          className="group press inline-flex min-h-11 items-center gap-2 rounded-full bg-primary pl-6 pr-5 text-sm font-medium text-primary-foreground hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring active:scale-97"
         >
           {t("primaryCta")}
+          <ArrowDown
+            aria-hidden="true"
+            className="size-4 transition-transform duration-(--duration-micro) motion-safe:group-hover:translate-y-0.5"
+          />
         </a>
+        {/*
+          Secondary. Its outline uses the form-control boundary token (3.12:1
+          light, 3.51:1 dark) — the plain border token was 1.19:1, so the
+          button barely read as one. Hover darkens the outline and fills it.
+        */}
         <a
           href="#contact"
-          className="press inline-flex min-h-11 items-center rounded-full border border-border px-6 text-sm font-medium text-foreground hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring active:scale-97"
+          className="group press inline-flex min-h-11 items-center gap-2 rounded-full border border-field-border pl-5 pr-6 text-sm font-medium text-foreground hover:border-foreground hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring active:scale-97"
         >
+          <Mail
+            aria-hidden="true"
+            className="size-4 transition-transform duration-(--duration-micro) motion-safe:group-hover:-translate-y-px"
+          />
           {t("secondaryCta")}
         </a>
       </div>
