@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 import { gsap, ScrollTrigger } from "@/motion/registry";
 import { duration, ease, offset, stagger } from "@/motion/tokens";
 
-import SkillsBadge from "./SkillsBadge";
+import CircleStamp from "@/components/ui/CircleStamp";
 
 const HIDDEN_CLIP = "inset(100% 0% 0% 0%)";
 const SHOWN_CLIP = "inset(0% 0% 0% 0%)";
@@ -155,7 +155,7 @@ export default function Skills() {
               {t("countCaption")}
             </span>
           </p>
-          <SkillsBadge text={t("badge")} />
+          <CircleStamp text={t("badge")} thread className="w-28" />
           <p className="max-w-56 text-h2 font-semibold">
             {t("statementLead")}{" "}
             <span className="text-signal">{t("statementAccent")}</span>

@@ -2,43 +2,71 @@
 
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { useRef, type CSSProperties } from "react";
 
+import CircleStamp from "@/components/ui/CircleStamp";
 import { gsap } from "@/motion/registry";
 import { duration, ease, heroScatter, stagger } from "@/motion/tokens";
 import portrait from "@/public/juliao_martins2.png";
 
 /**
- * Fragments of the portrait as [left, top, width, height] in % of a 3:4 frame:
- * three staggered columns with gaps between them, like the painting in the
- * reference split across canvases. Order matches `heroScatter`.
+ * The colour field behind the portrait: [left, top, width, height] in % of a
+ * 3:4 frame, plus a tone. Three staggered columns of panels, like the painting
+ * in the reference split across canvases, starting low enough that the head
+ * rises clear of them. Tones are the one amber accent at different strengths,
+ * with a single ink panel for weight. Order matches `heroScatter`.
  */
-const PIECES = [
-  [0, 14, 31, 22],
-  [0, 38, 31, 34],
-  [6, 74, 25, 16],
-  [34, 0, 32, 45],
-  [34, 47, 32, 53],
-  [69, 10, 31, 30],
-  [69, 42, 31, 36],
+const PANELS = [
+  { box: [2, 30, 29, 20], tone: "bg-signal/40" },
+  { box: [0, 52, 31, 26], tone: "bg-signal" },
+  { box: [8, 80, 23, 14], tone: "bg-foreground" },
+  { box: [34, 14, 32, 34], tone: "bg-signal/20" },
+  { box: [34, 50, 32, 50], tone: "bg-signal/70" },
+  { box: [69, 26, 29, 22], tone: "bg-signal" },
+  { box: [69, 50, 31, 30], tone: "bg-signal/40" },
 ] as const;
 
-/** Rendered width of the frame; keep in step with the max-w classes below. */
+/**
+ * Rendered width of the full-frame photo; keep in step with the max-w classes
+ * below. Every layer uses the same value, so the browser picks the same file
+ * for all of them and downloads it once.
+ */
 const SIZES = "(min-width: 1024px) 26rem, 15rem";
 
+/** The head layer stops just under the chin; below it the body is fragmented. */
+const HEAD_CLIP = "inset(0% 0% 64% 0%)";
+
+/** The photo at full-frame size, for a layer or a panel window. */
+function Photo({ preload = false }: { preload?: boolean }) {
+  return (
+    <Image
+      src={portrait}
+      alt=""
+      fill
+      sizes={SIZES}
+      placeholder="blur"
+      preload={preload}
+      loading="eager"
+      className="object-cover object-top"
+    />
+  );
+}
+
 /**
- * One photo (transparent background), shown through seven windows backed by
- * the amber signal colour — the page's single accent, here doing the job the
- * painting's colour does in the reference. Every window renders the same
- * next/image at the size of the whole frame and offsets it, so the browser
- * downloads a single file.
+ * Break-out portrait. The head is one unbroken layer that rises above the top
+ * panel — stepping out of the frame. Below the chin the body exists only
+ * inside the colour panels, fragmented like the painting in the reference, so
+ * the photo's hard crop edges are always hidden inside a rounded panel. A
+ * circular stamp seals the bottom corner.
  *
- * Motion: with full motion the pieces start a few px apart (CSS, before first
+ * Motion: with full motion the panels start a few px apart (CSS, before first
  * paint) and settle together once — the same "pieces finding their place"
- * language as the skills wall. Transform only, so the photo is visible from
- * the first frame and LCP is untouched. Reduced motion is the assembled frame.
+ * language as the skills wall. The portrait never moves: it is the LCP image
+ * and paints in place. Reduced motion and no-JS get the settled frame.
  */
 export default function HeroMosaic({ name }: { name: string }) {
+  const t = useTranslations("home");
   const rootRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
@@ -50,14 +78,20 @@ export default function HeroMosaic({ name }: { name: string }) {
           reduced: "(prefers-reduced-motion: reduce)",
         },
         (context) => {
-          const { full } = context.conditions as { full: boolean; reduced: boolean };
-          const pieces = gsap.utils.toArray<HTMLElement>("[data-hero-piece]", rootRef.current);
+          const { full } = context.conditions as {
+            full: boolean;
+            reduced: boolean;
+          };
+          const panels = gsap.utils.toArray<HTMLElement>(
+            "[data-hero-piece]",
+            rootRef.current
+          );
           if (!full) {
             // The OS setting can change after the head probe ran.
-            gsap.set(pieces, { "--piece-x": "0px", "--piece-y": "0px" });
+            gsap.set(panels, { "--piece-x": "0px", "--piece-y": "0px" });
             return;
           }
-          gsap.to(pieces, {
+          gsap.to(panels, {
             "--piece-x": "0px",
             "--piece-y": "0px",
             duration: duration.xl,
@@ -79,13 +113,13 @@ export default function HeroMosaic({ name }: { name: string }) {
       aria-label={name}
       className="relative aspect-3/4 w-full max-w-60 lg:max-w-104"
     >
-      {PIECES.map(([left, top, width, height], index) => {
+      {PANELS.map(({ box: [left, top, width, height], tone }, index) => {
         const [x, y] = heroScatter[index];
         return (
           <div
             key={`${left}-${top}`}
             data-hero-piece=""
-            className="absolute overflow-hidden rounded-md bg-signal"
+            className={`absolute overflow-hidden rounded-md ${tone}`}
             style={
               {
                 left: `${left}%`,
@@ -107,20 +141,28 @@ export default function HeroMosaic({ name }: { name: string }) {
                 height: `${(100 / height) * 100}%`,
               }}
             >
-              <Image
-                src={portrait}
-                alt=""
-                fill
-                sizes={SIZES}
-                placeholder="blur"
-                preload={index === 0}
-                loading="eager"
-                className="object-cover object-top"
-              />
+              <Photo />
             </div>
           </div>
         );
       })}
+
+      {/* The head: one piece, above the field. Same frame, clipped at the chin. */}
+      <div
+        data-hero-portrait=""
+        className="absolute inset-0"
+        style={{ clipPath: HEAD_CLIP }}
+      >
+        <Photo preload />
+      </div>
+
+      <div
+        data-hero-stamp=""
+        aria-hidden="true"
+        className="absolute -bottom-6 -left-4 size-24 rounded-full bg-background p-1.5 ring-1 ring-border lg:-left-10 lg:size-28"
+      >
+        <CircleStamp text={t("stamp")} className="size-full" />
+      </div>
     </div>
   );
 }
