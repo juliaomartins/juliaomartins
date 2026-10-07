@@ -111,16 +111,34 @@
     }
   },
   "contact": {
-    "title": "Kontaktu Hau",
+    "title": "Mai ita harii buat ruma hamutuk",
+    "intro": "Iha projetu, servisu ka pergunta ruma? Haruka mensajen mai ha'u — ka kontaktu ha'u direta.",
+    "channels": {
+      "email": "Email",
+      "whatsapp": "WhatsApp",
+      "github": "GitHub",
+      "location": "Fatin",
+      "locationValue": "Díli, Timor-Leste"
+    },
     "form": {
-      "username": "Naran Uzuáriu",
+      "name": "Ita-nia naran",
       "email": "Email",
       "message": "Mensajen",
+      "required": "Kampu hotu-hotu obrigatóriu.",
       "send": "Haruka Mensajen",
-      "sending": "Haruka Hela"
+      "sending": "Haruka hela",
+      "counter": "{count} / {max}"
     },
-    "success": "✅ Mensajen haruka ho susesu!",
-    "error": "❌ La konsege haruka mensajen. Favor koko fali."
+    "errors": {
+      "name": "Favór hakerek ita-nia naran.",
+      "email": "Hakerek email ne'ebé loos, hanesan naran@example.com.",
+      "message": "Favór hakerek pelumenus karakter {min}."
+    },
+    "successTitle": "Mensajen haruka ona",
+    "successBody": "Obrigadu, {name} — ha'u sei hatán lalais.",
+    "again": "Haruka mensajen seluk",
+    "error": "Mensajen la haruka. Haree ita-nia koneksaun no koko fali, ka haruka email direta mai ha'u.",
+    "newTab": "(loke iha tab foun)"
   },
   "footer": {
     "text": "Troka ideia sira sai ba produtu dijital ne'ebé fiável."

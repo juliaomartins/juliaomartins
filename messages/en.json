@@ -111,16 +111,34 @@
     }
   },
   "contact": {
-    "title": "Contact Me",
+    "title": "Let's build something together",
+    "intro": "Have a project, a role or just a question? Send me a message — or reach me directly.",
+    "channels": {
+      "email": "Email",
+      "whatsapp": "WhatsApp",
+      "github": "GitHub",
+      "location": "Location",
+      "locationValue": "Dili, Timor-Leste"
+    },
     "form": {
-      "username": "Username",
+      "name": "Your name",
       "email": "Email",
       "message": "Message",
+      "required": "All fields are required.",
       "send": "Send Message",
-      "sending": "Sending"
+      "sending": "Sending",
+      "counter": "{count} / {max}"
     },
-    "success": "✅ Message sent successfully!",
-    "error": "❌ Failed to send message. Please try again."
+    "errors": {
+      "name": "Please enter your name.",
+      "email": "Enter a valid email address, like name@example.com.",
+      "message": "Please write at least {min} characters."
+    },
+    "successTitle": "Message sent",
+    "successBody": "Thanks, {name} — I'll get back to you soon.",
+    "again": "Send another message",
+    "error": "Your message didn't send. Check your connection and try again, or email me directly.",
+    "newTab": "(opens in a new tab)"
   },
   "footer": {
     "text": "Turning ideas into reliable digital products."
