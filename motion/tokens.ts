@@ -40,6 +40,21 @@ export const position = {
 } as const;
 
 /**
+ * Hero portrait fragments: where each piece rests (px) before it drifts into
+ * place, in fragment order. Small on purpose — the photo is readable from the
+ * first frame; the settle only closes the gaps.
+ */
+export const heroScatter = [
+  [-14, -10],
+  [-22, 4],
+  [-10, 14],
+  [0, -18],
+  [4, 16],
+  [16, -12],
+  [20, 10],
+] as const;
+
+/**
  * Gallery slide focus. Both effects hang off the existing horizontal tween via
  * ScrollTrigger's `containerAnimation`, so they stay in lockstep with the pin
  * instead of running their own scroll maths.

@@ -1,40 +1,28 @@
-import Image from "next/image";
-
-import portrait from "@/public/juliao_martins.jpg";
-
 import HeroIntro from "./HeroIntro";
+import HeroMosaic from "./HeroMosaic";
 
 /** Proper noun — identical in every locale, so it never needs translating. */
-const NAME = "Julião Martins";
+const FIRST = "Julião";
+const LAST = "Martins";
 
 /**
- * Server component. Owns the portrait (the LCP element) and the <h1>, the two
- * things that must never depend on JavaScript and that GSAP never touches.
+ * Server component: the layout. Text on the left, the portrait mosaic on the
+ * right from lg; below lg the mosaic sits above the text, both left-aligned.
+ * Everything here is in the server-rendered HTML.
  */
 export default function Hero() {
   return (
     <section
       id="home"
-      className="flex min-h-svh items-center justify-center px-5 pb-20 pt-28"
+      className="flex min-h-svh items-center px-6 pb-20 pt-28"
     >
-      <div className="mx-auto flex w-full max-w-2xl flex-col items-center text-center">
-        {/*
-          Fixed-size avatar: explicit square width/height, no `sizes`, so
-          next/image emits a tight 1x/2x srcset and the box is reserved.
-        */}
-        <Image
-          src={portrait}
-          alt={NAME}
-          width={144}
-          height={144}
-          placeholder="blur"
-          priority
-          className="mb-8 size-28 rounded-full object-cover object-top ring-1 ring-border md:size-36"
-        />
-
-        <h1 className="text-name font-semibold text-foreground">{NAME}</h1>
-
-        <HeroIntro />
+      <div className="mx-auto grid w-full max-w-6xl items-center gap-10 lg:grid-cols-12 lg:gap-12">
+        <div className="lg:order-last lg:col-span-5 lg:flex lg:justify-end">
+          <HeroMosaic name={`${FIRST} ${LAST}`} />
+        </div>
+        <div className="lg:col-span-7">
+          <HeroIntro first={FIRST} last={LAST} />
+        </div>
       </div>
     </section>
   );

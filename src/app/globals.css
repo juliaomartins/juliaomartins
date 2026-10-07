@@ -23,9 +23,10 @@
 
   /* Fluid hero type scale. Floors are tuned at 360px, caps at 1440px+.
      Nothing in the hero may use an arbitrary size — these are the tokens. */
-  --text-name: clamp(2rem, 1.4rem + 2.6vw, 3.75rem);
-  --text-name--line-height: 1.05;
-  --text-name--letter-spacing: -0.035em;
+  /* Hero display name, set across two lines. */
+  --text-display: clamp(3rem, 1.9rem + 5vw, 6.5rem);
+  --text-display--line-height: 0.92;
+  --text-display--letter-spacing: -0.045em;
 
   --text-eyebrow: clamp(0.6875rem, 0.66rem + 0.14vw, 0.8125rem);
   --text-eyebrow--line-height: 1.2;
@@ -368,4 +369,12 @@ html[data-motion="reduced"] [data-gallery-item] {
    way fragments of one painting do. A floor, so captions can never collide. */
 @utility auto-rows-mosaic {
   grid-auto-rows: minmax(clamp(1.75rem, 1.2rem + 1vw, 2.25rem), auto);
+}
+
+/* Hero portrait fragments. With full motion (stamped on <html> by the head
+   probe before first paint) each piece rests a few px apart and GSAP closes
+   the gap, so nothing jumps at hydration. Reduced motion and no-JS never match
+   this rule and render the portrait assembled. `translate` is a transform. */
+html[data-motion="full"] [data-hero-piece] {
+  translate: var(--piece-x, 0px) var(--piece-y, 0px);
 }

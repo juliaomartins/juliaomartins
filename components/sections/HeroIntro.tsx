@@ -3,21 +3,32 @@
 import { useTranslations } from "next-intl";
 
 /**
- * Everything in the hero that changes with the locale. The portrait and the
- * <h1> stay in the server component — they never depend on JavaScript.
+ * The text side of the hero. Left-aligned and typographic: the name is the
+ * display element, set across two lines.
  *
  * Deliberately static. An entrance here had to hide content that the server
  * already painted, so on slow phones the buttons appeared, vanished at
  * hydration and faded back in — and the intro paragraph is the LCP element.
  */
-export default function HeroIntro() {
+export default function HeroIntro({
+  first,
+  last,
+}: {
+  first: string;
+  last: string;
+}) {
   const t = useTranslations("home");
 
   return (
-    <div className="mt-4 flex flex-col items-center">
+    <div className="flex flex-col items-start">
       <p className="text-lead font-medium text-signal">{t("eyebrow")}</p>
 
-      <p className="mt-6 max-w-xl text-lead text-muted-foreground">
+      <h1 className="mt-4 text-display font-semibold text-foreground">
+        <span className="block">{first}</span>{" "}
+        <span className="block">{last}</span>
+      </h1>
+
+      <p className="mt-8 max-w-xl text-lead text-muted-foreground">
         {t("intro")}
       </p>
 
@@ -26,7 +37,7 @@ export default function HeroIntro() {
         {t("currentRole")}
       </p>
 
-      <div className="mt-10 flex flex-wrap justify-center gap-3">
+      <div className="mt-10 flex flex-wrap gap-3">
         <a
           href="#projects"
           className="press inline-flex min-h-11 items-center rounded-full bg-foreground px-6 text-sm font-medium text-background hover:opacity-85 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring active:scale-97"
