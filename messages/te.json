@@ -9,17 +9,17 @@
   },
   "home": {
     "eyebrow": "Developer, agora estuda AI engineering",
-    "intro": "Ha'u developer ida ne'ebé harii produtu web no mobile ho React, Next.js no React Native. Agora ha'u estuda hela AI engineering — aprende oinsá harii ho modelu lian (language models) no hatama sira ba produtu reál.",
+    "intro": "Ha'u developer ida ne'ebé harii produtu web no mobile ho React, Next.js no React Native. Agora ha'u estuda hela AI engineering — aprende oinsá harii ho large language models no hatama ba iha produtu reál.",
     "currentLabel": "Agora dadaun",
-    "currentRole": "IT Kolaborador iha Viettel Timor (Telemor)",
+    "currentRole": "IT Kolaborador iha Viettel Timor, Unipessoal, Lda. (Telemor)",
     "primaryCta": "Haree ha'u-nia servisu",
     "secondaryCta": "Kontaktu ha'u",
     "stamp": "Developer • AI engineering • Díli, Timor-Leste • "
   },
   "about": {
     "title": "Konaba Ha'u",
-    "paragraph1": "Ha'u developer ida ho esperiénsia profisionál liu tinan tolu iha área IT no manutensaun sistema. Iha Leader Group, ha'u tau matan ba hardware, rede (networking) no baze-dadus ba sistema retail — kaixa (frontline) no back-office — iha Leader Hypermarket, Leader Mart, Cement Timor, Auto Timor Leste no Lisun Timor.",
-    "paragraph2": "Desde 2025, ha'u servisu hanesan IT Kolaborador iha departamentu Software Development iha Viettel Timor (Telemor), kompañia telekomunikasaun boot ida iha Timor-Leste, hodi harii aplikasaun reál ne'ebé funsionáriu no kliente sira uza.",
+    "paragraph1": "Ha'u developer ida ho esperiénsia profisionál liu tinan tolu iha área IT no manutensaun sistema. Iha Leader Group, ha'u tau matan ba hardware, rede (networking) no baze-dadus ba sistema retail — cashier (frontline) no back-office — iha Leader Hypermarket, Leader Mart, Cement Timor, Auto Timor Leste no Lisun Timor.",
+    "paragraph2": "Desde 2025, ha'u servisu hanesan IT Kolaborador iha departamentu Software Development iha Viettel Timor, Unipessoal, Lda. (Telemor), kompañia telekomunikasaun boot ida iha Timor-Leste, hodi hari aplikasaun reál ne'ebé funsiona no kliente sira bele uza.",
     "roadmapTitle": "Dalan Karreira",
     "timeline": [
       {
@@ -33,14 +33,14 @@
         "year": "2025 – Agora",
         "title": "IT Kolaborador",
         "company": "Viettel Timor (Telemor)",
-        "description": "Harii software iha departamentu Software Development.",
+        "description": "dezenvolve software iha departamentu Software Development.",
         "status": "current"
       },
       {
         "year": "Tuir mai",
         "title": "AI Engineer",
         "company": "Estuda hela",
-        "description": "Aprende harii produtu ho modelu lian (language models).",
+        "description": "Aprende dezenvolve produtu ho large language models.",
         "status": "next"
       }
     ]
@@ -84,7 +84,7 @@
   },
   "skills": {
     "title": "Abilidade sira",
-    "description": "Ha'u servisu ho AI coding agent hanesan Claude Code loroloron — no ha'u uza sira ho responsabilidade. Ha'u revee liña ida-idak ne'ebé sira hakerek, no ha'u rasik mak kaer arkitetura no desizaun. Ba ha'u, sira mak meius atu entrega servisu di'ak liu no lalais liu, la'ós atu troka ha'u-nia koñesimentu profisionál.",
+    "description": "Ha'u servisu ho AI coding agent hanesan Claude Code loroloron — no ha'u uza ho responsabilidade. Ha'u halo revizaun ba liña ida-idak ne'ebé Claude Code hakerek, no ha'u rasik mak kaer arkitetura no desizaun. Ba ha'u, sira mak meius atu entrega servisu di'ak liu no lalais liu, la'ós atu troka ha'u-nia koñesimentu profisionál.",
     "cta": "Haree ha'u-nia servisu",
     "countCaption": "Ferramenta ne'ebé ha'u uza",
     "badge": "Fatin ne'ebé kódigu hasoru kuriozidade no arte • ",
@@ -93,7 +93,7 @@
   },
   "gallery": {
     "title": "Galeria",
-    "intro": "Husi liga kabu liuhosi teto to'o hakerek software — servisu iha servisu nia kotuk.",
+    "intro": "Husi liga kabu to'o hakerek software — servisu iha servisu nia kotuk.",
     "label": "Foto sira husi ha'u-nia servisu",
     "pause": "Para",
     "play": "Kontinua",
@@ -124,7 +124,7 @@
       "name": "Ita-nia naran",
       "email": "Email",
       "message": "Mensajen",
-      "required": "Kampu hotu-hotu obrigatóriu.",
+      "required": "Field hotu-hotu obrigatóriu tenke priense.",
       "send": "Haruka Mensajen",
       "sending": "Haruka hela",
       "counter": "{count} / {max}"

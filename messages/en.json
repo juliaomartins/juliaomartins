@@ -9,9 +9,9 @@
   },
   "home": {
     "eyebrow": "Developer, now studying AI engineering",
-    "intro": "I'm a developer who builds web and mobile products with React, Next.js and React Native. Now I'm studying AI engineering — learning to build with language models and bring them into real products.",
+    "intro": "I'm a developer who builds web and mobile products with React, Next.js and React Native. Now I'm studying AI engineering — learning to build with large language models and bring into real products.",
     "currentLabel": "Currently",
-    "currentRole": "IT Collaborator at Viettel Timor (Telemor)",
+    "currentRole": "IT Collaborator at Viettel Timor, Unipessoal, Lda. (Telemor)",
     "primaryCta": "See my work",
     "secondaryCta": "Get in touch",
     "stamp": "Developer • AI engineering • Dili, Timor-Leste • "
@@ -19,7 +19,7 @@
   "about": {
     "title": "About Me",
     "paragraph1": "I'm a developer with over three years of professional experience in IT and systems maintenance. At Leader Group I looked after hardware, networking and databases for retail systems — both the cashier front line and the back office — across Leader Hypermarket, Leader Mart, Cement Timor, Auto Timor Leste and Lisun Timor.",
-    "paragraph2": "Since 2025 I've been an IT Collaborator in the Software Development department at Viettel Timor (Telemor), one of Timor-Leste's leading telecommunications companies, building real applications used by staff and customers.",
+    "paragraph2": "Since 2025 I've been an IT Collaborator in the Software Development department at Viettel Timor, Unipessoal, Lda. (Telemor), one of Timor-Leste's leading telecommunications companies, building real applications used by staff and customers.",
     "roadmapTitle": "Roadmap",
     "timeline": [
       {
@@ -40,7 +40,7 @@
         "year": "Next",
         "title": "AI Engineer",
         "company": "Studying",
-        "description": "Learning to build products with language models.",
+        "description": "Learning to build products with large language models.",
         "status": "next"
       }
     ]
@@ -84,7 +84,7 @@
   },
   "skills": {
     "title": "Skills",
-    "description": "I work with AI coding agents like Claude Code every day — and I use them responsibly. I review every line they produce and keep architecture and judgement in my own hands. For me they are a way to ship better work faster, not a substitute for knowing my craft.",
+    "description": "I work with AI coding agents like Claude Code every day — and I use with responsibly. I review every line they produce and keep architecture and judgement in my own hands. For me they are a way to ship better work faster, not a substitute for knowing my craft.",
     "cta": "See my work",
     "countCaption": "Tools I build with",
     "badge": "Where code meets curiosity and craft • ",
