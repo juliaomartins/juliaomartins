@@ -9,7 +9,7 @@
   },
   "home": {
     "eyebrow": "Developer, agora estuda AI engineering",
-    "intro": "Ha'u developer ida ne'ebé harii produtu web no mobile ho React, Next.js no React Native. Agora ha'u estuda hela AI engineering — aprende oinsá harii ho large language models no hatama ba iha produtu reál.",
+    "intro": "Ha'u developer ida ne'ebé dezenvolve produtu web no mobile ho React, Next.js no React Native. Agora ha'u estuda hela AI engineering — aprende oinsá dezenvolve ho large language models no hatama ba iha produtu reál.",
     "currentLabel": "Agora dadaun",
     "currentRole": "IT Kolaborador iha Viettel Timor, Unipessoal, Lda. (Telemor)",
     "primaryCta": "Haree ha'u-nia servisu",
@@ -111,7 +111,7 @@
     }
   },
   "contact": {
-    "title": "Mai ita harii buat ruma hamutuk",
+    "title": "Mai ita dezenvolve buat ruma hamutuk",
     "intro": "Iha projetu, servisu ka pergunta ruma? Haruka mensajen mai ha'u — ka kontaktu ha'u direta.",
     "channels": {
       "email": "Email",
