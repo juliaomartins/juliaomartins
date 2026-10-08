@@ -43,3 +43,5 @@ next-env.d.ts
 # Editor / assistant local settings
 .claude/
 .vscode/
+
+skill/
