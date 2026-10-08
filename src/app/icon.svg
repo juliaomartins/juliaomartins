@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!--
+    Mosaic JM: the site's mark. A bold J and M on black, cut into three
+    canvases by two thin angled cuts and coloured with the site palette
+    (accent violet, primary blue, deep violet), the same "pieces of one
+    artwork" idea as the hero portrait and the skills cluster.
+
+    Drawn on a 32-unit grid so the 32px favicon lands on whole pixels.
+    This file is the single source: `npm run icons` regenerates favicon.ico,
+    apple-icon.png and the manifest icons from it.
+  -->
+  <defs>
+    <g id="jm" fill="none" stroke-width="3.6" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="3">
+      <path d="M12.25 6 V19.5 a3.5 3.5 0 0 1 -7 0" />
+      <path d="M17.5 26 V6.75 L22.25 15.25 L27 6.75 V26" />
+    </g>
+    <clipPath id="top"><polygon points="0,0 32,0 32,9 0,13" /></clipPath>
+    <clipPath id="mid"><polygon points="0,13 32,9 32,19 0,23.5" /></clipPath>
+    <clipPath id="low"><polygon points="0,23.5 32,19 32,32 0,32" /></clipPath>
+  </defs>
+
+  <rect width="32" height="32" rx="7" fill="#000000" />
+
+  <use href="#jm" stroke="#A78BFA" clip-path="url(#top)" />
+  <use href="#jm" stroke="#2997FF" clip-path="url(#mid)" />
+  <use href="#jm" stroke="#7C3AED" clip-path="url(#low)" />
+
+  <!-- The cuts between canvases. -->
+  <line x1="0" y1="13" x2="32" y2="9" stroke="#000000" stroke-width="0.9" />
+  <line x1="0" y1="23.5" x2="32" y2="19" stroke="#000000" stroke-width="0.9" />
+</svg>
