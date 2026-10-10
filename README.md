@@ -2,6 +2,8 @@
   <img src="https://capsule-render.vercel.app/api?type=waving&height=230&text=Juli%C3%A3o%20Martins&fontSize=46&fontAlignY=38&desc=Junior%20Developer%20%7C%20IT%20Collaborator%20at%20Viettel%20Timor,%20Unipessoal,%20Lda%20(Telemor)&descAlignY=60&color=0:0f172a,100:0ea5e9&fontColor=ffffff" alt="Julião Martins banner" />
 </p>
 
+[![An image of @juliaomartins's Holopin badges, which is a link to view their full Holopin profile](https://holopin.me/juliaomartins)](https://holopin.io/@juliaomartins)
+
 <p align="center">
   <strong>Designing modern digital experiences with clean architecture, smooth interaction, and measurable impact.</strong>
   <br/>
