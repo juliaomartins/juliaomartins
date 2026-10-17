@@ -54,7 +54,7 @@
         "description": "Aplikasaun iOS ba funsionáriu Telemor sira hodi jere sira-nia atividade servisu loroloron, publika iha App Store.",
         "tags": [
           "React Native",
-          "iOS"
+          "EXPO"
         ],
         "linkLabel": "App Store",
         "href": "https://apps.apple.com/us/app/life-mor/id6754350114"
@@ -64,14 +64,14 @@
         "description": "Website ofisiál ba Díli Regional Cooperative Conference and Ministerial Dialogue 2026, ne'ebé hala'o hamutuk ho ASEAN Cooperative Expo 2026.",
         "tags": [
           "Next.js",
-          "Website"
+          "Supabase"
         ],
         "linkLabel": "Vizita website",
         "href": "https://cooptl.com/"
       },
       {
         "name": "Sistema Vizitante no Fila",
-        "description": "Sistema kartaun no fila ba vizitante sira iha DRCCMD 2026 iha Palm Spring: rejista vizitante, imprime kartaun ho QR, scan sira-nia to'o ho telefone no simu sira iha ekran lobby.",
+        "description": "Sistema Queue ba eventu DRCCMD 2026 iha Palm Spring: rejista vizitante sira, imprime kartaun ho QR Code, uza telefone atu skan QR Code bainhira vizitante sira to’o, no hatudu mensajen Bemvindu iha screen lobby ba vizitante neebe rejistradu validu iha sistema.",
         "tags": [
           "Django",
           "Next.js",
