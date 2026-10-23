@@ -1,138 +1,89 @@
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&height=230&text=Juli%C3%A3o%20Martins&fontSize=46&fontAlignY=38&desc=Junior%20Developer%20%7C%20IT%20Collaborator%20at%20Viettel%20Timor,%20Unipessoal,%20Lda%20(Telemor)&descAlignY=60&color=0:0f172a,100:0ea5e9&fontColor=ffffff" alt="Julião Martins banner" />
-</p>
-
-[![An image of @juliaomartins's Holopin badges, which is a link to view their full Holopin profile](https://holopin.me/juliaomartins)](https://holopin.io/@juliaomartins)
+<a href="https://juliaomartins.dev">
+  <img src="https://juliaomartins.dev/opengraph-image" alt="Julião Martins — Developer, now studying AI engineering" width="100%" />
+</a>
 
 <p align="center">
-  <strong>Designing modern digital experiences with clean architecture, smooth interaction, and measurable impact.</strong>
+  I'm a developer who builds web and mobile products with React, Next.js and React Native. Now I'm studying AI engineering — learning to build with large language models and bring into real products.
   <br/>
-  <em>Ha'u kria interface modernu, lalais, no forte ba utilizador sira.</em>
+  <sub><em>Ha'u developer ida ne'ebé dezenvolve produtu web no mobile ho React, Next.js no React Native. Agora ha'u estuda hela AI engineering — aprende oinsá dezenvolve ho large language models no hatama ba iha produtu reál.</em></sub>
 </p>
 
 <p align="center">
-  <a href="https://juliao-martins.vercel.app/">
-    <img src="https://img.shields.io/badge/Portfolio-Live%20Site-0ea5e9?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio badge" />
-  </a>
-  <a href="https://telemor.tl/">
-    <img src="https://img.shields.io/badge/Viettel%20Timor,%20Unipessoal,%20lda%20(Telemor)-IT%20Collaborator-ef4444?style=for-the-badge&logo=databricks&logoColor=white" alt="Viettel Telemor badge" />
-  </a>
-  <img src="https://img.shields.io/badge/Focus-Developer%20%2B%20AI-1d4ed8?style=for-the-badge" alt="Focus badge" />
-  <img src="https://komarev.com/ghpvc/?username=juliao-martins-dev&style=for-the-badge&color=0ea5e9" alt="Profile views" />
+  <a href="https://juliaomartins.dev"><img src="https://img.shields.io/badge/Portfolio-juliaomartins.dev-7C3AED?style=flat-square" alt="Portfolio: juliaomartins.dev" /></a>
+  <a href="mailto:juliaodejesusmartins@gmail.com"><img src="https://img.shields.io/badge/Email-juliaodejesusmartins@gmail.com-2997FF?style=flat-square&logo=gmail&logoColor=white" alt="Email" /></a>
+  <a href="https://wa.me/67076520025"><img src="https://img.shields.io/badge/WhatsApp-%2B670_7652_0025-25D366?style=flat-square&logo=whatsapp&logoColor=white" alt="WhatsApp +670 7652 0025" /></a>
+  <img src="https://img.shields.io/badge/Based_in-Dili,_Timor--Leste-000000?style=flat-square" alt="Based in Dili, Timor-Leste" />
 </p>
 
----
+> **Currently** IT Collaborator at Viettel Timor, Unipessoal, Lda. (Telemor)
 
-## 🌐 Portfolio
+## About Me
 
-<p align="center">
-  <a href="https://juliao-martins.vercel.app/">
-    <img src="https://api.microlink.io/?url=https://juliao-martins.vercel.app/&screenshot=true&meta=false&embed=screenshot.url" alt="Portfolio preview" width="900" />
-  </a>
-</p>
+I'm a developer with over three years of professional experience in IT and systems maintenance. At Leader Group I looked after hardware, networking and databases for retail systems — both the cashier front line and the back office — across Leader Hypermarket, Leader Mart, Cement Timor, Auto Timor Leste and Lisun Timor.
 
-<p align="center">
-  <a href="https://juliao-martins.vercel.app/"><strong>Visit Website</strong></a>
-</p>
+Since 2025 I've been an IT Collaborator in the Software Development department at Viettel Timor, Unipessoal, Lda. (Telemor), one of Timor-Leste's leading telecommunications companies, building real applications used by staff and customers.
 
----
+| | Role | Where | |
+|---|---|---|---|
+| **2023 – 2025** | IT Support | Leader Group | Kept retail systems, networks and databases running. |
+| **2025 – Now** | IT Collaborator | Viettel Timor (Telemor) | Building software in the Software Development department. |
+| **Next** | AI Engineer | Studying | Learning to build products with large language models. |
 
-## 👨‍💻 About Me | Kona-ba Ha'u
+## Projects
 
-I am a Junior Developer focused on building scalable web and mobile applications, combining modern frontend technologies, robust backend systems, and reliable database architectures.
+| | Project | What it is | Built with |
+|---|---|---|---|
+| 01 | **[Life Mor](https://apps.apple.com/us/app/life-mor/id6754350114)** | iOS app for Telemor staff to manage their daily work activities, published on the App Store. | React Native · EXPO |
+| 02 | **[DRCCMD 2026](https://cooptl.com/)** | Official website of the Díli Regional Cooperative Conference and Ministerial Dialogue 2026, held alongside the ASEAN Cooperative Expo 2026. | Next.js · Supabase |
+| 03 | **[Visitor and Queue System](https://github.com/juliaomartins/visitor-management-system)** | Queue system for the DRCCMD 2026 event at Palm Spring: register visitors, print QR code badges, scan QR codes with a phone when visitors arrive, and display a welcome message on the lobby screen for visitors who are registered in the system. | Django · Next.js · React Native |
 
-- Junior Developer in the Software Development Team at **[Viettel Timor, Unipessoal, Lda (Telemor)](https://telemor.tl/)**.
-- Strong focus on component architecture, responsiveness, animation, and accessibility.
-- AI-assisted workflow for faster iteration, better design quality, and cleaner engineering decisions.
-- Ha'u servisu hanesan IT Collaborator ho fokus ba develop app moderno, efisiente no fasil atu uza.
+## Skills — 26 tools
 
----
+I work with AI coding agents like Claude Code every day — and I use with responsibly. I review every line they produce and keep architecture and judgement in my own hands. For me they are a way to ship better work faster, not a substitute for knowing my craft.
 
-## 🌍 Location & Contact
+**Frontend & mobile**<br/>
+<img src="https://img.shields.io/badge/HTML-E34F26?style=flat-square&logo=html5&logoColor=black" alt="HTML" />
+<img src="https://img.shields.io/badge/CSS-1572B6?style=flat-square&logo=css&logoColor=white" alt="CSS" />
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript" />
+<img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
+<img src="https://img.shields.io/badge/Tailwind_CSS-38BDF8?style=flat-square&logo=tailwindcss&logoColor=black" alt="Tailwind CSS" />
+<img src="https://img.shields.io/badge/GSAP-0E100F?style=flat-square&logo=gsap&logoColor=white" alt="GSAP" />
+<img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB" alt="React" />
+<img src="https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white" alt="Next.js" />
+<img src="https://img.shields.io/badge/React_Native-61DAFB?style=flat-square&logo=react&logoColor=20232A" alt="React Native" />
 
-- **Country:** <img src="https://flagcdn.com/w20/tl.png" width="20" alt="Timor-Leste flag" /> Timor-Leste (**+670**)
-- **Collaboration:** Open to international remote projects and frontend partnerships.
+**Backend, data & delivery**<br/>
+<img src="https://img.shields.io/badge/Python-306998?style=flat-square&logo=python&logoColor=white" alt="Python" />
+<img src="https://img.shields.io/badge/Django-092E20?style=flat-square&logo=django&logoColor=white" alt="Django" />
+<img src="https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=openjdk&logoColor=black" alt="Java" />
+<img src="https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=black" alt="Supabase" />
+<img src="https://img.shields.io/badge/MySQL-00758F?style=flat-square&logo=mysql&logoColor=white" alt="MySQL" />
+<img src="https://img.shields.io/badge/OracleDB-C74634?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2ZmZmZmZiI%2BPHBhdGggZD0iTTE2LjQxMiA0LjQxMmgtOC44MmE3LjU4OCA3LjU4OCAwIDAgMC0uMDA4IDE1LjE3Nmg4LjgyOGE3LjU4OCA3LjU4OCAwIDAgMCAwLTE1LjE3NnptLS4xOTMgMTIuNTAySDcuNzg2YTQuOTE1IDQuOTE1IDAgMCAxIDAtOS44MjhoOC40MzNhNC45MTQgNC45MTQgMCAxIDEgMCA5LjgyOHoiLz48L3N2Zz4%3D&logoColor=white" alt="OracleDB" />
+<img src="https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white" alt="Vercel" />
+<img src="https://img.shields.io/badge/Nginx-009639?style=flat-square&logo=nginx&logoColor=black" alt="Nginx" />
 
----
+**AI & tooling**<br/>
+<img src="https://img.shields.io/badge/Claude_Code-D97757?style=flat-square&logo=claude&logoColor=black" alt="Claude Code" />
+<img src="https://img.shields.io/badge/Claude_API-191919?style=flat-square&logo=anthropic&logoColor=white" alt="Claude API" />
+<img src="https://img.shields.io/badge/OpenAI_SDK-10A37F?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2ZmZmZmZiI%2BPHBhdGggZD0iTTIyLjI4MTkgOS44MjExYTUuOTg0NyA1Ljk4NDcgMCAwIDAtLjUxNTctNC45MTA4IDYuMDQ2MiA2LjA0NjIgMCAwIDAtNi41MDk4LTIuOUE2LjA2NTEgNi4wNjUxIDAgMCAwIDQuOTgwNyA0LjE4MThhNS45ODQ3IDUuOTg0NyAwIDAgMC0zLjk5NzcgMi45IDYuMDQ2MiA2LjA0NjIgMCAwIDAgLjc0MjcgNy4wOTY2IDUuOTggNS45OCAwIDAgMCAuNTExIDQuOTEwNyA2LjA1MSA2LjA1MSAwIDAgMCA2LjUxNDYgMi45MDAxQTUuOTg0NyA1Ljk4NDcgMCAwIDAgMTMuMjU5OSAyNGE2LjA1NTcgNi4wNTU3IDAgMCAwIDUuNzcxOC00LjIwNTggNS45ODk0IDUuOTg5NCAwIDAgMCAzLjk5NzctMi45MDAxIDYuMDU1NyA2LjA1NTcgMCAwIDAtLjc0NzUtNy4wNzI5em0tOS4wMjIgMTIuNjA4MWE0LjQ3NTUgNC40NzU1IDAgMCAxLTIuODc2NC0xLjA0MDhsLjE0MTktLjA4MDQgNC43NzgzLTIuNzU4MmEuNzk0OC43OTQ4IDAgMCAwIC4zOTI3LS42ODEzdi02LjczNjlsMi4wMiAxLjE2ODZhLjA3MS4wNzEgMCAwIDEgLjAzOC4wNTJ2NS41ODI2YTQuNTA0IDQuNTA0IDAgMCAxLTQuNDk0NSA0LjQ5NDR6bS05LjY2MDctNC4xMjU0YTQuNDcwOCA0LjQ3MDggMCAwIDEtLjUzNDYtMy4wMTM3bC4xNDIuMDg1MiA0Ljc4MyAyLjc1ODJhLjc3MTIuNzcxMiAwIDAgMCAuNzgwNiAwbDUuODQyOC0zLjM2ODV2Mi4zMzI0YS4wODA0LjA4MDQgMCAwIDEtLjAzMzIuMDYxNUw5Ljc0IDE5Ljk1MDJhNC40OTkyIDQuNDk5MiAwIDAgMS02LjE0MDgtMS42NDY0ek0yLjM0MDggNy44OTU2YTQuNDg1IDQuNDg1IDAgMCAxIDIuMzY1NS0xLjk3MjhWMTEuNmEuNzY2NC43NjY0IDAgMCAwIC4zODc5LjY3NjVsNS44MTQ0IDMuMzU0My0yLjAyMDEgMS4xNjg1YS4wNzU3LjA3NTcgMCAwIDEtLjA3MSAwbC00LjgzMDMtMi43ODY1QTQuNTA0IDQuNTA0IDAgMCAxIDIuMzQwOCA3Ljg3MnptMTYuNTk2MyAzLjg1NThMMTMuMTAzOCA4LjM2NCAxNS4xMTkyIDcuMmEuMDc1Ny4wNzU3IDAgMCAxIC4wNzEgMGw0LjgzMDMgMi43OTEzYTQuNDk0NCA0LjQ5NDQgMCAwIDEtLjY3NjUgOC4xMDQydi01LjY3NzJhLjc5Ljc5IDAgMCAwLS40MDctLjY2N3ptMi4wMTA3LTMuMDIzMWwtLjE0Mi0uMDg1Mi00Ljc3MzUtMi43ODE4YS43NzU5Ljc3NTkgMCAwIDAtLjc4NTQgMEw5LjQwOSA5LjIyOTdWNi44OTc0YS4wNjYyLjA2NjIgMCAwIDEgLjAyODQtLjA2MTVsNC44MzAzLTIuNzg2NmE0LjQ5OTIgNC40OTkyIDAgMCAxIDYuNjgwMiA0LjY2ek04LjMwNjUgMTIuODYzbC0yLjAyLTEuMTYzOGEuMDgwNC4wODA0IDAgMCAxLS4wMzgtLjA1NjdWNi4wNzQyYTQuNDk5MiA0LjQ5OTIgMCAwIDEgNy4zNzU3LTMuNDUzN2wtLjE0Mi4wODA1TDguNzA0IDUuNDU5YS43OTQ4Ljc5NDggMCAwIDAtLjM5MjcuNjgxM3ptMS4wOTc2LTIuMzY1NGwyLjYwMi0xLjQ5OTggMi42MDY5IDEuNDk5OHYyLjk5OTRsLTIuNTk3NCAxLjQ5OTctMi42MDY3LTEuNDk5N1oiLz48L3N2Zz4%3D&logoColor=white" alt="OpenAI SDK" />
+<img src="https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square&logo=langchain&logoColor=white" alt="LangChain" />
+<img src="https://img.shields.io/badge/Hugging_Face-FFD21E?style=flat-square&logo=huggingface&logoColor=black" alt="Hugging Face" />
+<img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=black" alt="Git" />
+<img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub" />
+<img src="https://img.shields.io/badge/GitLab-FC6D26?style=flat-square&logo=gitlab&logoColor=black" alt="GitLab" />
+<img src="https://img.shields.io/badge/MkDocs-4051B5?style=flat-square&logo=materialformkdocs&logoColor=white" alt="MkDocs" />
 
-## 🧰 Tech Stack | Skill Tekniku
+<sub>*Every tool earns its place.*</sub>
 
-<p align="center">
-  <img src="https://img.shields.io/badge/HTML-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML badge" />
-  <img src="https://img.shields.io/badge/CSS-1572B6?style=flat-square&logo=css3&logoColor=white" alt="CSS badge" />
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript badge" />
-  <img src="https://img.shields.io/badge/TailwindCSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS badge" />
-  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript badge" />
-  <img src="https://img.shields.io/badge/ReactJS-61DAFB?style=flat-square&logo=react&logoColor=20232a" alt="ReactJS badge" />
-  <img src="https://img.shields.io/badge/React%20Native-61DAFB?style=flat-square&logo=react&logoColor=20232a" alt="React Native badge" />
-  <img src="https://img.shields.io/badge/NextJS-000000?style=flat-square&logo=nextdotjs&logoColor=white" alt="NextJS badge" />
-  <img src="https://img.shields.io/badge/GSAP-88CE02?style=flat-square&logo=greensock&logoColor=white" alt="GSAP badge" />
-  <img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black" alt="Firebase badge" />
-  <img src="https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white" alt="Supabase badge" />
-  <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python Logo Badge">
-  <img src="https://img.shields.io/badge/Django-092E20?style=flat-square&logo=django&logoColor=white" alt="Django badge" />
-  <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white" alt="MySQL badge" />
-  <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white" alt="PostgreSQL badge" />
-  <img src="https://img.shields.io/badge/OracleDB-F80000?style=flat-square&logo=oracle&logoColor=white" alt="Oracle Database badge" />
-  <img src="https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=openjdk&logoColor=white" alt="Java badge" />
-  <img src="https://img.shields.io/badge/Android%20Studio-3DDC84?style=flat-square&logo=androidstudio&logoColor=white" alt="Android Studio badge" />
-  <img src="https://img.shields.io/badge/GitLab%20CI%2FCD-FC6D26?style=flat-square&logo=gitlab&logoColor=white" alt="GitLab CI/CD badge" />
-  <img src="https://img.shields.io/badge/MkDocs-526CFE?style=flat-square&logo=materialformkdocs&logoColor=white" alt="MkDocs badge" />
-  <img src="https://img.shields.io/badge/Nginx-009639?style=flat-square&logo=nginx&logoColor=white" alt="Nginx badge" />
-  <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white" alt="Git badge" />
-  <img src="https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white" alt="Vercel badge" />
+## Let's build something together
 
-</p>
+Have a project, a role or just a question? Send me a message — or reach me directly.
 
-- **Frontend:** HTML, CSS, JavaScript, TypeScript, TailwindCSS, ReactJS, React Native, NextJS
-- **Motion:** GSAP
-- **Backend & BaaS:** Python, Django, Firebase, Supabase
-- **Database:** MySQL, PostgreSQL, Oracle Database
-- **Mobile:** Java, Android Studio
-- **DevOps & Deploy:** Git, GitLab CI/CD, MkDocs, Nginx, Vercel
-
----
-
-## 🚀 What I Do in the Team | Papel iha Team
-
-- Build production-ready frontend features from UI/UX specifications.
-- Collaborate with backend, QA, and product teams for reliable releases.
-- Improve performance, maintainability, and accessibility standards.
-- Translate complex business requirements into intuitive user experiences.
+- **Email** — [juliaodejesusmartins@gmail.com](mailto:juliaodejesusmartins@gmail.com)
+- **WhatsApp** — [+670 7652 0025](https://wa.me/67076520025)
+- **GitHub** — [@juliaomartins](https://github.com/juliaomartins)
+- **Location** — Dili, Timor-Leste
 
 ---
 
-## 📊 GitHub Insights
-
-<p align="center">
-  <img height="170" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=juliao-martins-dev&theme=github_dark" alt="GitHub stats" />
-  <img height="170" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=juliao-martins-dev&theme=github_dark" alt="Top languages" />
-</p>
-
-<p align="center">
-  <img src="https://streak-stats.demolab.com?user=juliao-martins-dev&theme=transparent&hide_border=true" alt="GitHub streak" />
-</p>
-
-<p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=juliao-martins-dev&bg_color=ffffff00&color=0f172a&line=0ea5e9&point=38bdf8&area=true&hide_border=true" alt="Contribution graph" />
-</p>
-
----
-
-## 📚 Learning Direction | Aprende Kontinua
-
-- Advanced frontend architecture patterns
-- Performance profiling and optimization
-- AI-driven development workflows
-- UX and accessibility best practices
-
----
-
-## 🤝 Connect
-
-- **Portfolio:** [https://juliao-martins.vercel.app/](https://juliao-martins.vercel.app/)
-- **Open to:** Frontend development, product UI engineering, and AI-assisted digital projects.
-
----
-
-> **Build fast. Build clean. Build smart.**
+<sub>This repository is also the source of [juliaomartins.dev](https://juliaomartins.dev) — Next.js 16, Tailwind CSS v4 and GSAP, in English and Tetum.</sub>
