@@ -5,6 +5,7 @@ import CaseExit from "@/components/case-study/CaseExit";
 import CaseIntro from "@/components/case-study/CaseIntro";
 import CaseNav from "@/components/case-study/CaseNav";
 import CaseSteps from "@/components/case-study/CaseSteps";
+import CaseTeam from "@/components/case-study/CaseTeam";
 import CaseWall from "@/components/case-study/CaseWall";
 import Footer from "@/components/layout/Footer";
 import SkipLink from "@/components/layout/SkipLink";
@@ -34,7 +35,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 /**
  * Case study: the Visitor and Queue System at DRCCMD 2026, hung like a small
- * exhibition — entrance and wall label, four plates, then the photographs.
+ * exhibition — entrance and wall label, the route at the door and its four
+ * plates, the photographs, then the credits: the Inovtec team behind it.
  */
 export default function VisitorQueueSystemPage() {
   return (
@@ -45,6 +47,7 @@ export default function VisitorQueueSystemPage() {
         <CaseIntro />
         <CaseSteps />
         <CaseWall />
+        <CaseTeam />
         <CaseExit />
       </main>
       <ScrollToTop />

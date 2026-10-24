@@ -1,23 +1,31 @@
 "use client";
 
-import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useRef } from "react";
 
 import GalleryVideo from "@/components/sections/GalleryVideo";
 import { queueCase } from "@/data/queue-case";
+import { useClipReveal } from "@/hooks/useClipReveal";
 import { cn } from "@/lib/utils";
-import { gsap, ScrollTrigger } from "@/motion/registry";
-import { clip, duration, ease, offset, stagger } from "@/motion/tokens";
 
-type Step = { title: string; body: string; alt: string; caption: string };
+import RouteMap from "./RouteMap";
+
+type Step = {
+  title: string;
+  /** Station name on the route map. */
+  short: string;
+  body: string;
+  alt: string;
+  caption: string;
+};
 
 const NUMERALS = ["I", "II", "III", "IV"] as const;
 
 /**
- * How it worked: four plates, I to IV, alternating sides from md. The last is
- * the footage from the lobby — a scan, then the welcome on screen.
+ * How it worked: the route at the door (RouteMap), then its four plates, I
+ * to IV, alternating sides from md. The last is the footage from the lobby —
+ * a scan, then the welcome on screen.
  *
  * Each piece is unveiled bottom-up as it enters, like the skills wall. Hidden
  * only once JS runs, so no-JS and reduced motion see every plate at rest.
@@ -27,33 +35,7 @@ export default function CaseSteps() {
   const rootRef = useRef<HTMLElement>(null);
   const steps = t.raw("steps") as Step[];
 
-  useGSAP(
-    () => {
-      const mm = gsap.matchMedia();
-      mm.add("(prefers-reduced-motion: no-preference)", () => {
-        const pieces = gsap.utils.toArray<HTMLElement>(
-          "[data-case-reveal]",
-          rootRef.current
-        );
-        gsap.set(pieces, { clipPath: clip.hidden, y: offset.tile });
-        ScrollTrigger.batch(pieces, {
-          start: "top 80%",
-          once: true,
-          onEnter: (batch) =>
-            gsap.to(batch, {
-              clipPath: clip.shown,
-              y: 0,
-              duration: duration.xl,
-              ease: ease.out,
-              stagger: stagger.each,
-              clearProps: "clipPath,transform",
-            }),
-        });
-      });
-      return () => mm.revert();
-    },
-    { scope: rootRef }
-  );
+  useClipReveal(rootRef, "[data-case-reveal]");
 
   return (
     <section
@@ -70,14 +52,17 @@ export default function CaseSteps() {
         </p>
       </div>
 
-      <ol className="mt-16 space-y-20 md:mt-24 md:space-y-32">
+      <RouteMap stations={steps.map((step) => step.short)} numerals={NUMERALS} />
+
+      <ol className="mt-20 space-y-20 md:mt-32 md:space-y-32">
         {steps.map((step, index) => {
           const media = queueCase.steps[index];
           const flipped = index % 2 === 1;
           return (
             <li
               key={step.title}
-              className="grid items-center gap-8 md:grid-cols-12 md:gap-12"
+              id={`plate-${index + 1}`}
+              className="grid scroll-mt-28 items-center gap-8 md:grid-cols-12 md:gap-12"
             >
               <div
                 data-case-reveal=""

@@ -1,14 +1,12 @@
 "use client";
 
-import { useGSAP } from "@gsap/react";
 import { Expand } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useRef, useState, type CSSProperties, type MouseEvent } from "react";
 
 import { FRAME_RATIO, queueCase, type Frame } from "@/data/queue-case";
-import { gsap, ScrollTrigger } from "@/motion/registry";
-import { clip, duration, ease, offset, stagger } from "@/motion/tokens";
+import { useClipReveal } from "@/hooks/useClipReveal";
 
 import Lightbox from "./Lightbox";
 
@@ -52,33 +50,7 @@ export default function CaseWall() {
   );
   const photos = rows.flat();
 
-  useGSAP(
-    () => {
-      const mm = gsap.matchMedia();
-      mm.add("(prefers-reduced-motion: no-preference)", () => {
-        const pieces = gsap.utils.toArray<HTMLElement>(
-          "[data-wall-piece]",
-          rootRef.current
-        );
-        gsap.set(pieces, { clipPath: clip.hidden, y: offset.tile });
-        ScrollTrigger.batch(pieces, {
-          start: "top 80%",
-          once: true,
-          onEnter: (batch) =>
-            gsap.to(batch, {
-              clipPath: clip.shown,
-              y: 0,
-              duration: duration.xl,
-              ease: ease.out,
-              stagger: stagger.each,
-              clearProps: "clipPath,transform",
-            }),
-        });
-      });
-      return () => mm.revert();
-    },
-    { scope: rootRef }
-  );
+  useClipReveal(rootRef, "[data-wall-piece]");
 
   const show = (index: number) => (event: MouseEvent<HTMLAnchorElement>) => {
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;

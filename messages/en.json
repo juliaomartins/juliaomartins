@@ -184,6 +184,10 @@
           "detail": "Django, Next.js, React Native, EXPO"
         },
         {
+          "term": "Studio",
+          "detail": "Inovtec"
+        },
+        {
           "term": "Status",
           "detail": "Used live at the event"
         }
@@ -194,30 +198,34 @@
     "problemTitle": "The problem",
     "problem": "A ministerial dialogue means many important guests arriving at once, each one to be checked against the guest list and welcomed properly. A paper list at the door turns that into a queue — and nobody inside knows who has already arrived.",
     "stepsTitle": "How it worked",
-    "stepsIntro": "Four steps, one system.",
+    "stepsIntro": "Two paths at the door, one welcome. Visitors already in the system went straight to the scan; everyone else was registered on the spot.",
     "steps": [
       {
-        "title": "Register",
-        "body": "Every visitor is registered in the system before the event.",
-        "alt": "Two team members registering visitors on laptops at the operations desk.",
-        "caption": "The operations desk."
+        "title": "Register on the spot",
+        "short": "Register at the desk",
+        "body": "At the entrance, the welcome team registers anyone who isn't in the system yet — right there at the desk.",
+        "alt": "The welcome team at the desk with a visitor, the lobby screen behind them.",
+        "caption": "The welcome desk at the entrance."
       },
       {
-        "title": "Print the badge",
-        "body": "Each registration prints a badge with the visitor's own QR code.",
-        "alt": "Delegates wearing QR code badges on lanyards at the entrance.",
-        "caption": "QR badges on lanyards."
+        "title": "The QR ID card",
+        "short": "QR ID card",
+        "body": "Every registered visitor carries an ID card with their own QR code.",
+        "alt": "Delegates wearing QR ID cards on lanyards.",
+        "caption": "QR ID cards on lanyards."
       },
       {
-        "title": "Scan at the door",
-        "body": "Staff scan the badge with a phone. A registered visitor is checked in on the spot.",
-        "alt": "A staff member scans a delegate's QR badge with a phone.",
-        "caption": "One scan at the door."
+        "title": "One scan",
+        "short": "Scan the ID card",
+        "body": "Registered before the event or a minute ago, everyone meets the same moment: a phone scans the ID card and the visitor is checked in.",
+        "alt": "A staff member scans a delegate's QR ID card with a phone.",
+        "caption": "A phone scans the ID card."
       },
       {
         "title": "Welcome on screen",
+        "short": "Welcome on screen",
         "body": "The lobby screen greets the visitor by name and photo, then goes back to waiting for the next arrival.",
-        "alt": "Video: a badge is scanned and the lobby screen shows “Welcome” with the visitor's name and photo.",
+        "alt": "Video: an ID card is scanned and the lobby screen shows “Welcome” with the visitor's name and photo.",
         "caption": "Filmed at the event: scan, then welcome."
       }
     ],
@@ -231,9 +239,7 @@
       "scanQueue": "Keeping the line moving.",
       "scanBatik": "Scanning badges at the door.",
       "scanLounge": "Check-in in the lounge.",
-      "welcomeDesk": "The welcome team at the desk.",
       "deskReady": "The desk, ready for the next arrival.",
-      "delegates": "Delegates at the conference backdrop.",
       "drccmdStage": "On stage at the Díli Regional Cooperative Conference.",
       "aseanExpo": "Alongside the ASEAN Cooperative Expo 2026."
     },
@@ -246,6 +252,43 @@
     "exitTitle": "Under the hood",
     "exitBody": "Django, Next.js, React Native and EXPO — the source is on GitHub.",
     "code": "View the code on GitHub",
-    "backHome": "Back to all projects"
+    "backHome": "Back to all projects",
+    "flow": {
+      "label": "The route at the door",
+      "newVisitor": "New visitor",
+      "registered": "Already registered?",
+      "bypass": "Straight to the scan."
+    },
+    "team": {
+      "eyebrow": "Behind the scenes",
+      "title": "Made by Inovtec",
+      "body": "The Visitor and Queue System and the official DRCCMD and ASEAN Cooperative Expo website were built by Inovtec — my team. We ran the system on site through the event and saw the mission through to a successful finish.",
+      "credits": [
+        {
+          "term": "Studio",
+          "detail": "Inovtec"
+        },
+        {
+          "term": "Built",
+          "detail": "Visitor and Queue System"
+        },
+        {
+          "term": "Also built",
+          "detail": "Official DRCCMD & ACE website"
+        }
+      ],
+      "photos": {
+        "behind": {
+          "label": "Behind the scenes",
+          "caption": "Julião with the Inovtec team, running the system during the event."
+        },
+        "mission": {
+          "label": "Mission complete",
+          "caption": "The Inovtec team with H.E. Arsénio Pereira da Silva, Secretary of State for Cooperatives (SECoop), Timor-Leste."
+        }
+      },
+      "site": "Visit Inovtec",
+      "website": "Visit cooptl.com"
+    }
   }
 }

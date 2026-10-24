@@ -40,20 +40,16 @@ const wall: readonly (readonly CasePhoto[])[] = [
     { id: "scanDesk", src: "/queue-system/scan-desk.jpg", ...PHOTO, frame: "portrait", focus: "45% 50%" },
   ],
   [
-    { id: "scanCloseup", src: "/queue-system/scan-closeup.jpg", ...PHOTO, frame: "square" },
+    { id: "scanCloseup", src: "/queue-system/scan-closeup.jpg", ...PHOTO, frame: "landscape" },
     { id: "scanArrival", src: "/queue-system/scan-arrival.jpg", ...PHOTO, frame: "portrait", focus: "70% 50%" },
-    { id: "delegates", src: "/queue-system/delegates.jpg", ...PHOTO, frame: "landscape" },
-  ],
-  [
     { id: "scanBatik", src: "/queue-system/scan-batik.jpg", ...PHOTO, frame: "portrait", focus: "55% 50%" },
-    { id: "welcomeDesk", src: "/queue-system/welcome-desk.jpg", ...PHOTO, frame: "landscape" },
-    { id: "scanQueue", src: "/queue-system/scan-queue.jpg", ...PHOTO, frame: "square", focus: "60% 50%" },
   ],
   [
     { id: "drccmdStage", src: "/queue-system/drccmd-stage.jpg", ...PHOTO, frame: "wide" },
     { id: "deskReady", src: "/queue-system/desk-ready.jpg", ...PHOTO, frame: "square", focus: "55% 50%" },
   ],
   [
+    { id: "scanQueue", src: "/queue-system/scan-queue.jpg", ...PHOTO, frame: "square", focus: "60% 50%" },
     { id: "scanLounge", src: "/queue-system/scan-lounge.jpg", ...PHOTO, frame: "portrait", focus: "60% 50%" },
     { id: "aseanExpo", src: "/queue-system/asean-expo.jpg", ...PHOTO, frame: "wide", focus: "50% 15%" },
   ],
@@ -66,9 +62,12 @@ export const queueCase = {
   /** The lobby screen at 08:51, waiting for arrivals. The page's LCP. */
   lead: { src: "/queue-system/waiting-for-arrivals.jpg", ...PHOTO },
 
-  /** One medium per step, in the order of messages queueCase.steps. */
+  /**
+   * One medium per step, in the order of messages queueCase.steps: register
+   * a walk-in at the desk, the QR ID card, the scan, the welcome on screen.
+   */
   steps: [
-    { kind: "photo", src: "/queue-system/operators.jpg", ...PHOTO },
+    { kind: "photo", src: "/queue-system/welcome-desk.jpg", ...PHOTO },
     { kind: "photo", src: "/queue-system/badges-on.jpg", ...PHOTO },
     { kind: "photo", src: "/queue-system/badge-scan.jpg", ...PHOTO },
     {
@@ -81,6 +80,16 @@ export const queueCase = {
   ],
 
   wall,
+
+  /** Behind the scenes: the Inovtec team that built and ran the system. */
+  team: {
+    site: "https://inovtec.digital",
+    website: "https://cooptl.com/",
+    photos: [
+      { id: "behind", src: "/queue-system/inovtec-team.jpg", ...PHOTO },
+      { id: "mission", src: "/queue-system/inovtec-mission.jpg", ...PHOTO },
+    ],
+  },
 
   /** Three prints pinned to the project row on the home page. */
   teaser: [
