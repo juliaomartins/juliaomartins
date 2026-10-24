@@ -70,7 +70,7 @@
         "href": "https://cooptl.com/"
       },
       {
-        "name": "Sistema Vizitante no Fila",
+        "name": "Sistema Formatura no Vizitante",
         "description": "Sistema Queue ba eventu DRCCMD 2026 iha Palm Spring: rejista vizitante sira, imprime kartaun ho QR Code, uza telefone atu skan QR Code bainhira vizitante sira to’o, no hatudu mensajen Bemvindu iha screen lobby ba vizitante neebe rejistradu validu iha sistema.",
         "tags": [
           "Django",
@@ -162,8 +162,8 @@
     "back": "Projetu hotu",
     "home": "Julião Martins, pájina prinsipál",
     "eyebrow": "Estudu kazu · DRCCMD 2026",
-    "title": "Sistema Vizitante no Fila",
-    "lede": "Ministru sira, delegasaun no konvidadu sira to'o iha Palm Spring iha tempu hanesan. La uza lista papél no fila naruk — vizitante ida-idak lori kartaun ho QR code, skan dala ida iha odamatan, no ekran iha lobby simu sira ho sira-nia naran.",
+    "title": "Sistema Formatura no Vizitante",
+    "lede": "Ministru sira, delegasaun no konvidadu sira to'o iha Palm Spring iha tempu hanesan. La uza lista papél no formatura naruk — vizitante ida-idak lori kartaun ho QR code, skan dala ida iha odamatan, no screen iha lobby simu sira ho sira-nia naran.",
     "label": {
       "title": "Etiketa",
       "items": [
@@ -194,9 +194,9 @@
       ]
     },
     "leadAlt": "Ekran iha lobby hatudu 08:51, hein vizitante sira, besik meza rejistu no ninia ekipa.",
-    "leadCaption": "08:51 — ekran iha lobby, hein vizitante dahuluk sira.",
+    "leadCaption": "08:51 — screen iha lobby, hein vizitante dahuluk sira.",
     "problemTitle": "Problema",
-    "problem": "Diálogu ministeriál signifika konvidadu importante barak to'o iha tempu hanesan, no ida-idak tenke verifika iha lista konvidadu no simu ho di'ak. Lista papél iha odamatan halo fila naruk — no ema iha laran la hatene se mak to'o ona.",
+    "problem": "Diálogu ministeriál signifika konvidadu importante barak to'o iha tempu hanesan, no ida-idak tenke verifika iha lista konvidadu no simu ho di'ak. Lista papél iha odamatan halo formatura naruk — no ema iha laran la hatene se mak to'o ona.",
     "stepsTitle": "Oinsá sistema servisu",
     "stepsIntro": "Dalan rua iha odamatan, bemvindu ida deit. Vizitante ne'ebé rejista ona ba kedas skan; sira seluk rejista iha fatin.",
     "steps": [
@@ -212,7 +212,7 @@
         "short": "Kartaun ID QR",
         "body": "Vizitante rejistadu ida-idak lori kartaun ID ho ninia QR code rasik.",
         "alt": "Delegadu sira uza kartaun ID QR iha lanyard.",
-        "caption": "Kartaun ID QR iha lanyard."
+        "caption": "Kartaun ID QR Code"
       },
       {
         "title": "Skan dala ida",
@@ -222,8 +222,8 @@
         "caption": "Telefone skan kartaun ID."
       },
       {
-        "title": "Bemvindu iha ekran",
-        "short": "Bemvindu iha ekran",
+        "title": "Bemvindu iha Screen",
+        "short": "Bemvindu iha Screen",
         "body": "Ekran iha lobby simu vizitante ho ninia naran no foto, depois hein fali vizitante tuir mai.",
         "alt": "Vídeo: skan kartaun ID ida no ekran iha lobby hatudu “Welcome” ho vizitante nia naran no foto.",
         "caption": "Filma iha eventu: skan, depois bemvindu."
