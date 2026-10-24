@@ -388,3 +388,34 @@ html[data-motion="full"] [data-hero-piece] {
 html[data-motion="full"] [data-hero-slice] {
   translate: calc(var(--piece-x, 0cqw) * -1) calc(var(--piece-y, 0cqw) * -1);
 }
+
+/* Case-study entrance. Above the fold, so the start state is CSS rather than
+   a gsap.set after hydration (which would flash the text first). Only with
+   full motion stamped by the head probe, and only while the visitor still
+   wants motion: if they switch reduced motion on mid-visit, GSAP reverts its
+   inline styles and these rules must not leave the text hidden. The lead
+   photo is never hidden (it is the LCP); it settles from --settle to 1. */
+@media (prefers-reduced-motion: no-preference) {
+  html[data-motion="full"] [data-case-rise] {
+    opacity: 0;
+  }
+
+  html[data-motion="full"] [data-case-settle] {
+    scale: var(--settle, 1);
+  }
+}
+
+/* Case-study salon wall. --mat is each frame's mat (its padding). From md a
+   row is one height: every piece grows by its frame ratio, from a basis of
+   just its mat and border, so the photos themselves — not the mats — are
+   in proportion and their heights match exactly. */
+[data-wall-piece] {
+  --mat: 0.5rem;
+}
+
+@media (width >= 48rem) {
+  [data-wall-piece] {
+    --mat: 0.75rem;
+    flex: var(--ratio) 1 calc(2 * var(--mat) + 2px);
+  }
+}

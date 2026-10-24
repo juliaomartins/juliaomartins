@@ -75,10 +75,13 @@
         "tags": [
           "Django",
           "Next.js",
-          "React Native"
+          "React Native",
+          "EXPO"
         ],
         "linkLabel": "GitHub",
-        "href": "https://github.com/juliaomartins/visitor-management-system"
+        "href": "https://github.com/juliaomartins/visitor-management-system",
+        "caseLabel": "See it at DRCCMD 2026",
+        "caseHref": "/projects/visitor-queue-system"
       }
     ]
   },
@@ -152,5 +155,97 @@
     "languages": "Languages",
     "backToTop": "Back to top",
     "mainNav": "Main navigation"
+  },
+  "queueCase": {
+    "metaTitle": "Visitor and Queue System at DRCCMD 2026",
+    "metaDescription": "Case study: QR badges, phone check-in and a lobby welcome screen for the Díli Regional Cooperative Conference and Ministerial Dialogue 2026 at Palm Spring, Dili.",
+    "back": "All projects",
+    "home": "Julião Martins, home",
+    "eyebrow": "Case study · DRCCMD 2026",
+    "title": "Visitor and Queue System",
+    "lede": "Ministers, delegations and guests arrived at Palm Spring at the same time. Instead of a paper list and a long queue, every visitor carried a QR badge — one scan at the door, and the lobby screen welcomed them by name.",
+    "label": {
+      "title": "Wall label",
+      "items": [
+        {
+          "term": "Event",
+          "detail": "Díli Regional Cooperative Conference and Ministerial Dialogue 2026"
+        },
+        {
+          "term": "Place",
+          "detail": "Palm Spring, Dili, Timor-Leste"
+        },
+        {
+          "term": "Date",
+          "detail": "October 2026"
+        },
+        {
+          "term": "Medium",
+          "detail": "Django, Next.js, React Native, EXPO"
+        },
+        {
+          "term": "Status",
+          "detail": "Used live at the event"
+        }
+      ]
+    },
+    "leadAlt": "The lobby screen reading 08:51, waiting for arrivals, beside the registration desk and its team.",
+    "leadCaption": "08:51 — the lobby screen, waiting for the first arrivals.",
+    "problemTitle": "The problem",
+    "problem": "A ministerial dialogue means many important guests arriving at once, each one to be checked against the guest list and welcomed properly. A paper list at the door turns that into a queue — and nobody inside knows who has already arrived.",
+    "stepsTitle": "How it worked",
+    "stepsIntro": "Four steps, one system.",
+    "steps": [
+      {
+        "title": "Register",
+        "body": "Every visitor is registered in the system before the event.",
+        "alt": "Two team members registering visitors on laptops at the operations desk.",
+        "caption": "The operations desk."
+      },
+      {
+        "title": "Print the badge",
+        "body": "Each registration prints a badge with the visitor's own QR code.",
+        "alt": "Delegates wearing QR code badges on lanyards at the entrance.",
+        "caption": "QR badges on lanyards."
+      },
+      {
+        "title": "Scan at the door",
+        "body": "Staff scan the badge with a phone. A registered visitor is checked in on the spot.",
+        "alt": "A staff member scans a delegate's QR badge with a phone.",
+        "caption": "One scan at the door."
+      },
+      {
+        "title": "Welcome on screen",
+        "body": "The lobby screen greets the visitor by name and photo, then goes back to waiting for the next arrival.",
+        "alt": "Video: a badge is scanned and the lobby screen shows “Welcome” with the visitor's name and photo.",
+        "caption": "Filmed at the event: scan, then welcome."
+      }
+    ],
+    "wallTitle": "From the floor",
+    "wallIntro": "Photographs from DRCCMD 2026 at Palm Spring. Select a photo to see it larger.",
+    "photos": {
+      "lobbyScreen": "Check-in desk in front of the lobby screen.",
+      "scanDesk": "A delegate's badge scanned at the registration desk.",
+      "scanArrival": "Checking in a delegate on arrival.",
+      "scanCloseup": "Badge and phone: checked in.",
+      "scanQueue": "Keeping the line moving.",
+      "scanBatik": "Scanning badges at the door.",
+      "scanLounge": "Check-in in the lounge.",
+      "welcomeDesk": "The welcome team at the desk.",
+      "deskReady": "The desk, ready for the next arrival.",
+      "delegates": "Delegates at the conference backdrop.",
+      "drccmdStage": "On stage at the Díli Regional Cooperative Conference.",
+      "aseanExpo": "Alongside the ASEAN Cooperative Expo 2026."
+    },
+    "lightbox": {
+      "close": "Close",
+      "previous": "Previous photo",
+      "next": "Next photo",
+      "counter": "{current} of {total}"
+    },
+    "exitTitle": "Under the hood",
+    "exitBody": "Django, Next.js, React Native and EXPO — the source is on GitHub.",
+    "code": "View the code on GitHub",
+    "backHome": "Back to all projects"
   }
 }

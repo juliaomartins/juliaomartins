@@ -75,10 +75,13 @@
         "tags": [
           "Django",
           "Next.js",
-          "React Native"
+          "React Native",
+          "EXPO"
         ],
         "linkLabel": "GitHub",
-        "href": "https://github.com/juliaomartins/visitor-management-system"
+        "href": "https://github.com/juliaomartins/visitor-management-system",
+        "caseLabel": "Haree iha DRCCMD 2026",
+        "caseHref": "/projects/visitor-queue-system"
       }
     ]
   },
@@ -152,5 +155,97 @@
     "languages": "Lian sira",
     "backToTop": "Fila ba leten",
     "mainNav": "Navegasaun prinsipál"
+  },
+  "queueCase": {
+    "metaTitle": "Sistema Vizitante no Fila iha DRCCMD 2026",
+    "metaDescription": "Estudu kazu: kartaun ho QR code, check-in ho telefone no ekran bemvindu iha lobby ba Díli Regional Cooperative Conference and Ministerial Dialogue 2026 iha Palm Spring, Dili.",
+    "back": "Projetu hotu",
+    "home": "Julião Martins, pájina prinsipál",
+    "eyebrow": "Estudu kazu · DRCCMD 2026",
+    "title": "Sistema Vizitante no Fila",
+    "lede": "Ministru sira, delegasaun no konvidadu sira to'o iha Palm Spring iha tempu hanesan. La uza lista papél no fila naruk — vizitante ida-idak lori kartaun ho QR code, skan dala ida iha odamatan, no ekran iha lobby simu sira ho sira-nia naran.",
+    "label": {
+      "title": "Etiketa",
+      "items": [
+        {
+          "term": "Eventu",
+          "detail": "Díli Regional Cooperative Conference and Ministerial Dialogue 2026"
+        },
+        {
+          "term": "Fatin",
+          "detail": "Palm Spring, Dili, Timor-Leste"
+        },
+        {
+          "term": "Data",
+          "detail": "Outubru 2026"
+        },
+        {
+          "term": "Teknolojia",
+          "detail": "Django, Next.js, React Native, EXPO"
+        },
+        {
+          "term": "Estatutu",
+          "detail": "Uza duni iha eventu"
+        }
+      ]
+    },
+    "leadAlt": "Ekran iha lobby hatudu 08:51, hein vizitante sira, besik meza rejistu no ninia ekipa.",
+    "leadCaption": "08:51 — ekran iha lobby, hein vizitante dahuluk sira.",
+    "problemTitle": "Problema",
+    "problem": "Diálogu ministeriál signifika konvidadu importante barak to'o iha tempu hanesan, no ida-idak tenke verifika iha lista konvidadu no simu ho di'ak. Lista papél iha odamatan halo fila naruk — no ema iha laran la hatene se mak to'o ona.",
+    "stepsTitle": "Oinsá sistema servisu",
+    "stepsIntro": "Pasu haat, sistema ida.",
+    "steps": [
+      {
+        "title": "Rejista",
+        "body": "Vizitante hotu rejista iha sistema molok eventu.",
+        "alt": "Membru ekipa na'in-rua rejista vizitante sira ho laptop iha meza operasaun.",
+        "caption": "Meza operasaun."
+      },
+      {
+        "title": "Imprime kartaun",
+        "body": "Rejistu ida-idak imprime kartaun ida ho vizitante nia QR code rasik.",
+        "alt": "Delegadu sira uza kartaun QR code iha lanyard iha entrada.",
+        "caption": "Kartaun QR iha lanyard."
+      },
+      {
+        "title": "Skan iha odamatan",
+        "body": "Staff skan kartaun ho telefone. Vizitante ne'ebé rejista ona, check-in kedas.",
+        "alt": "Staff ida skan delegadu nia kartaun QR ho telefone.",
+        "caption": "Skan dala ida iha odamatan."
+      },
+      {
+        "title": "Bemvindu iha ekran",
+        "body": "Ekran iha lobby simu vizitante ho ninia naran no foto, depois hein fali vizitante tuir mai.",
+        "alt": "Vídeo: skan kartaun ida no ekran iha lobby hatudu “Welcome” ho vizitante nia naran no foto.",
+        "caption": "Filma iha eventu: skan, depois bemvindu."
+      }
+    ],
+    "wallTitle": "Husi fatin eventu",
+    "wallIntro": "Foto sira husi DRCCMD 2026 iha Palm Spring. Hili foto ida atu haree boot liu.",
+    "photos": {
+      "lobbyScreen": "Meza check-in iha ekran lobby nia oin.",
+      "scanDesk": "Skan kartaun delegadu nian iha meza rejistu.",
+      "scanArrival": "Check-in ba delegadu ida bainhira to'o.",
+      "scanCloseup": "Kartaun no telefone: check-in ona.",
+      "scanQueue": "Halo fila la'o lalais.",
+      "scanBatik": "Skan kartaun iha odamatan.",
+      "scanLounge": "Check-in iha lounge.",
+      "welcomeDesk": "Ekipa bemvindu iha meza.",
+      "deskReady": "Meza prontu ba vizitante tuir mai.",
+      "delegates": "Delegadu sira iha konferénsia nia backdrop.",
+      "drccmdStage": "Iha palku Díli Regional Cooperative Conference.",
+      "aseanExpo": "Hamutuk ho ASEAN Cooperative Expo 2026."
+    },
+    "lightbox": {
+      "close": "Taka",
+      "previous": "Foto molok",
+      "next": "Foto tuir mai",
+      "counter": "{current} husi {total}"
+    },
+    "exitTitle": "Iha laran",
+    "exitBody": "Django, Next.js, React Native no EXPO — kódigu fonte iha GitHub.",
+    "code": "Haree kódigu iha GitHub",
+    "backHome": "Fila ba projetu hotu"
   }
 }

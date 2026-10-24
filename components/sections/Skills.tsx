@@ -8,12 +8,9 @@ import { useRef, type CSSProperties } from "react";
 import { skills, type Skill } from "@/data/skills";
 import { cn } from "@/lib/utils";
 import { gsap, ScrollTrigger } from "@/motion/registry";
-import { duration, ease, offset, stagger } from "@/motion/tokens";
+import { clip, duration, ease, offset, stagger } from "@/motion/tokens";
 
 import CircleStamp from "@/components/ui/CircleStamp";
-
-const HIDDEN_CLIP = "inset(100% 0% 0% 0%)";
-const SHOWN_CLIP = "inset(0% 0% 0% 0%)";
 
 /**
  * Below md the wall packs two columns: one tall piece then two short ones
@@ -52,13 +49,13 @@ export default function Skills() {
           "[data-skill-tile]",
           rootRef.current
         );
-        gsap.set(tiles, { clipPath: HIDDEN_CLIP, y: offset.tile });
+        gsap.set(tiles, { clipPath: clip.hidden, y: offset.tile });
         ScrollTrigger.batch(tiles, {
           start: "top 80%",
           once: true,
           onEnter: (batch) =>
             gsap.to(batch, {
-              clipPath: SHOWN_CLIP,
+              clipPath: clip.shown,
               y: 0,
               duration: duration.xl,
               ease: ease.out,
