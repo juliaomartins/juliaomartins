@@ -1,5 +1,5 @@
 <a href="https://juliaomartins.dev">
-  <img src="https://juliaomartins.dev/opengraph-image" alt="Julião Martins — Developer, now studying AI engineering" width="100%" />
+  <img src="./cover_readme.png" alt="Julião Martins — Developer, now studying AI engineering" width="100%" />
 </a>
 
 <p align="center">
