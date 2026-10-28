@@ -1,4 +1,4 @@
-<a href="https://juliaomartins.dev">
+<a href="https://juliaomartins.dev/cover_readme.png">
   <img src="./cover_readme.png" alt="Julião Martins — Developer, now studying AI engineering" width="100%" />
 </a>
 
