@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useRef, useState } from "react";
 
+import EmojiText from "@/components/ui/EmojiText";
 import { galleryItems } from "@/data/gallery";
 import { cn } from "@/lib/utils";
 import { gsap } from "@/motion/registry";
@@ -99,7 +100,9 @@ function PhotoSet({ clone = false }: { clone?: boolean }) {
                 >
                   {month} {item.date.slice(0, 4)}
                 </time>
-                <span className="text-foreground">{caption}</span>
+                <span className="text-foreground">
+                  <EmojiText text={caption} />
+                </span>
               </figcaption>
             </figure>
           </li>
