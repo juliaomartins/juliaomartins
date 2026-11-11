@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { useRef, type CSSProperties } from "react";
 
 import CircleStamp from "@/components/ui/CircleStamp";
+import { portrait } from "@/data/profile";
 import { gsap } from "@/motion/registry";
 import {
   duration,
@@ -14,7 +15,6 @@ import {
   heroScatter,
   stagger,
 } from "@/motion/tokens";
-import portrait from "@/public/images/portrait.png";
 
 /**
  * The colour field behind the portrait: [left, top, width, height] in % of a
@@ -43,12 +43,17 @@ const SIZES = "(min-width: 1024px) 26rem, 15rem";
 /** The head layer stops just under the chin; below it the body is fragmented. */
 const HEAD_CLIP = "inset(0% 0% 64% 0%)";
 
-/** The photo at full-frame size, for a layer or a panel window. */
-function Photo({ preload = false }: { preload?: boolean }) {
+/**
+ * The photo at full-frame size, for a layer or a panel window. Only the head
+ * layer carries alt text: it is the one whole image of Julião, and what search
+ * engines index. The panel slices are copies of it, so they stay silent.
+ * (Assistive tech hears the frame's own role="img" label once either way.)
+ */
+function Photo({ preload = false, alt = "" }: { preload?: boolean; alt?: string }) {
   return (
     <Image
-      src={portrait}
-      alt=""
+      src={portrait.src}
+      alt={alt}
       fill
       sizes={SIZES}
       // No blur placeholder: on a transparent cut-out Next draws it as an
@@ -175,7 +180,7 @@ export default function HeroMosaic({ name }: { name: string }) {
         className="absolute inset-0"
         style={{ clipPath: HEAD_CLIP }}
       >
-        <Photo preload />
+        <Photo preload alt={name} />
       </div>
 
       <div

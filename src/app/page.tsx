@@ -8,10 +8,14 @@ import Skills from "@/components/sections/Skills";
 import Gallery from "@/components/sections/Gallery";
 import ContactForm from "@/components/sections/ContactForm";
 import Footer from "@/components/layout/Footer";
+import JsonLd from "@/components/seo/JsonLd";
+import { homeJsonLd } from "@/lib/seo";
 
 export default function PortfolioPage() {
   return (
     <>
+      {/* Who Julião is, his portrait and the gallery, for search engines. */}
+      <JsonLd data={homeJsonLd} />
       {/*
         First focusable element on the page, so a keyboard user can jump past
         the six nav links. Sits outside <main> because <main> is its target.

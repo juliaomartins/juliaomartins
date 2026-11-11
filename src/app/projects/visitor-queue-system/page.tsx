@@ -9,8 +9,10 @@ import CaseTeam from "@/components/case-study/CaseTeam";
 import CaseWall from "@/components/case-study/CaseWall";
 import Footer from "@/components/layout/Footer";
 import SkipLink from "@/components/layout/SkipLink";
+import JsonLd from "@/components/seo/JsonLd";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 import { queueCase } from "@/data/queue-case";
+import { caseJsonLd } from "@/lib/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("queueCase");
@@ -41,6 +43,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function VisitorQueueSystemPage() {
   return (
     <>
+      <JsonLd data={caseJsonLd} />
       <SkipLink />
       <CaseNav />
       <main id="main-content" className="overflow-x-clip">
