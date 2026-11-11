@@ -17,7 +17,7 @@ export const galleryItems: readonly GalleryItem[] = [
     date: "2026-10-25T14:29",
     width: 1280,
     height: 720,
-    video: { poster: "/gallery/2026-10-25-hacktoberfest-poster.webp" },
+    video: { poster: "/gallery/2026-10-25-hacktoberfest-poster.webp", comic: true },
   },
   { id: "hacktoberfestFriends", src: "/gallery/2026-10-24-hacktoberfest-friends.jpg", date: "2026-10-24T21:27", width: 800, height: 450 },
   { id: "hacktoberfestGroup", src: "/gallery/2026-10-24-hacktoberfest-group.jpg", date: "2026-10-24T17:39", width: 800, height: 450 },

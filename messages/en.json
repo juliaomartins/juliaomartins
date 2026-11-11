@@ -122,7 +122,14 @@
       "Oct",
       "Nov",
       "Dec"
-    ]
+    ],
+    "comic": {
+      "playSound": "Play with sound",
+      "pause": "Pause video",
+      "resume": "Resume video",
+      "mute": "Sound off, back to the silent loop",
+      "replay": "Replay with sound"
+    }
   },
   "contact": {
     "title": "Let's build something together",

@@ -122,7 +122,14 @@
       "Out",
       "Nov",
       "Dez"
-    ]
+    ],
+    "comic": {
+      "playSound": "Toka ho lian",
+      "pause": "Para vídeo",
+      "resume": "Kontinua vídeo",
+      "mute": "Hamate lian, fila ba loop",
+      "replay": "Toka fali ho lian"
+    }
   },
   "contact": {
     "title": "Mai ita dezenvolve buat ruma hamutuk",

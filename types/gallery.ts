@@ -12,6 +12,10 @@ export type GalleryItem = {
    * width (and the reserved box, so no CLS) comes from this ratio. */
   width: number;
   height: number;
-  /** Present when this slide is a looping clip rather than a still. */
-  video?: { poster: string };
+  /**
+   * Present when this slide is a looping clip rather than a still. `comic`
+   * adds the comic overlay and the play-with-sound control (ComicClip); its
+   * choreography is cut to that one clip's audio, so it is not a generic flag.
+   */
+  video?: { poster: string; comic?: boolean };
 };

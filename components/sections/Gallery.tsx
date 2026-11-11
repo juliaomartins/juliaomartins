@@ -7,10 +7,12 @@ import { useTranslations } from "next-intl";
 import { useRef, useState } from "react";
 
 import { galleryItems } from "@/data/gallery";
+import { cn } from "@/lib/utils";
 import { gsap } from "@/motion/registry";
 import { ease, galleryLoop } from "@/motion/tokens";
 import type { GalleryItem } from "@/types/gallery";
 
+import ComicClip from "./ComicClip";
 import GalleryVideo from "./GalleryVideo";
 
 /** Strip heights in rem; widths follow each photo's own ratio. Keep in step
@@ -34,21 +36,45 @@ function PhotoSet({ clone = false }: { clone?: boolean }) {
       data-gallery-set=""
       data-loop-clone={clone ? "" : undefined}
       aria-hidden={clone ? "true" : undefined}
-      inert={clone}
       className="flex shrink-0 gap-4 md:gap-6"
     >
       {photos.map((item) => {
         const caption = t(`captions.${item.id}`);
         const month = months[Number(item.date.slice(5, 7)) - 1];
         return (
-          <li key={item.id} data-gallery-item="" className="shrink-0 snap-start">
+          <li
+            key={item.id}
+            data-gallery-item=""
+            // The copy is inert, except the comic clip: its sound button must
+            // work whichever copy happens to be on screen.
+            inert={clone && !item.video?.comic}
+            className="shrink-0 snap-start"
+          >
             {/* As wide as the photo; the caption wraps inside it. */}
             <figure className="w-min">
               <div
-                className="relative h-64 overflow-hidden rounded-lg bg-muted md:h-96"
+                className={cn(
+                  "relative overflow-hidden rounded-lg bg-muted md:h-96",
+                  // The comic clip must be seen whole: on a phone the strip's
+                  // height would make it wider than the screen, so there it
+                  // is as wide as the screen allows (never past its h-64
+                  // width) and its height follows.
+                  item.video?.comic
+                    ? "w-[min(calc(100vw-3rem),28.44rem)] md:w-auto"
+                    : "h-64"
+                )}
                 style={{ aspectRatio: `${item.width} / ${item.height}` }}
               >
-                {item.video ? (
+                {item.video?.comic ? (
+                  <ComicClip
+                    src={item.src}
+                    poster={item.video.poster}
+                    width={item.width}
+                    height={item.height}
+                    label={caption}
+                    clone={clone}
+                  />
+                ) : item.video ? (
                   <GalleryVideo
                     src={item.src}
                     poster={item.video.poster}
@@ -91,7 +117,8 @@ function PhotoSet({ clone = false }: { clone?: boolean }) {
  *
  * - Hover glides it to a stop and back; the Pause button (WCAG 2.2.2) does
  *   the same and stays paused until pressed again.
- * - It also rests while off-screen, so nothing animates unseen.
+ * - It also rests while off-screen, so nothing animates unseen, and while
+ *   the comic clip plays with sound, so the visitor can watch it.
  * - Reduced motion and no-JS: no loop and no copy — the strip is a normal
  *   swipe/keyboard-scrollable row (globals.css), and the button is hidden.
  */
@@ -112,13 +139,17 @@ export default function Gallery() {
         const viewport = section.querySelector<HTMLElement>("[data-gallery-viewport]");
         const track = section.querySelector<HTMLElement>("[data-gallery-track]");
         const [first, seam] = gsap.utils.toArray<HTMLElement>("[data-gallery-set]", section);
-        if (!viewport || !track || !first || !seam) return;
+        const shifter = track?.parentElement;
+        if (!viewport || !track || !shifter || !first || !seam) return;
 
         let hovering = false;
         let visible = false;
+        // A clip playing with sound holds the strip still (ComicClip).
+        let held = false;
 
         /** The speed it should be heading to right now. */
-        const target = () => (pausedRef.current || hovering || !visible ? 0 : 1);
+        const target = () =>
+          pausedRef.current || hovering || held || !visible ? 0 : 1;
         const glide = () => {
           const loop = loopRef.current;
           if (!loop) return;
@@ -174,12 +205,41 @@ export default function Gallery() {
         // Let the Pause button reach the same glide.
         section.addEventListener("gallery:toggle", glide);
 
+        const onHold = (event: Event) => {
+          held = (event as CustomEvent<boolean>).detail;
+          glide();
+
+          // Nudge the clip fully into the window while it plays, and back
+          // after. The nudge is on a wrapper around the track, not the
+          // loop's own x: moving the loop's playhead could wrap it, which
+          // swaps the copy on screen for the other one mid-play.
+          const shift = Number(gsap.getProperty(shifter, "x"));
+          let by = -shift;
+          if (held) {
+            const clip = (event.target as HTMLElement).getBoundingClientRect();
+            const frame = viewport.getBoundingClientRect();
+            const gutter = parseFloat(getComputedStyle(viewport).paddingLeft);
+            const before = frame.left + gutter - clip.left;
+            const after = frame.right - gutter - clip.right;
+            by = before > 0 ? before : Math.min(after, 0);
+          }
+          gsap.to(shifter, {
+            x: shift + by,
+            duration: galleryLoop.settle,
+            ease: ease.inOut,
+            overwrite: "auto",
+          });
+        };
+
+        section.addEventListener("gallery:hold", onHold);
+
         return () => {
           resize.disconnect();
           seen.disconnect();
           viewport.removeEventListener("pointerenter", enter);
           viewport.removeEventListener("pointerleave", leave);
           section.removeEventListener("gallery:toggle", glide);
+          section.removeEventListener("gallery:hold", onHold);
           loopRef.current = null;
         };
       });
@@ -239,12 +299,15 @@ export default function Gallery() {
           data-gallery-fade=""
           className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-linear-to-l from-background to-transparent"
         />
-        <div
-          data-gallery-track=""
-          className="flex w-max gap-4 will-change-transform md:gap-6"
-        >
-          <PhotoSet />
-          <PhotoSet clone />
+        {/* Wrapper: nudged to bring a clip playing with sound into view. */}
+        <div className="w-max">
+          <div
+            data-gallery-track=""
+            className="flex w-max gap-4 will-change-transform md:gap-6"
+          >
+            <PhotoSet />
+            <PhotoSet clone />
+          </div>
         </div>
       </div>
     </section>

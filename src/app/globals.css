@@ -58,6 +58,14 @@
      GSAP reads that, CSS transitions read this, and they must agree. */
   --duration-micro: 150ms;
   --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+  /* Comic overlay (ComicClip). Print colours: the same in light and dark,
+     because they sit on video, not on the page. */
+  --color-comic-ink: oklch(0.16 0.01 270);
+  --color-comic-paper: oklch(0.99 0.01 95);
+  --color-comic-yellow: oklch(0.9 0.19 98);
+  --color-comic-red: oklch(0.62 0.24 27);
+  --color-comic-blue: oklch(0.6 0.19 255);
+
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
@@ -419,3 +427,249 @@ html[data-motion="full"] [data-hero-slice] {
     flex: var(--ratio) 1 calc(2 * var(--mat) + 2px);
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Comic overlay (ComicClip / ComicOverlay).
+
+   A layer over the Dili Hacktoberfest clip. Every size is in cqw — a share of
+   the clip's own width — so the composition is identical at 256px tall on a
+   phone and 384px on desktop. Everything sits in the top third of the frame:
+   the people fill the rest, and no face is ever covered.
+
+   Each piece sits in a slot. The slot owns the place and the rest tilt
+   (top/left, `rotate`, `translate`); the piece inside is what GSAP animates.
+   They must be separate elements: GSAP takes over `rotate` and `translate`
+   on anything it transforms, baking them to pixels, which would break the
+   centring whenever the clip resizes. Pieces are hidden until GSAP shows
+   them: with no JS the clip is simply the clip.
+   --------------------------------------------------------------------------- */
+
+.comic {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  color: var(--color-comic-ink);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  --stroke: 0.45cqw;
+  --drop: 0.7cqw;
+}
+
+.comic-stage {
+  position: absolute;
+  inset: 0;
+}
+
+.comic-slot {
+  position: absolute;
+}
+
+.comic-piece,
+.comic [data-comic-part] {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.comic-slot > .comic-piece {
+  position: relative;
+  display: block;
+}
+
+/* Film grain: one small static noise tile. Never animated. */
+.comic-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.14;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Halftone: dots that thin out down the frame, clear of the faces. */
+.comic-dots {
+  inset: 0;
+  background-image: radial-gradient(circle, var(--color-comic-yellow) 30%, transparent 32%);
+  background-size: 2.4cqw 2.4cqw;
+  mask-image: linear-gradient(to bottom, black, transparent 42%);
+}
+
+/* Speed lines: rays from the middle of the crowd, visible only at the edges. */
+.comic-lines {
+  inset: -10%;
+  background: repeating-conic-gradient(
+    from 0deg at 50% 62%,
+    transparent 0deg 5deg,
+    var(--color-comic-paper) 5deg 6deg,
+    transparent 6deg 9deg,
+    var(--color-comic-paper) 9deg 9.6deg
+  );
+  mask-image: radial-gradient(ellipse 60% 62% at 50% 62%, transparent 58%, black 100%);
+}
+
+/* Lettering: the site's own face at its heaviest, slanted, inked and dropped. */
+.comic-word {
+  display: block;
+  transform: skewX(-9deg);
+  -webkit-text-stroke: var(--stroke) var(--color-comic-ink);
+  paint-order: stroke fill;
+  text-shadow: var(--drop) var(--drop) 0 var(--color-comic-ink);
+}
+
+/* Caption boxes. */
+.comic-box {
+  border: var(--stroke) solid var(--color-comic-ink);
+  background: var(--color-comic-yellow);
+  box-shadow: var(--drop) var(--drop) 0 var(--color-comic-ink);
+  padding: 1.1cqw 1.8cqw;
+}
+
+.comic-intro {
+  top: 7%;
+  left: 4%;
+  rotate: -4deg;
+  font-size: 3.3cqw;
+}
+
+/* Speech bubble, its tail aimed down at the speaker in the front row. */
+.comic-bubble-slot {
+  top: 5%;
+  left: 50%;
+  translate: -50% 0;
+  rotate: -2deg;
+}
+
+.comic-bubble {
+  transform-origin: 62% 120%;
+  border: var(--stroke) solid var(--color-comic-ink);
+  border-radius: 50%;
+  background: var(--color-comic-paper);
+  box-shadow: var(--drop) var(--drop) 0 var(--color-comic-ink);
+  padding: 3.4cqw 8cqw 3.8cqw;
+  font-size: 4.3cqw;
+  text-align: center;
+}
+
+.comic-bubble::after {
+  content: "";
+  position: absolute;
+  top: calc(100% - 0.4cqw);
+  left: 60%;
+  width: 4cqw;
+  height: 4.6cqw;
+  background: var(--color-comic-paper);
+  border-right: var(--stroke) solid var(--color-comic-ink);
+  border-bottom: var(--stroke) solid var(--color-comic-ink);
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+}
+
+.comic-bubble em {
+  display: block;
+  color: var(--color-comic-red);
+  font-size: 1.5em;
+  font-style: normal;
+}
+
+/* YES! YES! YES! — three places, three tilts, the last one largest. */
+.comic-yes {
+  position: absolute;
+  width: 26cqw;
+  aspect-ratio: 1.25;
+  font-size: 9cqw;
+  color: var(--color-comic-yellow);
+}
+
+.comic-yes [data-comic-part="burst"] {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.comic-yes [data-comic-part="word"] {
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.comic-yes-1 {
+  top: 1%;
+  left: 2%;
+  rotate: -10deg;
+}
+
+.comic-yes-2 {
+  top: 2%;
+  right: 2%;
+  rotate: 9deg;
+}
+
+.comic-yes-3 {
+  top: -3%;
+  left: 50%;
+  translate: -50% 0;
+  rotate: -3deg;
+  width: 34cqw;
+  font-size: 12cqw;
+  color: var(--color-comic-paper);
+}
+
+/* Sound effects during the applause. */
+.comic-sfx {
+  font-size: 4.6cqw;
+}
+
+.comic-clap {
+  top: 9%;
+  left: 5%;
+  rotate: -8deg;
+  color: var(--color-comic-paper);
+}
+
+.comic-cheer {
+  top: 13%;
+  right: 6%;
+  rotate: 7deg;
+  color: var(--color-comic-yellow);
+}
+
+/* Closing title. */
+.comic-title-slot {
+  top: 6%;
+  left: 50%;
+  translate: -50% 0;
+  rotate: -2deg;
+}
+
+.comic-title {
+  padding: 1.6cqw 3.2cqw 2cqw;
+  font-size: 4.2cqw;
+  text-align: center;
+}
+
+.comic-title strong {
+  display: block;
+  margin-top: 0.6cqw;
+  color: var(--color-comic-red);
+  font-size: 1.55em;
+  font-weight: 900;
+}
+
+/* Stars: small accents around the lettering. */
+.comic-star {
+  width: 4.4cqw;
+  height: 4.4cqw;
+  color: var(--color-comic-paper);
+}
+
+.comic-star svg {
+  width: 100%;
+  height: 100%;
+}
+
+.comic-star-1 { top: 28%; left: 9%; }
+.comic-star-2 { top: 6%; left: 31%; color: var(--color-comic-yellow); }
+.comic-star-3 { top: 30%; right: 8%; }
+.comic-star-4 { top: 33%; right: 20%; color: var(--color-comic-yellow); width: 3.4cqw; height: 3.4cqw; }
+.comic-star-5 { top: 30%; left: 16%; color: var(--color-comic-yellow); }
