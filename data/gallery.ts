@@ -1,15 +1,27 @@
 import { GalleryItem } from "@/types/gallery";
 
-/** Field notes, in the order they appear on the strip. */
+/**
+ * The gallery strip, from public/gallery. Files are named by date so the
+ * folder reads in order too; the strip itself sorts on `date`, newest first.
+ *
+ * Dates come from each file's camera metadata where it had one. The hills
+ * photo carried none (November 2026), and the DRCCMD photo is dated to the
+ * event (2–3 October 2026); only the month is shown, so day-level precision
+ * there just keeps the order right.
+ */
 export const galleryItems: readonly GalleryItem[] = [
-  { id: "ceiling", src: "/3.jpg", width: 1200, height: 1600 },
-  { id: "workstation", src: "/1.jpg", width: 1600, height: 1200 },
-  { id: "site", src: "/4.mp4", width: 480, height: 720, video: { poster: "/4-poster.webp" } },
-  { id: "drop", src: "/5.jpg", width: 1200, height: 1600 },
-  { id: "team", src: "/8.jpg", width: 1200, height: 1600 },
-  { id: "repair", src: "/2.jpg", width: 780, height: 1040 },
-  { id: "wall", src: "/6.mp4", width: 720, height: 1080, video: { poster: "/6-poster.webp" } },
-  { id: "control", src: "/7.jpg", width: 1200, height: 1600 },
-  { id: "accessPoint", src: "/9.jpg", width: 765, height: 1020 },
-  { id: "code", src: "/10.jpg", width: 765, height: 1020 },
+  { id: "hills", src: "/gallery/2026-11-hills.jpg", date: "2026-11-01", width: 1536, height: 2048 },
+  {
+    id: "hacktoberfestCheer",
+    src: "/gallery/2026-10-25-hacktoberfest.mp4",
+    date: "2026-10-25T14:29",
+    width: 1280,
+    height: 720,
+    video: { poster: "/gallery/2026-10-25-hacktoberfest-poster.webp" },
+  },
+  { id: "hacktoberfestFriends", src: "/gallery/2026-10-24-hacktoberfest-friends.jpg", date: "2026-10-24T21:27", width: 800, height: 450 },
+  { id: "hacktoberfestGroup", src: "/gallery/2026-10-24-hacktoberfest-group.jpg", date: "2026-10-24T17:39", width: 800, height: 450 },
+  { id: "drccmdInovtec", src: "/gallery/2026-10-drccmd-inovtec.webp", date: "2026-10-03", width: 750, height: 500 },
+  { id: "picnicTeam", src: "/gallery/2026-07-18-telemor-picnic-team.jpg", date: "2026-07-18T16:26", width: 2048, height: 1365 },
+  { id: "picnicGroup", src: "/gallery/2026-07-18-telemor-picnic-group.jpg", date: "2026-07-18T16:22", width: 2048, height: 1365 },
 ];

@@ -14,7 +14,7 @@ import {
   heroScatter,
   stagger,
 } from "@/motion/tokens";
-import portrait from "@/public/juliao_martins2.png";
+import portrait from "@/public/images/portrait.png";
 
 /**
  * The colour field behind the portrait: [left, top, width, height] in % of a

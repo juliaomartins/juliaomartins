@@ -22,9 +22,13 @@ const sizesFor = ({ width, height }: GalleryItem) => {
   return `(min-width: 768px) ${Math.round(HEIGHT_REM.md * ratio)}rem, ${Math.round(HEIGHT_REM.base * ratio)}rem`;
 };
 
+/** Newest first, whatever order the data is written in. */
+const photos = [...galleryItems].sort((a, b) => b.date.localeCompare(a.date));
+
 /** One run of the photos. Rendered twice: the second is the loop's seam. */
 function PhotoSet({ clone = false }: { clone?: boolean }) {
   const t = useTranslations("gallery");
+  const months = t.raw("months") as string[];
   return (
     <ul
       data-gallery-set=""
@@ -33,8 +37,9 @@ function PhotoSet({ clone = false }: { clone?: boolean }) {
       inert={clone}
       className="flex shrink-0 gap-4 md:gap-6"
     >
-      {galleryItems.map((item, index) => {
+      {photos.map((item) => {
         const caption = t(`captions.${item.id}`);
+        const month = months[Number(item.date.slice(5, 7)) - 1];
         return (
           <li key={item.id} data-gallery-item="" className="shrink-0 snap-start">
             {/* As wide as the photo; the caption wraps inside it. */}
@@ -62,9 +67,12 @@ function PhotoSet({ clone = false }: { clone?: boolean }) {
                 )}
               </div>
               <figcaption className="mt-3 flex gap-3 text-sm">
-                <span className="tabular-nums text-muted-foreground">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
+                <time
+                  dateTime={item.date.slice(0, 7)}
+                  className="shrink-0 whitespace-nowrap tabular-nums text-muted-foreground"
+                >
+                  {month} {item.date.slice(0, 4)}
+                </time>
                 <span className="text-foreground">{caption}</span>
               </figcaption>
             </figure>

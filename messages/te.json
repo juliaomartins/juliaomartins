@@ -96,22 +96,33 @@
   },
   "gallery": {
     "title": "Galeria",
-    "intro": "Husi liga kabu to'o hakerek software — servisu iha servisu nia kotuk.",
-    "label": "Foto sira husi ha'u-nia servisu",
+    "intro": "Foun liu iha oin: eventu sira ne'ebé ha'u dezenvolve ba, komunidade sira ne'ebé ha'u hakerek kódigu hamutuk, no ema sira ne'ebé ha'u servisu hamutuk.",
+    "label": "Foto galeria, foun liu iha oin",
     "pause": "Para",
     "play": "Kontinua",
     "captions": {
-      "ceiling": "Liga kabu rede liuhosi teto",
-      "workstation": "Manutensaun ba ekipamentu eskritóriu",
-      "site": "Prepara dalan kabu iha fatin foun",
-      "drop": "Hatun kabu ba ponto foun iha parede",
-      "team": "Ho ekipa iha eskritóriu",
-      "repair": "Hadi'a máquina ida iha meza servisu",
-      "wall": "Remata ponta kabu sira iha parede",
-      "control": "Iha meza kontrolu",
-      "accessPoint": "Instala access point rede iha parede",
-      "code": "Hakerek kódigu ba ekran login"
-    }
+      "hills": "Iha foho, dook husi ekran",
+      "hacktoberfestCheer": "Dili Hacktoberfest 2026 — ema hotu iha sala festeja",
+      "hacktoberfestFriends": "Ho kolega sira iha Dili Hacktoberfest 2026",
+      "hacktoberfestGroup": "Grupu Dili Hacktoberfest 2026",
+      "drccmdInovtec": "Inovtec ho S.E. Arsénio Pereira da Silva iha DRCCMD 2026",
+      "picnicTeam": "Ekipa iha Telemor Island Picnic 2026",
+      "picnicGroup": "Ema hotu iha Telemor Island Picnic 2026"
+    },
+    "months": [
+      "Jan",
+      "Fev",
+      "Mar",
+      "Abr",
+      "Mai",
+      "Jun",
+      "Jul",
+      "Ago",
+      "Set",
+      "Out",
+      "Nov",
+      "Dez"
+    ]
   },
   "contact": {
     "title": "Mai ita dezenvolve buat ruma hamutuk",
