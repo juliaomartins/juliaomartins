@@ -1,6 +1,8 @@
-import { useId, type ReactNode } from "react";
+import { Fragment, useId, type ReactNode } from "react";
 
 import { EMOJI } from "@/lib/emoji";
+
+import { CLAP_PATHS } from "./fluent-clap";
 
 /**
  * Emoji drawn as SVG, so they look the same on every device and match the
@@ -9,6 +11,9 @@ import { EMOJI } from "@/lib/emoji";
  * name, e.g. "red heart") and is only hidden visually; the drawing is
  * decorative. Gradient ids come from useId, because a caption can render
  * more than once (the gallery strip's loop copy).
+ *
+ * An emoji never wraps away from the words beside it: "I ❤ Maubisse" is a
+ * slogan, and reads as one, so it stays on one line.
  */
 
 const glyph = "inline-block size-[1.15em] -translate-y-[0.08em] align-middle";
@@ -34,46 +39,14 @@ function Heart({ id }: { id: string }) {
   );
 }
 
-function Clap({ id }: { id: string }) {
+/** Clapping hands: Microsoft's Fluent Emoji design (MIT; see fluent-clap.ts),
+ * the shape people already know from their own devices. */
+function Clap() {
   return (
     <svg viewBox="0 0 32 32" aria-hidden="true" className={glyph}>
-      <defs>
-        <linearGradient id={`${id}-c`} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#FFD37A" />
-          <stop offset="1" stopColor="#F4A62A" />
-        </linearGradient>
-      </defs>
-      {/* Two hands, thumbs out, tipped together so their fingertips meet:
-          the back hand leans right, the front one is its mirror. */}
-      {[
-        "translate(10.5 28) rotate(16) translate(-4.5 -20)",
-        "translate(21.5 28) rotate(-16) scale(-1 1) translate(-4.5 -20)",
-      ].map((transform) => (
-        <g key={transform} transform={transform}>
-          {/* Thumb, then the hand over it. */}
-          <path
-            d="M1 9.5C-1.6 8.6-3 6.6-2.4 5.2c.6-1.4 2.4-1 3.4.4Z"
-            fill={`url(#${id}-c)`}
-            stroke="#B9770E"
-            strokeWidth="1"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M0 16V5a4.5 4.5 0 0 1 9 0v11a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4Z"
-            fill={`url(#${id}-c)`}
-            stroke="#B9770E"
-            strokeWidth="1"
-          />
-          {/* Gaps between the fingers. */}
-          <path d="M3 1.2v4.6M6 1.2v4.6" stroke="#B9770E" strokeWidth="0.9" strokeLinecap="round" />
-        </g>
+      {CLAP_PATHS.map(({ d, fill }) => (
+        <path key={d} d={d} fill={fill} />
       ))}
-      {/* Impact marks where the hands meet. */}
-      <g stroke="#F4A62A" strokeWidth="1.8" strokeLinecap="round">
-        <path d="M16 4.2V1.2" />
-        <path d="M10.6 5 9 2.6" />
-        <path d="M21.4 5 23 2.6" />
-      </g>
     </svg>
   );
 }
@@ -108,20 +81,83 @@ function Fire({ id }: { id: string }) {
 
 function Glyph({ char }: { char: string }) {
   const id = useId().replace(/:/g, "");
-  const Drawing = char.startsWith("❤") ? Heart : char === "\u{1F44F}" ? Clap : Fire;
   return (
     <>
       <span className="sr-only">{char}</span>
-      <Drawing id={id} />
+      {char.startsWith("❤") ? (
+        <Heart id={id} />
+      ) : char === "\u{1F44F}" ? (
+        <Clap />
+      ) : (
+        <Fire id={id} />
+      )}
     </>
   );
 }
 
-/** Renders `text`, drawing any supported emoji in it as SVG. */
+/** A word, a run of spaces, an emoji, or a possible line break inside a word
+ * (rendered as <wbr>, adding no characters). */
+type Token = { emoji: string } | { text: string } | { wbr: true };
+
+const isEmoji = (token?: Token) => token !== undefined && "emoji" in token;
+const isBreak = (token: Token) =>
+  "wbr" in token || ("text" in token && /^\s+$/.test(token.text));
+
+/**
+ * A text piece as tokens. A word with an opening bracket inside it, like
+ * "Rabilau(I", gets a break point before the bracket: browsers never break
+ * there on their own, so without it the whole word would be glued to the
+ * emoji and could overflow a narrow caption.
+ */
+const tokenize = (piece: string): Token[] =>
+  piece
+    .split(/(\s+)/)
+    .filter(Boolean)
+    .flatMap((word) =>
+      word
+        .split(/(?=\()/)
+        .flatMap<Token>((part, index) => (index > 0 ? [{ wbr: true }, { text: part }] : [{ text: part }]))
+    );
+
+/**
+ * Renders `text`, drawing any supported emoji in it as SVG. The text is cut
+ * into words, spaces and emoji; a space next to an emoji is glued, so each
+ * emoji and its neighbouring words form one run that never breaks.
+ */
 export default function EmojiText({ text }: { text: string }) {
   const parts = text.split(EMOJI);
   if (parts.length === 1) return text;
-  return parts.map((part, index): ReactNode =>
-    index % 2 === 1 ? <Glyph key={index} char={part} /> : part
+
+  const tokens = parts.flatMap<Token>((part, index) =>
+    index % 2 === 1 ? [{ emoji: part }] : tokenize(part)
+  );
+
+  // Runs split only at break points with no emoji on either side.
+  const runs: Token[][] = [[]];
+  tokens.forEach((token, index) => {
+    if (isBreak(token) && !isEmoji(tokens[index - 1]) && !isEmoji(tokens[index + 1])) {
+      runs.push([token], []);
+    } else {
+      runs[runs.length - 1].push(token);
+    }
+  });
+
+  const draw = (token: Token, key: number): ReactNode =>
+    "emoji" in token ? (
+      <Glyph key={key} char={token.emoji} />
+    ) : "wbr" in token ? (
+      <wbr key={key} />
+    ) : (
+      token.text
+    );
+
+  return runs.map((run, index): ReactNode =>
+    run.some((token) => isEmoji(token)) ? (
+      <span key={index} className="whitespace-nowrap">
+        {run.map(draw)}
+      </span>
+    ) : (
+      <Fragment key={index}>{run.map(draw)}</Fragment>
+    )
   );
 }
