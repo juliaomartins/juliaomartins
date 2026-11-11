@@ -36,22 +36,22 @@ export type CasePhoto = {
  */
 const wall: readonly (readonly CasePhoto[])[] = [
   [
-    { id: "lobbyScreen", src: "/projects/visitor-queue-system/lobby-screen.jpg", ...PHOTO, frame: "landscape" },
-    { id: "scanDesk", src: "/projects/visitor-queue-system/scan-desk.jpg", ...PHOTO, frame: "portrait", focus: "45% 50%" },
+    { id: "lobbyScreen", src: "/projects/visitor-queue-system/juliao-martins-lobby-screen.jpg", ...PHOTO, frame: "landscape" },
+    { id: "scanDesk", src: "/projects/visitor-queue-system/juliao-martins-scan-desk.jpg", ...PHOTO, frame: "portrait", focus: "45% 50%" },
   ],
   [
-    { id: "scanCloseup", src: "/projects/visitor-queue-system/scan-closeup.jpg", ...PHOTO, frame: "landscape" },
-    { id: "scanArrival", src: "/projects/visitor-queue-system/scan-arrival.jpg", ...PHOTO, frame: "portrait", focus: "70% 50%" },
-    { id: "scanBatik", src: "/projects/visitor-queue-system/scan-batik.jpg", ...PHOTO, frame: "portrait", focus: "55% 50%" },
+    { id: "scanCloseup", src: "/projects/visitor-queue-system/juliao-martins-scan-closeup.jpg", ...PHOTO, frame: "landscape" },
+    { id: "scanArrival", src: "/projects/visitor-queue-system/juliao-martins-scan-arrival.jpg", ...PHOTO, frame: "portrait", focus: "70% 50%" },
+    { id: "scanBatik", src: "/projects/visitor-queue-system/juliao-martins-scan-batik.jpg", ...PHOTO, frame: "portrait", focus: "55% 50%" },
   ],
   [
-    { id: "drccmdStage", src: "/projects/visitor-queue-system/drccmd-stage.jpg", ...PHOTO, frame: "wide" },
-    { id: "deskReady", src: "/projects/visitor-queue-system/desk-ready.jpg", ...PHOTO, frame: "square", focus: "55% 50%" },
+    { id: "drccmdStage", src: "/projects/visitor-queue-system/juliao-martins-drccmd-stage.jpg", ...PHOTO, frame: "wide" },
+    { id: "deskReady", src: "/projects/visitor-queue-system/juliao-martins-desk-ready.jpg", ...PHOTO, frame: "square", focus: "55% 50%" },
   ],
   [
-    { id: "scanQueue", src: "/projects/visitor-queue-system/scan-queue.jpg", ...PHOTO, frame: "square", focus: "60% 50%" },
-    { id: "scanLounge", src: "/projects/visitor-queue-system/scan-lounge.jpg", ...PHOTO, frame: "portrait", focus: "60% 50%" },
-    { id: "aseanExpo", src: "/projects/visitor-queue-system/asean-expo.jpg", ...PHOTO, frame: "wide", focus: "50% 15%" },
+    { id: "scanQueue", src: "/projects/visitor-queue-system/juliao-martins-scan-queue.jpg", ...PHOTO, frame: "square", focus: "60% 50%" },
+    { id: "scanLounge", src: "/projects/visitor-queue-system/juliao-martins-scan-lounge.jpg", ...PHOTO, frame: "portrait", focus: "60% 50%" },
+    { id: "aseanExpo", src: "/projects/visitor-queue-system/juliao-martins-asean-expo.jpg", ...PHOTO, frame: "wide", focus: "50% 15%" },
   ],
 ];
 
@@ -60,20 +60,20 @@ export const queueCase = {
   repo: "https://github.com/juliaomartins/visitor-management-system",
 
   /** The lobby screen at 08:51, waiting for arrivals. The page's LCP. */
-  lead: { src: "/projects/visitor-queue-system/waiting-for-arrivals.jpg", ...PHOTO },
+  lead: { src: "/projects/visitor-queue-system/juliao-martins-waiting-for-arrivals.jpg", ...PHOTO },
 
   /**
    * One medium per step, in the order of messages queueCase.steps: register
    * a walk-in at the desk, the QR ID card, the scan, the welcome on screen.
    */
   steps: [
-    { kind: "photo", src: "/projects/visitor-queue-system/welcome-desk.jpg", ...PHOTO },
-    { kind: "photo", src: "/projects/visitor-queue-system/badges-on.jpg", ...PHOTO },
-    { kind: "photo", src: "/projects/visitor-queue-system/badge-scan.jpg", ...PHOTO },
+    { kind: "photo", src: "/projects/visitor-queue-system/juliao-martins-welcome-desk.jpg", ...PHOTO },
+    { kind: "photo", src: "/projects/visitor-queue-system/juliao-martins-badges-on.jpg", ...PHOTO },
+    { kind: "photo", src: "/projects/visitor-queue-system/juliao-martins-badge-scan.jpg", ...PHOTO },
     {
       kind: "video",
-      src: "/projects/visitor-queue-system/welcome.mp4",
-      poster: "/projects/visitor-queue-system/welcome-poster.webp",
+      src: "/projects/visitor-queue-system/juliao-martins-welcome.mp4",
+      poster: "/projects/visitor-queue-system/juliao-martins-welcome-poster.webp",
       width: 540,
       height: 960,
     },
@@ -86,15 +86,15 @@ export const queueCase = {
     site: "https://inovtec.digital",
     website: "https://cooptl.com/",
     photos: [
-      { id: "behind", src: "/projects/visitor-queue-system/inovtec-team.jpg", ...PHOTO },
-      { id: "mission", src: "/projects/visitor-queue-system/inovtec-mission.jpg", ...PHOTO },
+      { id: "behind", src: "/projects/visitor-queue-system/juliao-martins-inovtec-team.jpg", ...PHOTO },
+      { id: "mission", src: "/projects/visitor-queue-system/juliao-martins-inovtec-mission.jpg", ...PHOTO },
     ],
   },
 
   /** Three prints pinned to the project row on the home page. */
   teaser: [
-    "/projects/visitor-queue-system/waiting-for-arrivals.jpg",
-    "/projects/visitor-queue-system/badge-scan.jpg",
-    "/projects/visitor-queue-system/scan-closeup.jpg",
+    "/projects/visitor-queue-system/juliao-martins-waiting-for-arrivals.jpg",
+    "/projects/visitor-queue-system/juliao-martins-badge-scan.jpg",
+    "/projects/visitor-queue-system/juliao-martins-scan-closeup.jpg",
   ],
 } as const;

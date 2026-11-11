@@ -96,13 +96,15 @@ const MOTION_SCRIPT = `
 export const metadata: Metadata = {
   metadataBase: new URL("https://juliaomartins.dev"),
 
+  // "Juliao" without the tilde is how most people type the name, so the
+  // title — the strongest on-page signal — carries both spellings.
   title: {
-    default: "Julião Martins – Developer",
+    default: "Julião Martins (Juliao) – Developer in Dili, Timor-Leste",
     template: "%s | Julião Martins",
   },
 
   description:
-    "Portfolio of Julião Martins, a developer building web and mobile products with React, Next.js and React Native — now studying AI engineering.",
+    "Julião (Juliao) Martins is a developer in Dili, Timor-Leste, building web and mobile apps with React, Next.js and React Native, now studying AI engineering.",
 
   alternates: {
     canonical: "https://juliaomartins.dev/",
@@ -122,11 +124,24 @@ export const metadata: Metadata = {
   // Next's file conventions; all are generated from icon.svg by
   // `npm run icons`, and the manifest lives in src/app/manifest.ts.
 
+  // Google ignores this list for ranking; Bing and some others still read it.
   keywords: [
     "Juliao",
     "Julião",
     "Julião Martins",
     "Juliao Martins",
+    "juliaomartins",
+    "Juliao developer",
+    "Juliao portfolio",
+    "Juliao Martins portfolio",
+    "Juliao Martins developer",
+    "Juliao Timor-Leste",
+    "Juliao Dili",
+    "Juliao Inovtec",
+    "Juliao Telemor",
+    "Juliao Hacktoberfest",
+    "Julião Martins Inovtec",
+    "Julião Martins photos",
     "Julião Martins Timor Leste",
     "Juliao Martins Timor Leste",
     "Julião Martins Dili",
@@ -144,9 +159,9 @@ export const metadata: Metadata = {
   ],
 
   openGraph: {
-    title: "Julião Martins – Developer",
+    title: "Julião Martins (Juliao) – Developer in Dili, Timor-Leste",
     description:
-      "Portfolio of Julião Martins, a developer building web and mobile products with React, Next.js and React Native — now studying AI engineering.",
+      "Julião (Juliao) Martins is a developer in Dili, Timor-Leste, building web and mobile apps with React, Next.js and React Native, now studying AI engineering.",
     url: "/",
     siteName: "Julião Martins",
     locale: "en_US",
@@ -159,14 +174,24 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Julião Martins – Developer",
-    description: "Portfolio and projects built with React, Next.js and React Native.",
+    title: "Julião Martins (Juliao) – Developer in Dili, Timor-Leste",
+    description:
+      "Portfolio, projects and photos of Julião (Juliao) Martins, a developer in Dili, Timor-Leste.",
     // Inherits the generated opengraph-image; see above.
   },
 
   robots: {
     index: true,
     follow: true,
+    // Without max-image-preview: large, Google may show only small
+    // thumbnails of the photos in Search, Images and Discover.
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
 };
 

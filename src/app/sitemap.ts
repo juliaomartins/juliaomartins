@@ -5,6 +5,7 @@ import {
   absoluteUrl,
   caseImages,
   caseVideos,
+  CONTENT_UPDATED,
   homeImages,
   homeVideos,
   SITE_URL,
@@ -28,7 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: SITE_URL,
-      lastModified: new Date(),
+      lastModified: CONTENT_UPDATED,
       changeFrequency: "monthly",
       priority: 1,
       images: homeImages.map((image) => absoluteUrl(image.src)),
@@ -36,7 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: absoluteUrl(queueCase.href),
-      lastModified: new Date(),
+      lastModified: CONTENT_UPDATED,
       changeFrequency: "yearly",
       priority: 0.8,
       images: caseImages.map((image) => absoluteUrl(image.src)),
