@@ -43,11 +43,6 @@ export const clip = {
   shown: "inset(0% 0% 0% 0%)",
 } as const;
 
-/** Lead photo settle: it starts this much larger and eases back to 1. */
-export const settle = {
-  scale: 1.06,
-} as const;
-
 /** Timeline position parameters. */
 export const position = {
   /** Start shortly after the previous tween starts. */

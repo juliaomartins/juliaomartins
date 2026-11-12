@@ -1,10 +1,7 @@
 import type { MetadataRoute } from "next";
 
-import { queueCase } from "@/data/queue-case";
 import {
   absoluteUrl,
-  caseImages,
-  caseVideos,
   CONTENT_UPDATED,
   homeImages,
   homeVideos,
@@ -21,8 +18,8 @@ const video = (clip: IndexedVideo) => ({
 });
 
 /**
- * Pages, and the images and videos on each, so search engines can find every
- * photo (Google Images) and clip and tie it to the page it appears on. The
+ * The site's one page, and the images and videos on it, so search engines can
+ * find every photo (Google Images) and clip and tie it to the page. The
  * lists live in lib/seo.ts, shared with the pages' structured data.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -34,14 +31,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
       images: homeImages.map((image) => absoluteUrl(image.src)),
       videos: homeVideos.map(video),
-    },
-    {
-      url: absoluteUrl(queueCase.href),
-      lastModified: CONTENT_UPDATED,
-      changeFrequency: "yearly",
-      priority: 0.8,
-      images: caseImages.map((image) => absoluteUrl(image.src)),
-      videos: caseVideos.map(video),
     },
   ];
 }

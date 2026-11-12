@@ -1,11 +1,10 @@
 "use client";
 
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { useTranslations } from "next-intl";
 
-import { queueCase } from "@/data/queue-case";
+import { projectPrints, type ProjectPrint } from "@/data/project-prints";
 import { cn } from "@/lib/utils";
 
 type ProjectItem = {
@@ -14,9 +13,6 @@ type ProjectItem = {
   tags: string[];
   linkLabel: string;
   href: string;
-  /** Present when the project has its own case-study page. */
-  caseLabel?: string;
-  caseHref?: string;
 };
 
 /** Slight tilts for the pinned prints; they straighten and fan out on hover. */
@@ -26,29 +22,24 @@ const PRINT_TILT = [
   "-rotate-1 group-hover/prints:translate-x-1 group-hover/prints:rotate-0",
 ] as const;
 
-/** Three photos from the event, pinned to the row like prints on a board. */
-function CasePrints({ href }: { href: string }) {
+/** Photos from the project, pinned to the row like prints on a board.
+ * Decorative: the project is described in words beside them. */
+function Prints({ prints }: { prints: readonly ProjectPrint[] }) {
   return (
-    // Decorative twin of the case button beside it, so out of the tab order.
-    <Link
-      href={href}
-      aria-hidden
-      tabIndex={-1}
-      className="group/prints mt-6 inline-flex pl-1"
-    >
-      {queueCase.teaser.map((src, index) => (
+    <div aria-hidden className="group/prints mt-6 inline-flex pl-1">
+      {prints.map(({ src }, index) => (
         <span
           key={src}
           className={cn(
             "relative -ml-3 block h-16 w-24 overflow-hidden rounded-sm border-4 border-card bg-muted shadow-md transition-transform duration-(--duration-micro) ease-(--ease-standard) first:ml-0 md:h-20 md:w-28",
             "motion-reduce:transition-none",
-            PRINT_TILT[index]
+            PRINT_TILT[index % PRINT_TILT.length]
           )}
         >
           <Image src={src} alt="" fill sizes="7rem" className="object-cover" />
         </span>
       ))}
-    </Link>
+    </div>
   );
 }
 
@@ -86,22 +77,12 @@ export default function Projects() {
                   <li key={tag}>{tag}</li>
                 ))}
               </ul>
-              {project.caseHref && <CasePrints href={project.caseHref} />}
+              {projectPrints[project.href] && (
+                <Prints prints={projectPrints[project.href]} />
+              )}
             </div>
 
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 md:col-span-3 md:flex-col md:items-end md:justify-self-end">
-              {project.caseHref && project.caseLabel && (
-                <Link
-                  href={project.caseHref}
-                  className="group/case press inline-flex min-h-11 items-center gap-2 rounded-full bg-primary pl-5 pr-4 text-sm font-medium text-primary-foreground hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring active:scale-97"
-                >
-                  {project.caseLabel}
-                  <ArrowRight
-                    aria-hidden
-                    className="size-4 transition-transform duration-(--duration-micro) motion-safe:group-hover/case:translate-x-0.5"
-                  />
-                </Link>
-              )}
+            <div className="md:col-span-3 md:justify-self-end">
               <a
                 href={project.href}
                 target="_blank"

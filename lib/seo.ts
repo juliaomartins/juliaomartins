@@ -1,7 +1,7 @@
 import { contactDetails } from "@/data/contact";
 import { galleryItems } from "@/data/gallery";
 import { portrait } from "@/data/profile";
-import { queueCase } from "@/data/queue-case";
+import { projectPrints } from "@/data/project-prints";
 import { skills } from "@/data/skills";
 import { withoutEmoji } from "@/lib/emoji";
 import en from "@/messages/en.json";
@@ -86,6 +86,11 @@ export const homeImages: IndexedImage[] = [
     showsJuliao: GALLERY_WITH_JULIAO.has(item.id),
     place: GALLERY_PLACE[item.id],
   })),
+  // The prints pinned to project rows; the Visitor and Queue System ones were
+  // taken at DRCCMD 2026, at Palm Spring.
+  ...Object.values(projectPrints)
+    .flat()
+    .map((print) => ({ ...print, place: PLACE.palmSpring })),
 ];
 
 export const homeVideos: IndexedVideo[] = galleryClips.map((item) => ({
@@ -95,46 +100,6 @@ export const homeVideos: IndexedVideo[] = galleryClips.map((item) => ({
   description: `${caption(item.id)}. From the gallery of ${NAME}, a developer in Dili, Timor-Leste.`,
   date: item.date.slice(0, 10),
 }));
-
-/* ------------------------------ Case study ------------------------------- */
-
-const [stepVideo] = queueCase.steps.filter((step) => step.kind === "video");
-const stepCopy = en.queueCase.steps;
-const teamCopy = en.queueCase.team.photos;
-const wallCopy = en.queueCase.photos;
-
-/** Every case-study photo was taken at the event, at Palm Spring. */
-export const caseImages: IndexedImage[] = [
-  { ...queueCase.lead, caption: en.queueCase.leadAlt },
-  ...queueCase.steps.flatMap((step, index) =>
-    step.kind === "photo"
-      ? [{ src: step.src, width: step.width, height: step.height, caption: stepCopy[index].alt }]
-      : []
-  ),
-  ...queueCase.wall.flat().map((photo) => ({
-    src: photo.src,
-    width: photo.width,
-    height: photo.height,
-    caption: wallCopy[photo.id as keyof typeof wallCopy],
-  })),
-  ...queueCase.team.photos.map((photo) => ({
-    src: photo.src,
-    width: photo.width,
-    height: photo.height,
-    caption: teamCopy[photo.id as keyof typeof teamCopy].caption,
-    showsJuliao: true,
-  })),
-].map((image) => ({ ...image, place: PLACE.palmSpring }));
-
-export const caseVideos: IndexedVideo[] = [
-  {
-    src: stepVideo.src,
-    poster: stepVideo.poster,
-    title: `${en.queueCase.title}: ${stepCopy[3].title}`,
-    description: stepCopy[3].alt,
-    date: "2026-10-02",
-  },
-];
 
 /* -------------------------------- JSON-LD -------------------------------- */
 
@@ -183,7 +148,7 @@ const person = {
   jobTitle: "Developer",
   description: en.home.intro,
   worksFor: { "@type": "Organization", name: "Viettel Timor, Unipessoal, Lda. (Telemor)" },
-  memberOf: { "@type": "Organization", name: "Inovtec", url: queueCase.team.site },
+  memberOf: { "@type": "Organization", name: "Inovtec", url: "https://inovtec.digital" },
   knowsAbout: skills.map((skill) => skill.name),
   homeLocation: place(PLACE.dili),
   address: { "@type": "PostalAddress", addressLocality: "Dili", addressCountry: "TL" },
@@ -216,24 +181,4 @@ export const homeJsonLd = {
       video: homeVideos.map(videoObject),
     },
   ],
-};
-
-/** Case study: an article by Julião, with every photo and the lobby footage. */
-export const caseJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: en.queueCase.metaTitle,
-  description: en.queueCase.metaDescription,
-  url: absoluteUrl(queueCase.href),
-  datePublished: "2026-10-24",
-  inLanguage: ["en", "tet"],
-  author: { "@type": "Person", "@id": PERSON_ID, name: NAME, url: SITE_URL },
-  image: caseImages.map(imageObject),
-  video: caseVideos.map(videoObject),
-  about: {
-    "@type": "SoftwareApplication",
-    name: en.queueCase.title,
-    applicationCategory: "BusinessApplication",
-    creator: { "@type": "Organization", name: "Inovtec", url: queueCase.team.site },
-  },
 };
