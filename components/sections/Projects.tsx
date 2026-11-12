@@ -1,11 +1,7 @@
 "use client";
 
 import { ArrowUpRight } from "lucide-react";
-import Image from "next/image";
 import { useTranslations } from "next-intl";
-
-import { projectPrints, type ProjectPrint } from "@/data/project-prints";
-import { cn } from "@/lib/utils";
 
 type ProjectItem = {
   name: string;
@@ -14,34 +10,6 @@ type ProjectItem = {
   linkLabel: string;
   href: string;
 };
-
-/** Slight tilts for the pinned prints; they straighten and fan out on hover. */
-const PRINT_TILT = [
-  "-rotate-3 group-hover/prints:-translate-x-1 group-hover/prints:rotate-0",
-  "rotate-2 group-hover/prints:rotate-0",
-  "-rotate-1 group-hover/prints:translate-x-1 group-hover/prints:rotate-0",
-] as const;
-
-/** Photos from the project, pinned to the row like prints on a board.
- * Decorative: the project is described in words beside them. */
-function Prints({ prints }: { prints: readonly ProjectPrint[] }) {
-  return (
-    <div aria-hidden className="group/prints mt-6 inline-flex pl-1">
-      {prints.map(({ src }, index) => (
-        <span
-          key={src}
-          className={cn(
-            "relative -ml-3 block h-16 w-24 overflow-hidden rounded-sm border-4 border-card bg-muted shadow-md transition-transform duration-(--duration-micro) ease-(--ease-standard) first:ml-0 md:h-20 md:w-28",
-            "motion-reduce:transition-none",
-            PRINT_TILT[index % PRINT_TILT.length]
-          )}
-        >
-          <Image src={src} alt="" fill sizes="7rem" className="object-cover" />
-        </span>
-      ))}
-    </div>
-  );
-}
 
 /** Typographic index. No entrance animation — content first. */
 export default function Projects() {
@@ -77,9 +45,6 @@ export default function Projects() {
                   <li key={tag}>{tag}</li>
                 ))}
               </ul>
-              {projectPrints[project.href] && (
-                <Prints prints={projectPrints[project.href]} />
-              )}
             </div>
 
             <div className="md:col-span-3 md:justify-self-end">

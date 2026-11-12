@@ -16,14 +16,4 @@ export const renamedMedia: readonly { from: string; to: string }[] = [
   { from: "/gallery/2026-10-drccmd-inovtec.webp", to: "/gallery/juliao-martins-2026-10-drccmd-inovtec.webp" },
   { from: "/gallery/2026-07-18-telemor-picnic-team.jpg", to: "/gallery/juliao-martins-2026-07-18-telemor-island-picnic-team.jpg" },
   { from: "/gallery/2026-07-18-telemor-picnic-group.jpg", to: "/gallery/juliao-martins-2026-07-18-telemor-island-picnic-group.jpg" },
-  // The Visitor and Queue System case-study page was removed (the project is
-  // documented on GitHub). Its photos were deleted, so their URLs now 404 —
-  // except the three still pinned to the project row on the home page, which
-  // moved to /images. Both names they had while live redirect there.
-  { from: "/projects/visitor-queue-system/waiting-for-arrivals.jpg", to: "/images/juliao-martins-queue-system-lobby-screen.jpg" },
-  { from: "/projects/visitor-queue-system/juliao-martins-waiting-for-arrivals.jpg", to: "/images/juliao-martins-queue-system-lobby-screen.jpg" },
-  { from: "/projects/visitor-queue-system/badge-scan.jpg", to: "/images/juliao-martins-queue-system-badge-scan.jpg" },
-  { from: "/projects/visitor-queue-system/juliao-martins-badge-scan.jpg", to: "/images/juliao-martins-queue-system-badge-scan.jpg" },
-  { from: "/projects/visitor-queue-system/scan-closeup.jpg", to: "/images/juliao-martins-queue-system-scan-closeup.jpg" },
-  { from: "/projects/visitor-queue-system/juliao-martins-scan-closeup.jpg", to: "/images/juliao-martins-queue-system-scan-closeup.jpg" },
 ];

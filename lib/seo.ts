@@ -1,7 +1,6 @@
 import { contactDetails } from "@/data/contact";
 import { galleryItems } from "@/data/gallery";
 import { portrait } from "@/data/profile";
-import { projectPrints } from "@/data/project-prints";
 import { skills } from "@/data/skills";
 import { withoutEmoji } from "@/lib/emoji";
 import en from "@/messages/en.json";
@@ -86,11 +85,6 @@ export const homeImages: IndexedImage[] = [
     showsJuliao: GALLERY_WITH_JULIAO.has(item.id),
     place: GALLERY_PLACE[item.id],
   })),
-  // The prints pinned to project rows; the Visitor and Queue System ones were
-  // taken at DRCCMD 2026, at Palm Spring.
-  ...Object.values(projectPrints)
-    .flat()
-    .map((print) => ({ ...print, place: PLACE.palmSpring })),
 ];
 
 export const homeVideos: IndexedVideo[] = galleryClips.map((item) => ({
