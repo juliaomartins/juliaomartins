@@ -24,13 +24,14 @@ const ALTERNATE_NAMES = ["Juliao Martins", "Julião", "Juliao", "juliaomartins"]
  * When the site's content last changed. The sitemap reports it, so search
  * engines can trust the date; bump it when pages or photos change.
  */
-export const CONTENT_UPDATED = "2026-11-12";
+export const CONTENT_UPDATED = "2026-11-14";
 
 /** Where photos were taken, as schema.org Places. */
 const PLACE = {
   dili: "Dili, Timor-Leste",
   palmSpring: "Palm Spring, Dili, Timor-Leste",
   maubisse: "Mount Rabilau, Maubisse, Timor-Leste",
+  iob: "Institute of Business (IOB), Timor-Leste",
 } as const;
 const PERSON_ID = `${SITE_URL}/#person`;
 const PORTRAIT_ID = `${SITE_URL}/#portrait`;
@@ -70,6 +71,8 @@ const GALLERY_PLACE: Record<string, string> = {
   hacktoberfestFriends: PLACE.dili,
   hacktoberfestGroup: PLACE.dili,
   drccmdInovtec: PLACE.palmSpring,
+  monographDefenseIob: PLACE.iob,
+  monographDefense: PLACE.iob,
 };
 
 const caption = (id: string) =>

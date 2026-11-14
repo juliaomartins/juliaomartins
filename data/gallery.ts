@@ -22,6 +22,10 @@ export const galleryItems: readonly GalleryItem[] = [
   { id: "hacktoberfestFriends", src: "/gallery/juliao-martins-2026-10-24-dili-hacktoberfest-friends.jpg", date: "2026-10-24T21:27", width: 800, height: 450 },
   { id: "hacktoberfestGroup", src: "/gallery/juliao-martins-2026-10-24-dili-hacktoberfest-group.jpg", date: "2026-10-24T17:39", width: 800, height: 450 },
   { id: "drccmdInovtec", src: "/gallery/juliao-martins-2026-10-drccmd-inovtec.webp", date: "2026-10-03", width: 750, height: 500 },
+  // Same day; listed in the order they were taken, later first (the sort is
+  // stable, so equal dates keep this order).
+  { id: "monographDefenseIob", src: "/gallery/juliao-martins-2026-09-24-monograph-defense-day-iob.jpg", date: "2026-09-24", width: 1536, height: 2048 },
+  { id: "monographDefense", src: "/gallery/juliao-martins-2026-09-24-monograph-defense-day.jpg", date: "2026-09-24", width: 1536, height: 2048 },
   { id: "picnicTeam", src: "/gallery/juliao-martins-2026-07-18-telemor-island-picnic-team.jpg", date: "2026-07-18T16:26", width: 2048, height: 1365 },
   { id: "picnicGroup", src: "/gallery/juliao-martins-2026-07-18-telemor-island-picnic-group.jpg", date: "2026-07-18T16:22", width: 2048, height: 1365 },
 ];
